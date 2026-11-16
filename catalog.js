@@ -22,7 +22,7 @@ window.CATALOG = {
       desc: 'A 3D sailboat you can turn. Hover a part, or switch on every label, to see what each one does.'
     },
     {
-      id: 'ai-data-center', title: 'Inside an AI Data Center', cats: ['anatomy', 'energy'], isNew: true,
+      id: 'ai-data-center', title: 'Inside an AI Data Center', cats: ['anatomy'], isNew: true,
       tags: ['Diagram', 'Interactive'], thumb: '/thumbs/ai-data-center.jpg', href: '/anatomy/ai-data-center/',
       desc: 'Compute, storage, networking, power and cooling. Hover any part to see what it does and how it connects.'
     },
