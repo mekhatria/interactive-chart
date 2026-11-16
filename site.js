@@ -31,7 +31,7 @@
         : `<a href="${chartLink(ch)}">${esc(ch.title)}${ch.status === 'draft' ? '<small>draft</small>' : ''}</a>`).join('')
     }</div>`).join('');
     nav.innerHTML = `
-      <a class="brand" href="${ROOT}/"><img src="${ROOT}/assets/logo.svg" alt=""><span>Home</span></a>
+      <a class="brand" href="${ROOT}/"><img src="${ROOT}/assets/logo-site.svg" alt=""><span>Home</span></a>
       <div class="cats">${cats}</div>
       <div class="all"><button aria-expanded="false" aria-haspopup="true">All charts ▾</button><div class="menu" hidden>${groups}</div></div>`;
     body.prepend(nav);
