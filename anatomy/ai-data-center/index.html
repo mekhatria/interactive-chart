@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="https://mekhatria.github.io/interactive-chart/assets/logo.svg">
+<link rel="apple-touch-icon" href="https://mekhatria.github.io/interactive-chart/assets/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inside an AI Data Center</title>
+<link rel="canonical" href="https://mekhatria.github.io/interactive-chart/anatomy/ai-data-center/">
+<meta name="description" content="An interactive diagram of an AI data center: compute, storage, networking, power and cooling. Hover any part to see what it does and how it connects.">
+<meta name="author" content="Mustapha Mekhatria">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Inside an AI Data Center">
+<meta property="og:description" content="An interactive diagram of an AI data center: compute, storage, networking, power and cooling. Hover any part to see what it does and how it connects.">
+<meta property="og:url" content="https://mekhatria.github.io/interactive-chart/anatomy/ai-data-center/">
+<meta property="og:image" content="https://mekhatria.github.io/interactive-chart/thumbs/ai-data-center.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://mekhatria.github.io/interactive-chart/anatomy/ai-data-center/",
+  "url": "https://mekhatria.github.io/interactive-chart/anatomy/ai-data-center/",
+  "name": "Inside an AI Data Center",
+  "description": "An interactive diagram of an AI data center: compute, storage, networking, power and cooling. Hover any part to see what it does and how it connects.",
+  "inLanguage": "en",
+  "datePublished": "2026-11-16",
+  "image": "https://mekhatria.github.io/interactive-chart/thumbs/ai-data-center.jpg",
+  "about": "Data center architecture",
+  "isPartOf": { "@type": "CollectionPage", "name": "Anatomy", "url": "https://mekhatria.github.io/interactive-chart/anatomy/" },
+  "author": { "@type": "Person", "name": "Mustapha Mekhatria", "url": "https://www.linkedin.com/in/mustaphamekhatria/" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>.home-nav{position:sticky;top:12px;z-index:50;max-width:1320px;margin:0 auto 14px;font:500 14px/1.4 "Archivo",system-ui,sans-serif}.home-nav a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border:0;border-radius:999px;font-weight:650;font-size:14.5px;letter-spacing:.01em;background:#2F6FEF;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 4px 18px rgba(47,111,239,.55);transition:background .15s,transform .15s,box-shadow .15s}.home-nav a:hover{background:#4A85FF;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 6px 24px rgba(74,133,255,.7)}.home-nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}</style>
+<style>
+:root{
+  color-scheme: dark;
+  --page:#080C13; --card:#0E1520; --panel:#121B28; --line:#223044;
+  --ink:#EEF2F7; --muted:#8D98A8; --soft:#B9C2CF;
+  --data:#4A8BFF; --power:#F2554A; --cool:#3FCB7E; --suite:#2F6FEF;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;padding:24px 16px 40px}
+
+.scroller{max-width:1320px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.frame{position:relative;width:100%;min-width:640px;aspect-ratio:1320/900;overflow:hidden;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.stage{position:absolute;left:0;top:0;width:1320px;height:900px;transform-origin:0 0}
+#hc{position:absolute;inset:0}
+.abs{position:absolute}
+
+/* side cards */
+.cardx{position:absolute;width:236px;padding:12px 14px 12px;border-radius:10px;background:rgba(18,27,40,.92);border:1px solid var(--line);
+  cursor:pointer;transition:opacity .25s,border-color .2s,transform .2s;outline:none}
+.cardx h3{margin:-12px -14px 10px;padding:8px 14px;border-radius:10px 10px 0 0;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+.cardx ul{margin:0;padding:0 0 0 16px;font-size:13.5px;line-height:1.55;color:var(--soft)}
+.cardx.k-data h3,.cardx.k-users h3{background:#1E4FC2}
+.cardx.k-compute h3,.cardx.k-cooling h3{background:#17804A}
+.cardx.k-power h3{background:#B93228}
+.cardx.k-storage h3{background:#4B5568}
+.cardx:hover,.cardx:focus-visible,.cardx.hl{border-color:#8FB4FF;transform:translateY(-2px)}
+.users-ico{display:flex;gap:10px;align-items:center;margin-top:6px;color:var(--soft)}
+
+/* software suite */
+.suite{position:absolute;left:300px;top:22px;width:720px;padding:12px 18px 16px;border-radius:14px;
+  background:linear-gradient(180deg,#2F6FEF,#1C4CC0);box-shadow:0 10px 34px rgba(47,111,239,.35),0 0 0 1px rgba(255,255,255,.12) inset;transition:opacity .25s}
+.suite .t{text-align:center;font-weight:750;letter-spacing:.06em;font-size:16px;color:#fff;margin-bottom:10px;cursor:pointer}
+.mods{display:flex;justify-content:space-between;gap:10px}
+.mod{flex:1;text-align:center;color:#fff;cursor:pointer;border-radius:10px;padding:6px 2px 4px;outline:none;transition:background .15s}
+.mod:hover,.mod:focus-visible,.mod.hl{background:rgba(255,255,255,.14)}
+.mod .ic{width:52px;height:52px;margin:0 auto 6px;border-radius:12px;background:rgba(8,20,60,.45);display:grid;place-items:center;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset}
+.mod .ic svg{width:28px;height:28px}
+.mod span{font-size:13.5px;font-weight:550}
+
+.legend{position:absolute;left:0;right:0;bottom:16px;display:flex;justify-content:center;gap:36px;font-size:14px;font-weight:650;letter-spacing:.04em}
+.legend span{display:inline-flex;align-items:center;gap:10px;cursor:pointer;padding:4px 8px;border-radius:6px}
+.legend span:hover{background:rgba(255,255,255,.06)}
+.legend i{display:inline-block;width:34px;height:3px;border-radius:2px;position:relative}
+.legend i::after{content:"";position:absolute;right:-2px;top:-4px;border:5.5px solid transparent;border-left:8px solid currentColor}
+.title{left:28px;top:812px;margin:0;font-stretch:66%;font-weight:700;font-size:26px;line-height:1;color:#fff}
+.credit{right:26px;top:868px;font-size:12px}
+.credit a{color:var(--muted);text-decoration:none}
+.dimmable{transition:opacity .25s}
+.dim .dimmable:not(.hl){opacity:.28}
+
+/* tooltip */
+#tip{position:fixed;z-index:100;max-width:320px;pointer-events:none;background:#121B28;border:1px solid #2C3E58;border-radius:10px;
+  padding:12px 14px;box-shadow:0 12px 32px rgba(0,0,0,.5);opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;font-size:13.5px;line-height:1.45;color:var(--soft)}
+#tip.on{opacity:1;transform:none}
+#tip .h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px;color:#fff;margin-bottom:6px}
+#tip .h i{width:10px;height:10px;border-radius:3px;flex:none}
+#tip ul{margin:4px 0 8px;padding-left:18px;color:var(--ink)}
+#tip p{margin:0}
+
+.hint{max-width:1320px;margin:12px auto 0;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav class="home-nav" aria-label="Site"><a href="https://mekhatria.github.io/interactive-chart/anatomy/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>All anatomy charts</span></a></nav>
+
+<div class="scroller">
+  <div class="frame" id="frame">
+    <div class="stage" id="stage" role="img" aria-label="Interactive diagram of an AI data center: software management suite, users and apps, networking, compute, storage, cooling and power, with data, power and cooling flows. Hover any part for details.">
+      <div id="hc"></div>
+
+      <div class="suite dimmable" data-k="suite">
+        <div class="t" data-k="suite">SOFTWARE – MANAGEMENT SUITE (DCBBS)</div>
+        <div class="mods">
+          <div class="mod" tabindex="0" data-k="monitoring"><div class="ic"><svg viewBox="0 0 24 24" fill="#fff"><circle cx="9" cy="8" r="3.2"/><circle cx="16.5" cy="9" r="2.6" opacity=".8"/><path d="M3 19c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5z"/><path d="M14.5 19c.2-2 1.2-3.6 2.8-4.3 2.2.3 3.7 2 3.7 4.3z" opacity=".8"/></svg></div><span>Monitoring</span></div>
+          <div class="mod" tabindex="0" data-k="orchestration"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m6 16 4-4 3 3 5-6"/></svg></div><span>Orchestration</span></div>
+          <div class="mod" tabindex="0" data-k="automation"><div class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.4 7.4 0 0 0-1.7-1L15 3.3h-4l-.4 2.6a7.4 7.4 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1a7.4 7.4 0 0 0 1.7 1l.4 2.6h4l.4-2.6a7.4 7.4 0 0 0 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z" transform="translate(-1 0)"/></svg></div><span>Automation</span></div>
+          <div class="mod" tabindex="0" data-k="security"><div class="ic"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5z"/><path d="M12 4.3v15.6c3.4-1.4 6-5 6-8.9V6.4z" fill="rgba(8,20,60,.45)"/></svg></div><span>Security</span></div>
+          <div class="mod" tabindex="0" data-k="cloud"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4.5 4.5 0 1 1 .9-8.9A6 6 0 0 1 19.5 11 3.5 3.5 0 0 1 18 18z"/><path d="M12 16v-6m-2.5 2.5L12 10l2.5 2.5"/></svg></div><span>Cloud Integration</span></div>
+        </div>
+      </div>
+
+      <div class="cardx k-users dimmable" tabindex="0" data-k="users" style="left:26px;top:30px">
+        <h3>Users &amp; Apps</h3>
+        <ul><li>People and devices</li><li>Applications</li><li>Internet access</li></ul>
+      </div>
+      <div class="cardx k-data dimmable" tabindex="0" data-k="network" style="left:26px;top:228px">
+        <h3>Networking</h3>
+        <ul><li>Core Routers</li><li>Switches</li><li>Firewalls</li></ul>
+      </div>
+      <div class="cardx k-compute dimmable" tabindex="0" data-k="compute" style="left:26px;top:418px">
+        <h3>Compute</h3>
+        <ul><li>Server Racks</li><li>GPU Nodes</li></ul>
+      </div>
+      <div class="cardx k-power dimmable" tabindex="0" data-k="power" style="left:26px;top:614px">
+        <h3>Power</h3>
+        <ul><li>UPS</li><li>Generators</li><li>Dual Power Feeds</li></ul>
+      </div>
+      <div class="cardx k-storage dimmable" tabindex="0" data-k="storage" style="left:1058px;top:250px">
+        <h3>Storage</h3>
+        <ul><li>Storage Arrays</li><li>NVMe Systems</li></ul>
+      </div>
+      <div class="cardx k-cooling dimmable" tabindex="0" data-k="cooling" style="left:1058px;top:560px">
+        <h3>Cooling</h3>
+        <ul><li>Liquid Cooling</li></ul>
+      </div>
+
+      <div class="legend">
+        <span data-k="dataflow" style="color:var(--data)"><i style="background:var(--data)"></i>DATA FLOW</span>
+        <span data-k="powerflow" style="color:var(--power)"><i style="background:var(--power)"></i>POWER FLOW</span>
+        <span data-k="coolflow" style="color:var(--cool)"><i style="background:var(--cool)"></i>COOLING FLOW</span>
+      </div>
+      <div class="abs credit"><a href="https://www.highcharts.com" target="_blank" rel="noopener">Highcharts.com</a></div>
+    </div>
+  </div>
+</div>
+<p class="hint">Hover any part of the data center (racks, cooling units, power equipment, flows, software modules or cards) to see what it does.</p>
+<div id="tip" role="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/highcharts.js"></script>
+<script>
+(() => {
+  const W = 1320, H = 900;
+  const C = Math.cos(Math.PI / 6), S = 0.5;
+  const O = { x: 660, y: 470 };
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const P = (x, y, z) => [O.x + (x - y) * C, O.y + (x + y) * S - z];
+  const f = n => n.toFixed(1);
+  const poly = pts => 'M' + pts.map(p => f(p[0]) + ' ' + f(p[1])).join('L') + 'Z';
+  const line = pts => 'M' + pts.map(p => f(p[0]) + ' ' + f(p[1])).join('L');
+
+  // ---------- tooltip content (from the diagram) ----------
+  const INFO = {
+    suite: { c: '#2F6FEF', t: 'Software – Management Suite (DCBBS)', b: ['Monitoring', 'Orchestration', 'Automation', 'Security', 'Cloud Integration'],
+      p: 'One software layer that watches and controls every system in the facility.' },
+    monitoring: { c: '#2F6FEF', t: 'Monitoring', p: 'Tracks the health, power draw and temperature of every component in real time.' },
+    orchestration: { c: '#2F6FEF', t: 'Orchestration', p: 'Schedules and places workloads across servers, storage and network.' },
+    automation: { c: '#2F6FEF', t: 'Automation', p: 'Runs routine operations such as provisioning, scaling and recovery without manual steps.' },
+    security: { c: '#2F6FEF', t: 'Security', p: 'Controls access and protects data and systems across the whole stack.' },
+    cloud: { c: '#2F6FEF', t: 'Cloud Integration', p: 'Connects on-site resources with public and private clouds.' },
+    users: { c: '#4A8BFF', t: 'Users & Apps', b: ['People and devices', 'Applications', 'Internet access'],
+      p: 'Requests arrive over the network and are passed to the management suite and the servers.' },
+    network: { c: '#4A8BFF', t: 'Networking', b: ['Core Routers', 'Switches', 'Firewalls'],
+      p: 'Connects users to the servers and links every rack together. Firewalls filter traffic at the edge.' },
+    compute: { c: '#3FCB7E', t: 'Compute', b: ['Server Racks', 'GPU Nodes'],
+      p: 'Where the work happens: CPUs and GPUs run applications and AI models. They use most of the power and produce most of the heat.' },
+    storage: { c: '#8A97AD', t: 'Storage', b: ['Storage Arrays', 'NVMe Systems'],
+      p: 'Keeps data close to the servers; NVMe flash makes it fast enough to feed GPUs.' },
+    cooling: { c: '#3FCB7E', t: 'Cooling', b: ['Liquid Cooling'],
+      p: 'Chillers, pumps and cooling units carry the servers’ heat out of the room through liquid loops.' },
+    power: { c: '#F2554A', t: 'Power', b: ['UPS', 'Generators', 'Dual Power Feeds'],
+      p: 'Two independent feeds supply the site. UPS batteries bridge any gap until the generators start.' },
+    dataflow: { c: '#4A8BFF', t: 'Data flow', p: 'Data moving between users, network, servers, storage and the management suite.' },
+    powerflow: { c: '#F2554A', t: 'Power flow', p: 'Electricity from the feeds, UPS and generators to every rack.' },
+    coolflow: { c: '#3FCB7E', t: 'Cooling flow', p: 'Coolant carrying heat away from the servers to the chillers and back.' }
+  };
+  // which drawn groups belong to which topic (hovering one highlights the related parts)
+  const RELATED = {
+    suite: ['suite', 'dataflow'], monitoring: ['suite'], orchestration: ['suite'], automation: ['suite'], security: ['suite'], cloud: ['suite'],
+    users: ['users', 'dataflow', 'suite'], network: ['network', 'dataflow'], compute: ['compute', 'dataflow'], storage: ['storage'],
+    cooling: ['cooling', 'coolflow'], power: ['power', 'powerflow'],
+    dataflow: ['dataflow', 'users', 'network', 'compute', 'suite'], powerflow: ['powerflow', 'power', 'compute'], coolflow: ['coolflow', 'cooling', 'compute']
+  };
+
+  let R;
+  // Highcharts' renderer.path() ignores a string path passed to the constructor, so set it through attr()
+  const RP = d => R.path().attr({ d });
+  const groups = {};             // topic -> [svg groups]
+  const flows = [];              // animated dashed paths
+  const anim = [];               // things that grow in the intro
+
+  function g(topic) { const el = R.g().attr({ class: 'dimmable' }).add(layer); el.element.dataset.k = topic; (groups[topic] = groups[topic] || []).push(el); return el; }
+  let layer;
+
+  // box faces on the iso grid; 'front' = y=y1 face (down-left), 'side' = x=x1 face (down-right)
+  function box(par, x0, x1, y0, y1, z0, z1, c) {
+    RP(poly([P(x0, y1, z0), P(x1, y1, z0), P(x1, y1, z1), P(x0, y1, z1)])).attr({ fill: c.front, stroke: c.edge || 'none', 'stroke-width': .6 }).add(par);
+    RP(poly([P(x1, y1, z0), P(x1, y0, z0), P(x1, y0, z1), P(x1, y1, z1)])).attr({ fill: c.side, stroke: c.edge || 'none', 'stroke-width': .6 }).add(par);
+    RP(poly([P(x0, y0, z1), P(x1, y0, z1), P(x1, y1, z1), P(x0, y1, z1)])).attr({ fill: c.top, stroke: c.edge || 'none', 'stroke-width': .6 }).add(par);
+  }
+  const frontRect = (par, x0, x1, y, z0, z1, fill) => RP(poly([P(x0, y, z0), P(x1, y, z0), P(x1, y, z1), P(x0, y, z1)])).attr({ fill }).add(par);
+  const sideRect = (par, x, y0, y1, z0, z1, fill) => RP(poly([P(x, y1, z0), P(x, y0, z0), P(x, y0, z1), P(x, y1, z1)])).attr({ fill }).add(par);
+
+  function arrowHead(par, a, b, color) {               // triangle at b pointing from a to b
+    const ang = Math.atan2(b[1] - a[1], b[0] - a[0]), s = 9;
+    const p1 = [b[0] - s * Math.cos(ang - .45), b[1] - s * Math.sin(ang - .45)];
+    const p2 = [b[0] - s * Math.cos(ang + .45), b[1] - s * Math.sin(ang + .45)];
+    RP(poly([b, p1, p2])).attr({ fill: color }).add(par);
+  }
+  function flow(topic, pts, color, opts = {}) {
+    const par = g(topic);
+    if (opts.glow !== false) RP(line(pts)).attr({ stroke: color, 'stroke-width': (opts.w || 2.6) + 6, fill: 'none', opacity: .13, 'stroke-linecap': 'round' }).add(par);
+    const el = RP(line(pts)).attr({ stroke: color, 'stroke-width': opts.w || 2.6, fill: 'none', 'stroke-dasharray': opts.dash || '9 7',
+      'stroke-linecap': 'round', 'stroke-linejoin': 'round' }).add(par);
+    if (opts.end !== false) arrowHead(par, pts[pts.length - 2], pts[pts.length - 1], color);
+    if (opts.both) arrowHead(par, pts[1], pts[0], color);
+    flows.push({ el, dir: opts.dir || 1, speed: opts.speed || 0.035 });
+    return par;
+  }
+
+  function build() {
+    const conn = R.g('connectors').add();          // card connector lines, underneath everything
+    layer = R.g('diagram').add();
+
+    // ---------- floor slab, tiles and walls ----------
+    const room = g('room');
+    const X0 = -250, X1 = 250, Y0 = -190, Y1 = 190, WH = 112;
+    box(room, X0, X1, Y0, Y1, -26, 0, { top: '#1A2433', front: '#121A26', side: '#0E151F', edge: '#2A3A52' });
+    let d = '';
+    for (let x = X0 + 25; x < X1; x += 25) d += line([P(x, Y0, 0), P(x, Y1, 0)]);
+    for (let y = Y0 + 25; y < Y1; y += 25) d += line([P(X0, y, 0), P(X1, y, 0)]);
+    RP(d).attr({ stroke: 'rgba(140,170,220,.10)', 'stroke-width': .8 }).add(room);
+    // perforated floor grille
+    for (let i = 0; i < 9; i++) RP(poly([P(-40 + i * 18, 118, 0.5), P(-28 + i * 18, 118, 0.5), P(-28 + i * 18, 158, 0.5), P(-40 + i * 18, 158, 0.5)])).attr({ fill: '#0A0F17', stroke: '#2C3B52', 'stroke-width': .6 }).add(room);
+    // glass walls
+    RP(poly([P(X0, Y0, 0), P(X0, Y1, 0), P(X0, Y1, WH), P(X0, Y0, WH)])).attr({ fill: 'rgba(160,190,240,.045)', stroke: 'rgba(160,190,240,.28)', 'stroke-width': 1 }).add(room);
+    RP(poly([P(X0, Y0, 0), P(X1, Y0, 0), P(X1, Y0, WH), P(X0, Y0, WH)])).attr({ fill: 'rgba(160,190,240,.06)', stroke: 'rgba(160,190,240,.28)', 'stroke-width': 1 }).add(room);
+
+    // ---------- networking: switches on the back-left wall ----------
+    const net = g('network');
+    const SW = { top: '#3B4658', front: '#222A36', side: '#1A212B', edge: '#46546A' };
+    [[-150, -95, 64], [-150, -95, 40], [-70, -15, 64], [-70, -15, 40]].forEach(([y0, y1, z]) => {
+      box(net, X0, X0 + 16, y0, y1, z, z + 16, SW);
+      for (let k = 0; k < 6; k++) sideRect(net, X0 + 16.2, y0 + 6 + k * 8, y0 + 10 + k * 8, z + 6, z + 10, k % 2 ? '#58E07A' : '#3FCB7E');
+    });
+
+    // ---------- cooling units on the back-right wall ----------
+    const coolIn = g('cooling');
+    [[150, 195], [205, 250]].forEach(([x0, x1]) => {
+      box(coolIn, x0, x1, Y0, Y0 + 22, 0, 98, { top: '#DCE2EA', front: '#B8C1CD', side: '#97A2B1', edge: '#6F7C8F' });
+      const cx = (x0 + x1) / 2, cz = 62, r = 15, pts = [];
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 16) pts.push(P(cx + r * Math.cos(a), Y0 + 22.2, cz + r * Math.sin(a)));
+      RP(poly(pts)).attr({ fill: '#2A323E', stroke: '#5C6878', 'stroke-width': 1 }).add(coolIn);
+      for (let k = 0; k < 4; k++) frontRect(coolIn, x0 + 8, x1 - 8, Y0 + 22.2, 14 + k * 6, 16 + k * 6, '#7E8A9B');
+    });
+
+    // ---------- compute racks and storage (painted back to front) ----------
+    const RACK = { top: '#3A4352', front: '#1D232C', side: '#141920', edge: '#3E4A5C' };
+    const items = [];
+    [-150, -92, -34, 24, 82].forEach(x => items.push({ k: 'compute', x0: x - 22, x1: x + 22, y0: -95, y1: -45, h: 140 }));
+    [-112, -54, 4, 62].forEach(x => items.push({ k: 'compute', x0: x - 22, x1: x + 22, y0: 15, y1: 65, h: 140 }));
+    items.push({ k: 'storage', x0: 140, x1: 190, y0: 30, y1: 80, h: 40, st: true }, { k: 'storage', x0: 140, x1: 190, y0: 30, y1: 80, h: 40, z: 40, st: true },
+               { k: 'storage', x0: 196, x1: 240, y0: 30, y1: 80, h: 40, st: true }, { k: 'storage', x0: 140, x1: 190, y0: 86, y1: 130, h: 40, st: true });
+    items.sort((a, b) => (a.x0 + a.y0 + (a.z || 0) * .01) - (b.x0 + b.y0 + (b.z || 0) * .01));
+    items.forEach((it, i) => {
+      const par = g(it.k);
+      anim.push({ par, it, t0: 350 + i * 70 });
+    });
+
+    // ---------- power plant (front-left, outside the room) ----------
+    const pw = g('power');
+    box(pw, 20, 150, 285, 395, -86, -78, { top: '#1D2633', front: '#141B26', side: '#10161F', edge: '#2A3A52' });
+    const UPS = { top: '#3A4352', front: '#232A35', side: '#1A2029', edge: '#46546A' };
+    [[30, 70, 300, 340, 62], [85, 125, 300, 340, 62]].forEach(([a, b, c, e, h]) => {
+      box(pw, a, b, c, e, -78, -78 + h, UPS);
+      frontRect(pw, a + 10, a + 22, e + .2, -78 + h - 22, -78 + h - 10, '#F2554A');
+    });
+    box(pw, 45, 135, 345, 388, -78, -26, { top: '#4A5466', front: '#2B3340', side: '#20262F', edge: '#56647A' });
+    for (let k = 0; k < 5; k++) frontRect(pw, 55 + k * 15, 64 + k * 15, 388.2, -64, -40, '#151A21');
+
+    // ---------- chiller plant (front-right) ----------
+    const ch = g('cooling');
+    box(ch, 285, 400, 15, 115, -86, -78, { top: '#1D2633', front: '#141B26', side: '#10161F', edge: '#2A3A52' });
+    box(ch, 295, 355, 25, 95, -78, -10, { top: '#D7DDE5', front: '#B3BCC9', side: '#929DAD', edge: '#6F7C8F' });
+    for (let k = 0; k < 2; k++) {
+      const cx = 315 + k * 22, pts = [];
+      for (let a = 0; a < Math.PI * 2; a += Math.PI / 14) pts.push(P(cx + 9 * Math.cos(a), 25 + 35 + 9 * Math.sin(a), -9.6));
+      RP(poly(pts)).attr({ fill: '#2A323E', stroke: '#5C6878' }).add(ch);
+    }
+    box(ch, 365, 395, 45, 75, -78, -50, { top: '#C9D0DA', front: '#A2ACBA', side: '#87929F', edge: '#6F7C8F' });     // pump
+
+    // ---------- flows ----------
+    // power: from the plant into the floor
+    [[50, 300], [105, 300], [90, 345]].forEach(([x, y], i) => flow('powerflow', [P(x, y - 2, -24 - i * 6), P(x, 205, -14), P(x, 192, -14)], '#F2554A', { dir: 1 }));
+    // cooling: chiller to the floor, and pipes up the corner and along the wall to the cooling units
+    flow('coolflow', [P(300, 60, -40), P(258, 60, -14)], '#3FCB7E');
+    flow('coolflow', [P(300, 85, -40), P(258, 85, -14)], '#3FCB7E', { dir: -1, end: false });
+    flow('coolflow', [P(250, -150, -14), P(250, -186, 0), P(250, -186, 112), P(172, -186, 112), P(172, -186, 100)], '#3FCB7E', { w: 2.2 });
+    flow('coolflow', [P(244, -150, -14), P(244, -182, 0), P(244, -182, 106), P(227, -182, 106), P(227, -182, 100)], '#3FCB7E', { w: 2.2, dir: -1, end: false });
+    // data: overhead tray from the switches across the racks, and uplinks to the management suite
+    flow('dataflow', [P(X0 + 16, -120, 80), P(X0 + 30, -120, 158), P(110, -120, 158)], '#4A8BFF', { w: 2.2, end: false, both: false });
+    flow('dataflow', [P(X0 + 16, -40, 80), P(X0 + 30, -40, 150), P(90, -40, 150)], '#4A8BFF', { w: 2.2, end: false });
+    [-150, -92, -34, 24, 82].forEach((x, i) => {
+      const a = P(x, -70, 168), top = [a[0], 172];
+      flow('dataflow', [a, top], '#4A8BFF', { w: 2, both: true, glow: false, speed: .045 });
+    });
+    // users & apps to the suite
+    flow('dataflow', [[264, 92], [298, 92]], '#4A8BFF', { w: 2.2, glow: false });
+
+    // ---------- card connectors ----------
+    const cl = (pts, c) => RP(line(pts)).attr({ stroke: c, 'stroke-width': 1.3, fill: 'none', opacity: .7 }).add(conn);
+    cl([[262, 300], P(X0, -95, 72)], '#4A8BFF');
+    cl([[262, 470], [300, 470], P(-112, 65, 70)], '#3FCB7E');
+    cl([[262, 700], P(30, 320, -40)], '#F2554A');
+    cl([[1058, 330], P(240, 55, 40)], '#8A97AD');
+    cl([[1058, 600], P(395, 60, -64)], '#3FCB7E');
+    cl([[1058, 600], [1030, 600], P(250, Y0 + 11, 70)], '#3FCB7E');
+
+    // hover wiring for every drawn group
+    Object.entries(groups).forEach(([k, arr]) => arr.forEach(el => {
+      if (k === 'room') return;
+      el.css({ cursor: 'pointer' });
+      el.on('mouseover', e => show(k, e)).on('mousemove', move).on('mouseout', hide);
+    }));
+  }
+
+  // rack / storage drawing with growth
+  function drawItem({ par, it }, grow) {
+    par.element.innerHTML = '';
+    const z0 = it.z || 0, h = it.h * grow;
+    if (h < .5) return;
+    if (it.st) {
+      box(par, it.x0, it.x1, it.y0, it.y1, z0, z0 + h, { top: '#4A5466', front: '#2B3340', side: '#20262F', edge: '#5A6880' });
+      for (let k = 0; k < 3; k++) frontRect(par, it.x0 + 6, it.x1 - 6, it.y1 + .2, z0 + 8 + k * 10, z0 + 11 + k * 10, k ? '#5C6A80' : '#3FCB7E');
+      return;
+    }
+    box(par, it.x0, it.x1, it.y0, it.y1, z0, z0 + h, { top: '#3A4352', front: '#1D232C', side: '#141920', edge: '#3E4A5C' });
+    for (let z = 10; z < h - 8; z += 13) {
+      frontRect(par, it.x0 + 5, it.x1 - 5, it.y1 + .2, z, z + 8, '#262E39');
+      frontRect(par, it.x0 + 7, it.x0 + 20, it.y1 + .3, z + 3, z + 5, '#58E07A');
+      frontRect(par, it.x0 + 24, it.x0 + 28, it.y1 + .3, z + 3, z + 5, z % 26 ? '#3FCB7E' : '#9DF2B4');
+    }
+  }
+
+  // ---------- tooltip & highlighting ----------
+  const tip = document.getElementById('tip'), frame = document.getElementById('frame');
+  function show(k, e) {
+    const d = INFO[k]; if (!d) return;
+    tip.innerHTML = `<div class="h"><i style="background:${d.c}"></i>${d.t}</div>` + (d.b ? `<ul>${d.b.map(x => `<li>${x}</li>`).join('')}</ul>` : '') + `<p>${d.p}</p>`;
+    tip.classList.add('on');
+    move(e);
+    const rel = new Set(RELATED[k] || [k]);
+    frame.classList.add('dim');
+    frame.querySelectorAll('.dimmable').forEach(el => el.classList.toggle('hl', rel.has(el.dataset.k) || rel.has(el.dataset.k === 'suite' ? 'suite' : '')));
+    frame.querySelectorAll('.mod').forEach(el => el.classList.toggle('hl', el.dataset.k === k));
+  }
+  function move(e) {
+    if (!e) return;
+    const ev = e.touches ? e.touches[0] : e;
+    let x = ev.clientX + 16, y = ev.clientY + 16;
+    const r = tip.getBoundingClientRect();
+    if (x + r.width > innerWidth - 8) x = ev.clientX - r.width - 16;
+    if (y + r.height > innerHeight - 8) y = ev.clientY - r.height - 16;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px';
+  }
+  function hide() {
+    tip.classList.remove('on');
+    frame.classList.remove('dim');
+    frame.querySelectorAll('.hl').forEach(el => el.classList.remove('hl'));
+  }
+  function showAt(k, el) {                         // keyboard focus: anchor tooltip to the element
+    const r = el.getBoundingClientRect();
+    show(k, { clientX: r.right - 10, clientY: r.top + 10 });
+  }
+  document.querySelectorAll('[data-k]').forEach(el => {
+    if (el.tagName === 'g') return;
+    const k = el.dataset.k;
+    el.addEventListener('mouseenter', e => { e.stopPropagation(); show(k, e); });
+    el.addEventListener('mousemove', move);
+    el.addEventListener('mouseleave', () => { const p = el.parentElement && el.parentElement.closest('[data-k]'); if (p && p.matches(':hover')) show(p.dataset.k, null); else hide(); });
+    el.addEventListener('focus', () => showAt(k, el));
+    el.addEventListener('blur', hide);
+  });
+
+  // ---------- animation ----------
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  function frameLoop(now) {
+    if (!t0) t0 = now;
+    const t = now - t0;
+    let pending = false;
+    anim.forEach(a => {
+      const p = Math.max(0, Math.min(1, (t - a.t0) / 900));
+      if (p !== a.p) { a.p = p; drawItem(a, easeOut(p)); }
+      if (p < 1) pending = true;
+    });
+    if (!reduceMotion) flows.forEach(fl => fl.el.attr({ 'stroke-dashoffset': -fl.dir * t * fl.speed }));
+    requestAnimationFrame(frameLoop);
+  }
+  let t0 = 0;
+
+  function fit() { document.getElementById('stage').style.transform = `scale(${frame.clientWidth / W})`; }
+  window.addEventListener('resize', fit);
+
+  Highcharts.chart('hc', {
+    chart: { width: W, height: H, reflow: false, animation: false, backgroundColor: 'transparent', spacing: [0, 0, 0, 0],
+             events: { load() { R = this.renderer; build(); fit();
+               if (reduceMotion) anim.forEach(a => drawItem(a, 1)); else requestAnimationFrame(frameLoop); } } },
+    title: { text: null }, credits: { enabled: false }, legend: { enabled: false }, tooltip: { enabled: false }, series: []
+  });
+})();
+</script>
+</body>
+</html>

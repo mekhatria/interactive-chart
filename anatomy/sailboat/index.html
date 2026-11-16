@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anatomy of a Sailboat</title>
+<link rel="icon" type="image/svg+xml" href="https://mekhatria.github.io/interactive-chart/assets/logo.svg">
+<link rel="apple-touch-icon" href="https://mekhatria.github.io/interactive-chart/assets/apple-touch-icon.png">
+<link rel="canonical" href="https://mekhatria.github.io/interactive-chart/anatomy/sailboat/">
+<meta name="description" content="A 3D sailboat you can turn with your mouse. Hover any part, from the mast and shrouds to the keel and rudder, to see its name and what it does.">
+<meta name="author" content="Mustapha Mekhatria">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anatomy of a Sailboat">
+<meta property="og:description" content="A 3D sailboat you can turn with your mouse. Hover any part, from the mast and shrouds to the keel and rudder, to see its name and what it does.">
+<meta property="og:url" content="https://mekhatria.github.io/interactive-chart/anatomy/sailboat/">
+<meta property="og:image" content="https://mekhatria.github.io/interactive-chart/thumbs/sailboat.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://mekhatria.github.io/interactive-chart/anatomy/sailboat/",
+  "url": "https://mekhatria.github.io/interactive-chart/anatomy/sailboat/",
+  "name": "Anatomy of a Sailboat",
+  "description": "A 3D sailboat you can turn with your mouse. Hover any part, from the mast and shrouds to the keel and rudder, to see its name and what it does.",
+  "inLanguage": "en",
+  "datePublished": "2026-11-16",
+  "image": "https://mekhatria.github.io/interactive-chart/thumbs/sailboat.jpg",
+  "about": "Parts of a sailboat",
+  "isPartOf": { "@type": "CollectionPage", "name": "Anatomy", "url": "https://mekhatria.github.io/interactive-chart/anatomy/" },
+  "author": { "@type": "Person", "name": "Mustapha Mekhatria", "url": "https://www.linkedin.com/in/mustaphamekhatria/" }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f4ef;--ink:#13254a;--soft:#46546d;--muted:#7a869a;--line:#dcdfe5;--accent:#e8951c;--card:#ffffff}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1280px;margin:0 auto;padding:18px 16px 16px}
+h1{font-size:clamp(28px,4.4vw,46px);font-weight:800;letter-spacing:.01em;margin:0;text-align:center}
+.sub{text-align:center;color:var(--soft);font-size:clamp(15px,1.8vw,19px);margin:8px 0 18px}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 16px;justify-content:center;align-items:center;font-size:14px;color:var(--soft)}
+.toolbar .lbl{font-weight:600}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:#fff;padding:3px}
+.seg button,.btn{border:0;background:transparent;font:inherit;color:var(--soft);padding:7px 14px;border-radius:999px;cursor:pointer;font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.btn{border:1px solid var(--line);background:#fff}
+.btn[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+.btn:hover,.seg button:hover{color:var(--ink)}
+.hint{color:var(--muted);font-size:13px}
+.stage{position:relative;margin-top:10px;border:1px solid var(--line);border-radius:18px;
+  background:radial-gradient(ellipse at 50% 42%,#fffdf9 0%,#f9f7f2 45%,var(--bg) 80%);overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.stage.dragging{cursor:grabbing}
+.stage:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+/* boat + parts list fit in one screen; the list scrolls inside its own box */
+#chart{height:calc(100vh - 420px);min-height:460px}
+@media (max-width:700px){#chart{height:560px;min-height:0}}
+.tip{position:absolute;left:0;top:0;pointer-events:none;max-width:290px;background:#fff;border:1px solid var(--line);
+  border-left:4px solid var(--accent);border-radius:10px;padding:10px 13px;box-shadow:0 8px 26px rgba(19,37,74,.16);
+  font-size:14px;line-height:1.45;color:var(--soft);opacity:0;transition:opacity .15s}
+.tip b{display:block;color:var(--ink);font-size:17px;margin-bottom:3px}
+.tip.on{opacity:1}
+.legend{position:absolute;left:14px;top:14px;display:flex;flex-direction:column;gap:2px;padding:8px 10px;
+  background:rgba(255,255,255,.82);border:1px solid var(--line);border-radius:12px;font-size:13px;color:var(--soft);cursor:default}
+.legend div{display:flex;align-items:center;gap:8px;padding:3px 6px;border-radius:7px;font-weight:600}
+.legend div:hover{background:#eef1f6;color:var(--ink)}
+.sw{width:22px;height:6px;border-radius:3px;flex:none}
+.sw.box{height:12px;width:14px;border-radius:3px}
+@media (max-width:700px){.legend{left:8px;top:8px;font-size:11px;padding:5px 6px}.legend div{padding:1px 4px}}
+.parts li .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.parts{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:4px 18px;
+  height:200px;overflow-y:auto;overscroll-behavior:contain;padding:0 12px 10px;
+  border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.55)}
+@media (max-width:700px){.parts{height:260px}}
+.parts h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 4px;
+  position:sticky;top:0;background:#fbfaf7;padding:10px 10px 6px;z-index:1}
+.parts::-webkit-scrollbar{width:8px}.parts::-webkit-scrollbar-thumb{background:#c9ced8;border-radius:8px}
+.parts ul{list-style:none;margin:0;padding:0}
+.parts li{padding:8px 10px;border-radius:10px;cursor:default;font-size:14px;line-height:1.4;color:var(--soft)}
+.parts li b{color:var(--ink);font-size:15px}
+.parts li:hover,.parts li:focus,.parts li.on{background:#fff;box-shadow:inset 3px 0 0 var(--accent);outline:none}
+footer{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.55;text-align:center}
+footer a{color:var(--ink)}
+</style>
+<style>.home-nav{position:sticky;top:12px;z-index:50;max-width:1320px;margin:0 auto 14px;font:500 14px/1.4 "Montserrat",system-ui,sans-serif}.home-nav a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border:0;border-radius:999px;font-weight:650;font-size:14.5px;letter-spacing:.01em;background:#2F6FEF;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 4px 18px rgba(47,111,239,.55);transition:background .15s,transform .15s,box-shadow .15s}.home-nav a:hover{background:#4A85FF;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 6px 24px rgba(74,133,255,.7)}.home-nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="home-nav" aria-label="Site"><a href="https://mekhatria.github.io/interactive-chart/anatomy/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>All anatomy charts</span></a></nav>
+  <h1>Anatomy of a Sailboat</h1>
+  <p class="sub">The parts every sailor should know. Drag to turn the boat, hover any part to see what it is.</p>
+
+  <div class="toolbar">
+    <span class="lbl">Labels</span>
+    <div class="seg" role="group" aria-label="Label mode">
+      <button id="mHover" aria-pressed="true">On hover</button>
+      <button id="mAll" aria-pressed="false">Show all</button>
+    </div>
+    <button class="btn" id="bAuto" aria-pressed="true">⟳ Auto-rotate</button>
+    <button class="btn" id="bReset">Reset view</button>
+    <span class="hint">Drag to rotate · arrow keys work too</span>
+  </div>
+
+  <div class="stage" id="stage" tabindex="0" aria-label="3D sailboat. Use arrow keys to rotate.">
+    <div id="chart"></div>
+    <div class="tip" id="tip" role="status"></div>
+    <div class="legend" id="legend" aria-label="Colour key"></div>
+  </div>
+
+  <section class="parts" id="parts" aria-label="Parts of the sailboat"></section>
+
+  <footer>
+    A generic cruising sloop, modelled in 3D and drawn with the <a href="https://www.highcharts.com">Highcharts</a> SVG renderer.
+    Part names are standard sailing terms.
+  </footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/highcharts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/modules/accessibility.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---------------- Parts: name, group, description, label anchor ---------------- */
+  const PARTS = [
+    ['mast', 'Mast', 'Rig', 'The tall vertical spar that holds up the sails and the rigging.'],
+    ['boom', 'Boom', 'Rig', 'The horizontal spar along the bottom of the mainsail. It swings across the boat when you tack or gybe, so mind your head.'],
+    ['gooseneck', 'Gooseneck', 'Rig', 'The hinged fitting that joins the boom to the mast, so the boom can swing side to side and up and down.'],
+    ['mainsail', 'Mainsail', 'Rig', 'The large sail behind the mast. Its front edge runs up the mast and its bottom edge is held by the boom.'],
+    ['forestay', 'Forestay', 'Rig', 'The wire from the top of the mast to the bow. It stops the mast falling backward and carries the front sail (jib or genoa).'],
+    ['jib', 'Jib', 'Rig', 'The sail in front of the mast, set along the forestay. When not needed it can be rolled up around the forestay like a blind.'],
+    ['backstay', 'Backstay', 'Rig', 'The wire from the masthead to the stern. It holds the mast from behind; tightening it bends the mast and flattens the mainsail.'],
+    ['shrouds', 'Shrouds', 'Rig', 'The side wires that hold the mast upright against the sideways push of the wind.'],
+    ['spreader', 'Spreaders', 'Rig', 'Struts on the mast that push the shrouds outward, giving them a better angle to support the mast.'],
+    ['cockpit', 'Cockpit', 'Deck', 'The sunken area at the back of the boat where the crew steers and handles the lines.'],
+    ['companionway', 'Companionway', 'Deck', 'The sliding hatch and steps that lead from the cockpit down into the cabin.'],
+    ['wheel', 'Wheel', 'Deck', 'Steers the boat by turning the rudder. Smaller boats use a tiller instead.'],
+    ['winch', 'Winches', 'Deck', 'Geared drums used to pull in lines under heavy load, such as the sheets and halyards.'],
+    ['mainsheet', 'Mainsheet', 'Deck', 'The rope and pulley system that pulls the boom in or lets it out, setting the angle of the mainsail to the wind.'],
+    ['jibsheet', 'Jib sheet', 'Deck', 'The rope that pulls the jib in or lets it out. It runs from the corner of the jib back to a winch in the cockpit.'],
+    ['lifelines', 'Lifelines', 'Deck', 'Wires around the edge of the deck, held up by posts called stanchions, that help keep the crew on board.'],
+    ['bowPulpit', 'Bow pulpit', 'Deck', 'The rigid steel rail around the bow. The lifelines attach to it, and it gives the crew something solid to hold at the front.'],
+    ['bow', 'Bow', 'Hull', 'The front of the boat.'],
+    ['stern', 'Stern', 'Hull', 'The back of the boat.'],
+    ['hull', 'Hull', 'Hull', 'The watertight body of the boat. The part below the waterline is painted with antifouling to stop weed and shells growing on it.'],
+    ['keel', 'Keel', 'Hull', 'The heavy fin under the hull. Its weight (here a lead bulb) keeps the boat upright, and its shape stops the boat sliding sideways.'],
+    ['rudder', 'Rudder', 'Hull', 'The blade under the stern that steers the boat when the wheel is turned.']
+  ];
+  const PART = {};
+  PARTS.forEach(([id, name, group, desc]) => { PART[id] = { id, name, group, desc }; });
+
+  // colour families, so each kind of thing is easy to spot
+  const CATS = [
+    { id: 'sails', name: 'Sails', color: '#f3efe4', edge: '#a99f8a', parts: ['mainsail', 'jib'] },
+    { id: 'spars', name: 'Spars (mast & boom)', color: '#2f6fd6', parts: ['mast', 'boom', 'spreader', 'gooseneck'] },
+    { id: 'wires', name: 'Wires (hold the mast)', color: '#d62839', parts: ['forestay', 'backstay', 'shrouds'] },
+    { id: 'ropes', name: 'Ropes (trim the sails)', color: '#0f9d63', parts: ['mainsheet', 'jibsheet'] },
+    { id: 'gear', name: 'Deck gear & safety', color: '#8a4fd8', parts: ['winch', 'wheel', 'lifelines', 'bowPulpit'] },
+    { id: 'hull', name: 'Hull & deck', color: '#1f3766', parts: ['hull', 'bow', 'stern', 'keel', 'rudder', 'cockpit', 'companionway'] }
+  ];
+  const CAT_OF = {};
+  CATS.forEach(c => c.parts.forEach(p => { CAT_OF[p] = c; }));
+
+  /* ---------------- Vector helpers ---------------- */
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const addv = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+  const mul = (a, k) => [a[0] * k, a[1] * k, a[2] * k];
+  const lerp = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const nrm = a => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; };
+  const cen = p => { let x = 0, y = 0, z = 0; for (const q of p) { x += q[0]; y += q[1]; z += q[2]; } return [x / p.length, y / p.length, z / p.length]; };
+  const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+  function newell(p) {
+    const n = [0, 0, 0];
+    for (let i = 0; i < p.length; i++) {
+      const a = p[i], b = p[(i + 1) % p.length];
+      n[0] += (a[1] - b[1]) * (a[2] + b[2]);
+      n[1] += (a[2] - b[2]) * (a[0] + b[0]);
+      n[2] += (a[0] - b[0]) * (a[1] + b[1]);
+    }
+    return nrm(n);
+  }
+  const hex2rgb = h => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  const rgb = c => `rgb(${c.map(v => Math.round(Math.max(0, Math.min(255, v)))).join(',')})`;
+  const AMBER = [240, 152, 28];
+  const mixA = (c, t) => c.map((v, i) => v + (AMBER[i] - v) * t);
+
+  /* ---------------- Scene items ---------------- */
+  // Coordinates: x = along the boat (bow at +x), y = up, z = across (port/starboard). 1 unit ≈ 1 m.
+  const LIGHT = nrm([0.35, 0.85, -0.5]);
+  const items = [];      // faces + line segments, depth sorted every frame
+  const hits = [];       // invisible wide strokes on top, to make thin wires easy to hover
+
+  function face(pts, color, part, o = {}) {
+    let n = newell(pts);
+    const c = cen(pts);
+    const out = o.out || (o.center ? sub(c, o.center) : null);
+    if (out && dot(n, out) < 0) n = mul(n, -1);
+    const l = dot(n, LIGHT);
+    const k = o.bright ? 0.9 + 0.12 * Math.abs(l) : o.two ? 0.66 + 0.42 * Math.abs(l) : 0.58 + 0.52 * Math.max(0, l) + 0.06 * Math.max(0, -l);
+    const base = hex2rgb(color).map(v => v * k);
+    const it = { t: 'f', pts, part: part || null, n, two: !!o.two, base, bias: o.bias || 0, op: o.op || 1 };
+    items.push(it);
+    return it;
+  }
+  function decal(parent, pts, color, part, layer = 1) {
+    const it = { t: 'f', pts, part: part || null, parent, layer, base: hex2rgb(color) };
+    items.push(it);
+    return it;
+  }
+  function line(pts, color, width, part, o = {}) {
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[i], b = pts[i + 1];
+      const n = Math.max(1, Math.ceil(dist(a, b) / (o.seg || 1.25)));
+      for (let j = 0; j < n; j++) {
+        items.push({ t: 'l', pts: [lerp(a, b, j / n), lerp(a, b, (j + 1) / n)], part: part || null,
+          base: hex2rgb(color), width, cullN: o.cullN || null, bias: o.bias || 0, deco: !!o.deco });
+      }
+    }
+    if (part && o.hit !== false) hits.push({ pts, part });
+  }
+  function prism(a, b, rf, n, segs, color, part, o = {}) {
+    const ax = nrm(sub(b, a));
+    const ref = Math.abs(ax[1]) < 0.9 ? [0, 1, 0] : [1, 0, 0];
+    const u = nrm(cross(ax, ref)), v = cross(ax, u);
+    const rings = [];
+    for (let j = 0; j <= segs; j++) {
+      const t = j / segs, c = lerp(a, b, t), r = rf(t), ring = [];
+      for (let i = 0; i < n; i++) {
+        const ang = (i + 0.5) / n * Math.PI * 2;
+        ring.push(addv(c, addv(mul(u, r * Math.cos(ang)), mul(v, r * Math.sin(ang)))));
+      }
+      rings.push(ring);
+    }
+    for (let j = 0; j < segs; j++) {
+      const mid = lerp(a, b, (j + 0.5) / segs);
+      for (let i = 0; i < n; i++) {
+        const i2 = (i + 1) % n;
+        const p = [rings[j][i], rings[j][i2], rings[j + 1][i2], rings[j + 1][i]];
+        face(p, color, part, { out: sub(cen(p), mid) });
+      }
+    }
+    if (o.caps !== false) {
+      if (rf(0) > 0.01) face(rings[0], o.capColor || color, part, { out: mul(ax, -1) });
+      if (rf(1) > 0.01) face(rings[segs], o.capColor || color, part, { out: ax });
+    }
+  }
+  function slab(poly, h, color, part) {
+    const top = poly.map(([x, y]) => [x, y, h]), bot = poly.map(([x, y]) => [x, y, -h]);
+    const c = [poly.reduce((s, p) => s + p[0], 0) / poly.length, poly.reduce((s, p) => s + p[1], 0) / poly.length, 0];
+    face(top, color, part, { center: c });
+    face(bot, color, part, { center: c });
+    for (let i = 0; i < poly.length; i++) {
+      const i2 = (i + 1) % poly.length;
+      face([bot[i], bot[i2], top[i2], top[i]], color, part, { center: c });
+    }
+  }
+  function box(x0, x1, y0, y1, z0, z1, color, part) {
+    const c = [(x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2];
+    const P = (x, y, z) => [x, y, z];
+    const F = [
+      [P(x0, y0, z0), P(x1, y0, z0), P(x1, y0, z1), P(x0, y0, z1)],
+      [P(x0, y1, z0), P(x1, y1, z0), P(x1, y1, z1), P(x0, y1, z1)],
+      [P(x0, y0, z0), P(x1, y0, z0), P(x1, y1, z0), P(x0, y1, z0)],
+      [P(x0, y0, z1), P(x1, y0, z1), P(x1, y1, z1), P(x0, y1, z1)],
+      [P(x0, y0, z0), P(x0, y0, z1), P(x0, y1, z1), P(x0, y1, z0)],
+      [P(x1, y0, z0), P(x1, y0, z1), P(x1, y1, z1), P(x1, y1, z0)]
+    ];
+    F.forEach(p => face(p, color, part, { center: c }));
+  }
+
+  /* ---------------- Hull shape ---------------- */
+  const NAVY = '#1f3766', BOTTOM = '#252e40', WHITE = '#eceef1', TEAK = '#c38c5a',
+    DARK = '#3a404a', GLASS = '#2a3346',
+    SPAR = '#2f6fd6', SPAR_D = '#1d4fa3', WIRE = '#d62839', ROPE = '#0f9d63', GEAR = '#8a4fd8', GEAR_L = '#b48ef0',
+    SAIL = '#f6f3ea', SAIL_EDGE = '#a99f8a';
+  const sheer = x => 1 + 0.011 * (x + 1) ** 2;
+  const beam = x => x >= -0.5 ? 1.9 * Math.sqrt(Math.max(0, 1 - ((x + 0.5) / 6.5) ** 2)) : 1.9 - 0.45 * ((-0.5 - x) / 5.1) ** 2;
+  const depth = x => Math.max(0.02, 0.6 * (1 - ((x + 0.3) / 6.2) ** 2));
+  const EXP = 2 / 2.6;
+  function hp(x, t, s) {             // t: 0 = deck edge … 1 = keel line
+    const th = t * Math.PI / 2, sh = sheer(x), d = depth(x), b = beam(x);
+    const y = sh - (sh + d) * Math.pow(Math.sin(th), EXP);
+    const z = s * b * Math.pow(Math.cos(th), EXP);
+    const w = Math.min(1, Math.max(0, (x - 3.2) / 2.8));   // raked stem near the bow
+    return [x - w * 0.9 * (sh - y) / (sh + d), y, z];
+  }
+  function hullAtY(x, y, s) {
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 28; i++) { const m = (lo + hi) / 2; if (hp(x, m, s)[1] > y) lo = m; else hi = m; }
+    return hp(x, (lo + hi) / 2, s);
+  }
+  const CW = 1.12;                                 // half-width of cockpit and cabin
+  const deckY = (x, z) => sheer(x) + 0.06 * (1 - (z / beam(x)) ** 2);
+  const floorY = x => sheer(x) - 0.55;
+
+  // stations along the hull (with exact breaks at the cockpit and cabin edges)
+  let XS = [];
+  for (let i = 0; i <= 26; i++) XS.push(-5.6 + 11.6 * i / 26);
+  [-5.2, -1.8, 2.6].forEach(b => { XS = XS.filter(x => Math.abs(x - b) > 0.12); XS.push(b); });
+  XS.sort((a, b) => a - b);
+  const K = 8;
+  const G = XS.map(x => [-1, 1].map(s => Array.from({ length: K + 1 }, (_, k) => hp(x, k / K, s))));
+
+  // hull skin
+  for (let i = 0; i < XS.length - 1; i++) {
+    for (let si = 0; si < 2; si++) {
+      for (let k = 0; k < K; k++) {
+        const p = [G[i][si][k], G[i + 1][si][k], G[i + 1][si][k + 1], G[i][si][k + 1]];
+        const c = cen(p);
+        const part = c[0] > 4.4 ? 'bow' : c[0] < -5.0 ? 'stern' : 'hull';
+        face(p, c[1] > 0.02 ? NAVY : BOTTOM, part, { out: [c[0] > 4.3 ? c[0] - 4.3 : 0, c[1] - 0.6, c[2] * 2] });
+      }
+    }
+  }
+  // transom
+  {
+    const pts = [];
+    for (let k = 0; k <= K; k++) pts.push(G[0][1][k]);
+    for (let k = K; k >= 0; k--) pts.push(G[0][0][k]);
+    face(pts, NAVY, 'stern', { out: [-1, 0, 0] });
+  }
+
+  // deck (with a hole where the cockpit and cabin sit)
+  for (let i = 0; i < XS.length - 1; i++) {
+    const x0 = XS[i], x1 = XS[i + 1], xm = (x0 + x1) / 2;
+    const b0 = beam(x0), b1 = beam(x1);
+    if (xm > -5.2 && xm < 2.6) {
+      [-1, 1].forEach((s, si) => {
+        face([[x0, deckY(x0, CW), s * CW], [x1, deckY(x1, CW), s * CW], G[i + 1][si][0], G[i][si][0]],
+          TEAK, xm < -1.8 ? 'cockpit' : null, { out: [0, 1, 0] });
+      });
+    } else {
+      const part = xm > 4.4 ? 'bow' : xm < -5.0 ? 'stern' : null;
+      for (let j = 0; j < 4; j++) {
+        const za = -1 + j / 2, zb = -1 + (j + 1) / 2;
+        const q = (x, b, f) => (f === -1 ? G[x === x0 ? i : i + 1][0][0] : f === 1 ? G[x === x0 ? i : i + 1][1][0] : [x, deckY(x, f * b), f * b]);
+        face([q(x0, b0, za), q(x1, b1, za), q(x1, b1, zb), q(x0, b0, zb)], WHITE, part, { out: [0, 1, 0] });
+      }
+    }
+  }
+
+  // cockpit: floor, side walls (with coamings), aft wall
+  for (let i = 0; i < XS.length - 1; i++) {
+    const x0 = XS[i], x1 = XS[i + 1], xm = (x0 + x1) / 2;
+    if (xm < -5.2 || xm > -1.8) continue;
+    face([[x0, floorY(x0), -CW], [x1, floorY(x1), -CW], [x1, floorY(x1), CW], [x0, floorY(x0), CW]], TEAK, 'cockpit', { out: [0, 1, 0] });
+    [-1, 1].forEach(s => {
+      face([[x0, floorY(x0), s * CW], [x1, floorY(x1), s * CW], [x1, deckY(x1, CW) + 0.18, s * CW], [x0, deckY(x0, CW) + 0.18, s * CW]],
+        WHITE, 'cockpit', { two: true });
+    });
+  }
+  face([[-5.2, floorY(-5.2), -CW], [-5.2, floorY(-5.2), CW], [-5.2, deckY(-5.2, CW) + 0.18, CW], [-5.2, deckY(-5.2, CW) + 0.18, -CW]],
+    WHITE, 'cockpit', { two: true });
+
+  // cabin (coachroof)
+  const cabC = [0.3, 1.2, 0];
+  const A = s => [-1.8, deckY(-1.8, CW), s * CW], B = s => [2.6, deckY(2.6, CW), s * CW],
+    Cc = s => [2.0, 1.56, s * 0.86], D = s => [-1.75, 1.63, s * 0.96];
+  const cabSide = {};
+  [-1, 1].forEach(s => { cabSide[s] = face([A(s), B(s), Cc(s), D(s)], WHITE, null, { center: cabC }); });
+  const cabTop = face([D(-1), D(1), Cc(1), Cc(-1)], WHITE, null, { center: cabC });
+  face([B(-1), B(1), Cc(1), Cc(-1)], WHITE, null, { center: cabC });
+  const back = face([[-1.8, floorY(-1.8), -CW], [-1.8, floorY(-1.8), CW], A(1), D(1), D(-1), A(-1)], WHITE, null, { center: cabC });
+  // cabin windows
+  [-1, 1].forEach(s => {
+    const f = cabSide[s], [a, b, c, d] = f.pts;
+    const at = (u, v) => lerp(lerp(a, b, u), lerp(d, c, u), v);
+    [[0.08, 0.36], [0.44, 0.74], [0.8, 0.9]].forEach(([u0, u1]) => {
+      decal(f, [at(u0, 0.34), at(u1, 0.34), at(u1, 0.74), at(u0, 0.74)], GLASS, null);
+    });
+  });
+  // companionway opening + sliding hatch
+  decal(back, [[-1.81, floorY(-1.8) + 0.1, -0.33], [-1.81, floorY(-1.8) + 0.1, 0.33], [-1.79, 1.6, 0.3], [-1.79, 1.6, -0.3]], '#5b3c22', 'companionway');
+  box(-1.75, -0.75, 1.63, 1.72, -0.4, 0.4, '#d7dbe1', 'companionway');
+  // hatches
+  box(1.45, 1.92, 1.565, 1.64, -0.33, 0.33, '#56627a', null);
+  box(3.35, 3.95, deckY(3.65, 0.42), deckY(3.65, 0) + 0.1, -0.42, 0.42, '#56627a', null);
+
+  // stripes on the hull: boot stripe, sheer stripe, portlights, toerail
+  [-1, 1].forEach(s => {
+    const xsS = XS.filter(x => x > -5.58 && x < 5.4);
+    line(xsS.map(x => mul(hullAtY(x, 0.08, s), 1)).map(p => [p[0], p[1], p[2] * 1.004]), '#f2f2f0', 2.8, null, { cullN: [0, 0, s], bias: -0.35, hit: false, deco: true });
+    line(XS.filter(x => x < 5.7).map(x => { const p = hullAtY(x, sheer(x) - 0.12, s); return [p[0], p[1], p[2] * 1.004]; }), '#d9dde3', 1.6, null, { cullN: [0, 0, s], bias: -0.35, hit: false, deco: true });
+    [[-0.8, 0.3], [0.6, 1.6], [1.9, 2.6]].forEach(([xa, xb]) => {
+      const pts = [];
+      for (let j = 0; j <= 4; j++) { const x = xa + (xb - xa) * j / 4; const p = hullAtY(x, sheer(x) - 0.34, s); pts.push([p[0], p[1], p[2] * 1.006]); }
+      line(pts, '#151d30', 5.5, null, { cullN: [0, 0, s], bias: -0.4, hit: false, deco: true });
+    });
+    line(XS.map((x, i) => G[i][s < 0 ? 0 : 1][0]).map(p => [p[0], p[1] + 0.03, p[2]]), '#a87648', 3, null, { bias: -0.2, hit: false, deco: true });
+  });
+
+  // keel with bulb, rudder
+  slab([[1.5, -0.25], [-0.3, -0.25], [-0.85, -2.55], [0.65, -2.55]], 0.1, BOTTOM, 'keel');
+  prism([1.3, -2.68, 0], [-1.5, -2.68, 0], t => 0.3 * Math.pow(Math.sin(Math.PI * t), 0.55) + 0.002, 10, 8, BOTTOM, 'keel', { caps: false });
+  slab([[-4.45, -0.15], [-5.0, -0.15], [-4.98, -1.9], [-4.7, -2.05], [-4.45, -1.75]], 0.06, BOTTOM, 'rudder');
+
+  /* ---------------- Rig ---------------- */
+  const MX = 1.0, MB = 1.573, MT = 15.1;
+  prism([MX, MB, 0], [MX, MT, 0], t => 0.12 - 0.04 * t, 6, 10, SPAR, 'mast');
+  // boom, mainsail, gooseneck, vang
+  prism([0.9, 2.72, 0], [-4.6, 2.85, 0], () => 0.09, 6, 6, SPAR, 'boom');
+  // a sail = curved surface between luff (tack→head) and leech (clew→head), bellied out to one side
+  function sail(tack, head, clew, roach, camber, part, NU = 5, NV = 10) {
+    const S = (u, v) => {
+      const L = lerp(tack, head, v);
+      const E = lerp(clew, head, v);
+      E[0] -= roach * Math.sin(Math.PI * v);
+      const P = lerp(L, E, u), chord = dist(L, E);
+      P[2] += camber * chord * 4 * u * (1 - u) * (1 - 0.35 * v);
+      return P;
+    };
+    const G2 = [];
+    for (let j = 0; j <= NV; j++) { G2.push([]); for (let i = 0; i <= NU; i++) G2[j].push(S(i / NU, j / NV)); }
+    for (let j = 0; j < NV; j++) for (let i = 0; i < NU; i++) {
+      face([G2[j][i], G2[j][i + 1], G2[j + 1][i + 1], G2[j + 1][i]], SAIL, part, { two: true, op: 0.9, bright: true });
+    }
+    // edges, so the sail stands out against the light background
+    const edge = (f) => { const p = []; for (let k = 0; k <= 12; k++) p.push(f(k / 12)); return p; };
+    line(edge(v => S(0, v)), SAIL_EDGE, 1.4, part, { hit: false, bias: -0.05 });
+    line(edge(v => S(1, v)), SAIL_EDGE, 1.4, part, { hit: false, bias: -0.05 });
+    line(edge(u => S(u, 0)), SAIL_EDGE, 1.4, part, { hit: false, bias: -0.05 });
+    // a few battens / seams
+    [0.25, 0.5, 0.75].forEach(v => line(edge(u => S(u, v)), '#d9d2c1', 1, part, { hit: false, deco: true }));
+    return S;
+  }
+  const mainS = sail([0.86, 2.88, 0], [0.86, 14.3, 0], [-4.35, 2.99, 0], 0.22, 0.12, 'mainsail');
+  box(0.8, 1.0, 2.6, 2.84, -0.11, 0.11, SPAR_D, 'gooseneck');
+  line([[0.97, 1.8, 0], [-0.3, 2.66, 0]], DARK, 2.6, null, { hit: false, deco: true });
+  // spreaders
+  line([[0.85, 6.5, -0.95], [MX, 6.5, 0], [0.85, 6.5, 0.95]], SPAR, 4, 'spreader');
+  line([[0.85, 10.5, -0.65], [MX, 10.5, 0], [0.85, 10.5, 0.65]], SPAR, 4, 'spreader');
+  // shrouds
+  [-1, 1].forEach(s => {
+    const cp = x => [x, sheer(x) + 0.02, s * (beam(x) - 0.1)];
+    line([[MX, 14.6, 0], [0.85, 10.5, 0.65 * s], [0.85, 6.5, 0.95 * s], cp(0.8)], WIRE, 2.2, 'shrouds');
+    line([[MX, 10.4, 0], [0.85, 6.5, 0.95 * s]], WIRE, 2, 'shrouds');
+    line([[MX, 6.4, 0], cp(1.55)], WIRE, 2, 'shrouds');
+    line([[MX, 6.4, 0], cp(0.05)], WIRE, 2, 'shrouds');
+  });
+  // forestay (with furler) and backstay (split into a bridle)
+  const FS0 = [MX, 14.95, 0], FS1 = [5.98, sheer(6) + 0.05, 0];
+  const fs = t => lerp(FS1, FS0, t);          // t = 0 at the bow … 1 at the masthead
+  line([FS0, FS1], WIRE, 2.8, 'forestay');
+  // jib, open, with its furling drum at the tack and the jib sheet back to a cockpit winch
+  const JCLEW = [0.55, 2.35, 0.85];
+  const jibS = sail(fs(0.06), fs(0.86), JCLEW, 0, 0.13, 'jib', 5, 10);
+  prism(fs(0.03), fs(0.06), () => 0.13, 8, 1, GEAR, 'jib', { capColor: GEAR_L });
+  {
+    const fair = [-0.6, deckY(-0.6, 1.45) + 0.08, 1.45];
+    box(fair[0] - 0.1, fair[0] + 0.1, fair[1] - 0.08, fair[1] + 0.06, 1.38, 1.52, GEAR, 'jibsheet');
+    line([JCLEW, fair, [-2.5, deckY(-2.5, 1.32) + 0.2, 1.32]], ROPE, 2.2, 'jibsheet', { seg: 0.8 });
+  }
+  {
+    const top = [0.96, 15.05, 0], S = [-5.55, sheer(-5.55) + 0.02, 0];
+    const f = (top[1] - 4.5) / (top[1] - S[1]), P = lerp(top, S, f);
+    line([top, P], WIRE, 2.2, 'backstay');
+    line([P, [-5.5, sheer(-5.5) + 0.02, -1.15]], WIRE, 2, 'backstay');
+    line([P, [-5.5, sheer(-5.5) + 0.02, 1.15]], WIRE, 2, 'backstay');
+  }
+  // mainsheet: traveller bar across the cockpit, 4-part tackle up to the boom
+  {
+    const MSX = -2.75, ty = deckY(MSX, CW) + 0.2, by = 2.72 + (2.85 - 2.72) * (0.9 - MSX) / 5.5 - 0.1;
+    box(MSX - 0.07, MSX + 0.07, ty - 0.04, ty + 0.03, -CW, CW, GEAR, 'mainsheet');            // traveller track
+    box(MSX - 0.12, MSX + 0.12, ty + 0.03, ty + 0.22, -0.11, 0.11, '#0b6e45', 'mainsheet');            // lower block
+    box(MSX - 0.12, MSX + 0.12, by - 0.2, by, -0.11, 0.11, '#0b6e45', 'mainsheet');                    // upper block
+    [-0.075, -0.025, 0.025, 0.075].forEach(dz => line([[MSX, ty + 0.2, dz], [MSX, by - 0.18, dz]], ROPE, 1.8, 'mainsheet', { hit: false }));
+    line([[MSX, ty + 0.12, 0.1], [MSX + 0.2, ty + 0.05, 0.6], [-2.5, deckY(-2.5, 1.32) + 0.2, 1.32]], ROPE, 1.8, 'mainsheet', { hit: false }); // tail to the winch
+    hits.push({ pts: [[MSX, ty, 0], [MSX, by, 0]], part: 'mainsheet' });
+  }
+
+  /* ---------------- Deck gear ---------------- */
+  // winches
+  [[-2.5, -1.32], [-2.5, 1.32], [-4.5, -1.3], [-4.5, 1.3]].forEach(([x, z]) => {
+    const y0 = deckY(x, Math.abs(z));
+    prism([x, y0, z], [x, y0 + 0.22, z], t => 0.13 - 0.03 * t, 8, 1, GEAR, 'winch', { capColor: GEAR_L });
+  });
+  [[-1.3, -0.55], [-1.3, 0.55]].forEach(([x, z]) => {
+    prism([x, 1.625, z], [x, 1.82, z], t => 0.11 - 0.025 * t, 8, 1, GEAR, 'winch', { capColor: GEAR_L });
+  });
+  // wheel + pedestal
+  {
+    const C = [-4.25, floorY(-4.25) + 1.0, 0], R = 0.62, ring = [];
+    for (let i = 0; i <= 28; i++) { const a = i / 28 * Math.PI * 2; ring.push([C[0], C[1] + R * Math.cos(a), R * Math.sin(a)]); }
+    line(ring, GEAR, 3.4, 'wheel', { seg: 0.5 });
+    for (let i = 0; i < 6; i++) { const a = i / 6 * Math.PI * 2; line([C, [C[0], C[1] + R * Math.cos(a), R * Math.sin(a)]], GEAR_L, 1.6, 'wheel', { hit: false }); }
+    line([C, [-3.95, C[1], 0]], GEAR_L, 3, 'wheel', { hit: false });
+    box(-4.05, -3.85, floorY(-3.95), C[1] + 0.05, -0.1, 0.1, GEAR_L, 'wheel');
+  }
+  // stanchions, lifelines, pulpits
+  {
+    const SX = [-4.9, -3.9, -2.9, -1.9, -0.9, 0.1, 1.1, 2.1, 3.1, 4.0];
+    const sp = (x, s, h) => [x, sheer(x) + h, s * (beam(x) - 0.12)];
+    [-1, 1].forEach(s => {
+      SX.forEach(x => line([sp(x, s, 0), sp(x, s, 0.72)], GEAR_L, 2, 'lifelines', { hit: false }));
+      const rail = [sp(-5.1, s, 0.72), ...SX.map(x => sp(x, s, 0.72)), sp(4.4, s, 0.72)];
+      line(rail, GEAR, 1.4, 'lifelines');
+      line(rail.map(p => [p[0], p[1] - 0.32, p[2]]), GEAR, 1.4, 'lifelines');
+      // stern pulpit
+      const st = [[-5.5, sheer(-5.5) + 0.72, s * 0.55], [-5.5, sheer(-5.5) + 0.72, s * 1.2], sp(-5.1, s, 0.72)];
+      line(st, GEAR, 2.6, null, { hit: false, deco: true });
+      [st[0], st[1], st[2]].forEach(p => line([p, [p[0], sheer(p[0]), p[2]]], GEAR, 2.2, null, { hit: false, deco: true }));
+    });
+    // bow pulpit loop
+    const bp = (x, s) => [x, sheer(x) + 0.74, s * Math.max(0.16, beam(x) - 0.12)];
+    const loop = [bp(4.4, -1), bp(5.0, -1), bp(5.45, -1), bp(5.78, -1), bp(5.78, 1), bp(5.45, 1), bp(5.0, 1), bp(4.4, 1)];
+    loop[3][2] = -0.17; loop[4][2] = 0.17;
+    line(loop, GEAR, 2.8, 'bowPulpit', { seg: 0.6 });
+    [loop[0], loop[2], loop[5], loop[7]].forEach(p => line([p, [p[0], sheer(p[0]), p[2]]], GEAR, 2.2, 'bowPulpit', { hit: false }));
+  }
+
+  /* ---------------- Label anchors ---------------- */
+  const hullA = hullAtY(0.4, 0.45, -1);
+  const ANCHOR = {
+    mast: [MX, 12.6, 0], boom: [-3.7, 2.8, 0], gooseneck: [0.88, 2.72, 0], mainsail: mainS(0.45, 0.3),
+    forestay: fs(0.9), jib: jibS(0.45, 0.32),
+    jibsheet: lerp(JCLEW, [-0.6, deckY(-0.6, 1.45) + 0.08, 1.45], 0.55),
+    backstay: lerp([0.96, 15.05, 0], [-5.55, 1.23, 0], 0.42),
+    shrouds: lerp([0.85, 6.5, -0.95], [0.8, sheer(0.8), -(beam(0.8) - 0.1)], 0.5),
+    spreader: [0.9, 6.5, -0.6],
+    cockpit: [-3.4, floorY(-3.4) + 0.05, -0.55], companionway: [-1.8, 1.15, 0],
+    wheel: [-4.25, floorY(-4.25) + 1.62, 0], winch: [-2.5, deckY(-2.5, 1.32) + 0.22, -1.32],
+    mainsheet: [-2.75, 2.05, 0], lifelines: [-0.4, sheer(-0.4) + 0.72, -(beam(-0.4) - 0.12)],
+    bowPulpit: [5.78, sheer(5.78) + 0.74, 0],
+    bow: hp(5.9, 0.45, -1), stern: [-5.62, 0.75, 0], hull: [hullA[0], hullA[1], hullA[2] * 1.01],
+    keel: [0.15, -1.7, 0], rudder: [-4.73, -1.2, 0]
+  };
+
+  /* ---------------- View state & projection ---------------- */
+  const CENTER = [0.2, 6.05, 0];
+  const DCAM = 46;
+  const VIEW0 = { yaw: -0.5, pitch: 0.2 };
+  let yaw = VIEW0.yaw, pitch = VIEW0.pitch;
+  let W = 1000, H = 780, F = 1000, CX = 500, CY = 390;
+  let frame = 0, cyw, syw, cpt, spt;
+  function proj(p) {
+    if (p._f === frame) return p._s;
+    const x = p[0] - CENTER[0], y = p[1] - CENTER[1], z = p[2] - CENTER[2];
+    const X = x * cyw - z * syw, Z1 = x * syw + z * cyw;
+    const Y2 = y * cpt + Z1 * spt, Z2 = -y * spt + Z1 * cpt;
+    const d = Z2 + DCAM;
+    p._f = frame;
+    p._s = [CX + F * X / d, CY - F * Y2 / d, Z2, X, Y2];
+    return p._s;
+  }
+  function rotN(n) {
+    const X = n[0] * cyw - n[2] * syw, Z1 = n[0] * syw + n[2] * cyw;
+    return [X, n[1] * cpt + Z1 * spt, -n[1] * spt + Z1 * cpt];
+  }
+
+  /* ---------------- Drawing ---------------- */
+  let chart, gModel, gHits, gLabels, gMarks;
+  const byPart = {};
+  let mode = 'hover', hover = null, auto = true, paused = false, dirty = true, dragging = null;
+  const labels = {};
+
+  function setup(c) {
+    chart = c;
+    const R = chart.renderer;
+    gModel = R.g('boat').add();
+    gHits = R.g('hits').add();
+    gMarks = R.g('marks').add();
+    gLabels = R.g('labels').add();
+    items.forEach(it => {
+      const el = R.path().attr({ d: 'M0 0' }).add(gModel).element;
+      if (it.t === 'f') {
+        el.setAttribute('stroke-width', '1.1');
+        el.setAttribute('stroke-linejoin', 'round');
+        if (it.op < 1) el.setAttribute('fill-opacity', it.op);
+      } else {
+        el.setAttribute('fill', 'none');
+        el.setAttribute('stroke-width', it.width);
+        el.setAttribute('stroke-linecap', 'round');
+      }
+      if (it.part) el.setAttribute('data-part', it.part);
+      if (it.deco) el.style.pointerEvents = 'none';
+      it.el = el;
+      it.shown = true;
+      if (it.part) (byPart[it.part] = byPart[it.part] || []).push(it);
+      paint(it);
+    });
+    hits.forEach(h => {
+      const el = R.path().attr({ d: 'M0 0' }).add(gHits).element;
+      el.setAttribute('fill', 'none');
+      el.setAttribute('stroke', 'rgba(0,0,0,0)');
+      el.setAttribute('stroke-width', '12');
+      el.setAttribute('stroke-linecap', 'round');
+      el.setAttribute('data-part', h.part);
+      el.style.pointerEvents = 'stroke';
+      h.el = el;
+    });
+    PARTS.forEach(([id, name]) => {
+      const lead = R.path().attr({ d: 'M0 0', stroke: '#7d8aa0', 'stroke-width': 1.2, fill: 'none' }).add(gLabels);
+      const text = R.text(name, 0, 0).css({ fontSize: '15px', fontWeight: '700', color: '#13254a', fontFamily: 'Montserrat, system-ui, sans-serif' })
+        .attr({ stroke: '#f8f6f1', 'stroke-width': 4, 'stroke-linejoin': 'round', 'paint-order': 'stroke' }).add(gLabels);
+      text.element.setAttribute('data-part', id);
+      text.element.style.cursor = 'default';
+      const cc = CAT_OF[id];
+      const dot = R.circle(0, 0, 4.5).attr({ fill: cc.id === 'sails' ? '#c9bea4' : cc.color, stroke: '#fff', 'stroke-width': 1.8 }).add(gMarks);
+      dot.element.setAttribute('data-part', id);
+      dot.element.style.cursor = 'pointer';
+      labels[id] = { lead, text, dot, side: null, align: null };
+    });
+    resize();
+  }
+
+  // highlight: the hovered part (or colour family) keeps its colour, everything else fades
+  const BGC = [246, 244, 239];
+  let hl = null;               // Set of highlighted part ids, or null
+  function paint(it) {
+    const on = hl && hl.has(it.part), dim = hl && !on;
+    const c = rgb(dim ? it.base.map((v, i) => v + (BGC[i] - v) * 0.72) : it.base);
+    if (it.t === 'f') { it.el.setAttribute('fill', c); it.el.setAttribute('stroke', c); }
+    else { it.el.setAttribute('stroke', c); it.el.setAttribute('stroke-width', on ? it.width + 1.4 : it.width); }
+  }
+  function setHighlight(set) {
+    hl = set;
+    items.forEach(paint);
+    dirty = true;
+  }
+
+  function resize() {
+    W = chart.chartWidth; H = chart.chartHeight;
+    const side = W >= 820 ? 170 : 12;
+    const upx = Math.min((H - 20) / 17.2, (W - 2 * side) / 13.5);
+    F = upx * DCAM; CX = W / 2; CY = H / 2 + 0.035 * H;
+    const fs = W < 600 ? '12px' : '15px';
+    Object.values(labels).forEach(l => l.text.css({ fontSize: fs }));
+    dirty = true;
+  }
+
+  const f1 = v => Math.round(v * 10) / 10;
+  function render() {
+    frame++;
+    cyw = Math.cos(yaw); syw = Math.sin(yaw); cpt = Math.cos(pitch); spt = Math.sin(pitch);
+    const vis = [];
+    let minX = 1e9, maxX = -1e9;
+    for (const it of items) {
+      let s;
+      if (it.parent) {
+        it.vis = it.parent.vis;
+      } else {
+        const nn = it.t === 'f' ? (it.two ? null : it.n) : it.cullN;
+        if (nn) {
+          const q = proj(it.pts[0]), r = rotN(nn);
+          it.vis = r[0] * q[3] + r[1] * q[4] + r[2] * (q[2] + DCAM) < 0;
+        } else it.vis = true;
+      }
+      if (!it.vis) { if (it.shown) { it.el.style.display = 'none'; it.shown = false; } continue; }
+      let dsum = 0, d = '';
+      for (let i = 0; i < it.pts.length; i++) {
+        const q = proj(it.pts[i]);
+        dsum += q[2];
+        d += (i ? 'L' : 'M') + f1(q[0]) + ' ' + f1(q[1]);
+        if (q[0] < minX) minX = q[0];
+        if (q[0] > maxX) maxX = q[0];
+      }
+      if (it.t === 'f') d += 'Z';
+      it.depth = it.parent ? it.parent.depth - 0.01 * it.layer : dsum / it.pts.length + it.bias;
+      it.el.setAttribute('d', d);
+      if (!it.shown) { it.el.style.display = ''; it.shown = true; }
+      vis.push(it);
+    }
+    vis.sort((a, b) => b.depth - a.depth);
+    const g = gModel.element;
+    for (const it of vis) g.appendChild(it.el);
+
+    for (const h of hits) h.el.setAttribute('d', h.pts.map((p, i) => { const q = proj(p); return (i ? 'L' : 'M') + f1(q[0]) + ' ' + f1(q[1]); }).join(''));
+
+    layoutLabels(minX, maxX);
+  }
+
+  function layoutLabels(minX, maxX) {
+    const A = {};
+    PARTS.forEach(([id]) => { const q = proj(ANCHOR[id]); A[id] = q; });
+    // dots
+    PARTS.forEach(([id]) => {
+      const l = labels[id], q = A[id], on = hl && hl.has(id);
+      l.dot.attr({ cx: q[0], cy: q[1], r: on ? 6.5 : (mode === 'all' ? 3.8 : 4.8), opacity: hl && !on ? 0.25 : 1,
+        stroke: on ? '#13254a' : '#fff' });
+    });
+    if (mode !== 'all') {
+      PARTS.forEach(([id]) => { labels[id].text.hide(); labels[id].lead.hide(); });
+      return;
+    }
+    const mid = (minX + maxX) / 2;
+    const L = [], Rr = [];
+    PARTS.forEach(([id]) => {
+      const l = labels[id], ax = A[id][0];
+      if (!l.side) l.side = ax < mid ? 'L' : 'R';
+      else if (l.side === 'L' && ax > mid + 24) l.side = 'R';
+      else if (l.side === 'R' && ax < mid - 24) l.side = 'L';
+      (l.side === 'L' ? L : Rr).push(id);
+    });
+    // keep the two columns roughly balanced: move the labels nearest the middle across
+    while (Math.abs(L.length - Rr.length) > 3) {
+      const [from, to, side] = L.length > Rr.length ? [L, Rr, 'R'] : [Rr, L, 'L'];
+      from.sort((a, b) => Math.abs(A[a][0] - mid) - Math.abs(A[b][0] - mid));
+      const id = from.shift();
+      labels[id].side = side;
+      to.push(id);
+    }
+    const small = W < 600;
+    const gap = small ? 19 : 25, top = 24, bottom = H - 18;
+    const colL = Math.max(small ? 70 : 140, minX - 40), colR = Math.min(W - (small ? 70 : 140), maxX + 40);
+    [[L, 'L'], [Rr, 'R']].forEach(([ids, side]) => {
+      ids.sort((a, b) => A[a][1] - A[b][1]);
+      const ys = ids.map(id => Math.min(bottom, Math.max(top, A[id][1])));
+      for (let i = 1; i < ys.length; i++) ys[i] = Math.max(ys[i], ys[i - 1] + gap);
+      // centre the stack on its anchors so leader lines stay short and flat
+      if (ys.length) {
+        const meanA = ids.reduce((s, id) => s + A[id][1], 0) / ids.length;
+        const meanY = ys.reduce((s, y) => s + y, 0) / ys.length;
+        let shift = meanA - meanY;
+        shift = Math.max(shift, top - ys[0]);
+        shift = Math.min(shift, bottom - ys[ys.length - 1]);
+        for (let i = 0; i < ys.length; i++) ys[i] += shift;
+      }
+      ids.forEach((id, i) => {
+        const l = labels[id], y = ys[i], x = side === 'L' ? colL : colR, on = hl && hl.has(id), dim = hl && !on;
+        const cc = CAT_OF[id], ccol = cc.id === 'sails' ? '#8a7d5f' : cc.color;
+        const align = side === 'L' ? 'right' : 'left';
+        if (l.align !== align) { l.text.attr({ align }); l.align = align; }
+        l.text.attr({ x, y: y + 5, opacity: dim ? 0.3 : 1 }).css({ color: on ? ccol : '#13254a' }).show();
+        const sx = side === 'L' ? x + 6 : x - 6;
+        l.lead.attr({ d: `M${f1(sx)} ${f1(y)}L${f1(A[id][0])} ${f1(A[id][1])}`, stroke: on ? ccol : '#8b96a8',
+          'stroke-width': on ? 2 : 1.2, opacity: dim ? 0.25 : 1 }).show();
+      });
+    });
+  }
+
+  /* ---------------- Interaction ---------------- */
+  const stage = document.getElementById('stage');
+  const tip = document.getElementById('tip');
+  const listItems = {};
+
+  function setHover(id, pos) {
+    if (id !== hover) {
+      hover = id;
+      setHighlight(id ? new Set([id]) : null);
+      Object.entries(listItems).forEach(([k, li]) => li.classList.toggle('on', k === id));
+    }
+    if (!id) { tip.classList.remove('on'); return; }
+    const p = PART[id];
+    tip.innerHTML = `<b>${p.name}</b>${p.desc}`;
+    tip.classList.add('on');
+    let x, y;
+    if (pos) { x = pos[0]; y = pos[1]; }
+    else { frame++; const q = proj(ANCHOR[id]); x = q[0]; y = q[1]; }
+    const tw = tip.offsetWidth, th = tip.offsetHeight, sw = stage.clientWidth, shh = stage.clientHeight;
+    let tx = x + 18, ty = y - th - 12;
+    if (tx + tw > sw - 8) tx = x - tw - 18;
+    if (tx < 8) tx = 8;
+    if (ty < 8) ty = y + 18;
+    if (ty + th > shh - 8) ty = shh - th - 8;
+    tip.style.transform = `translate(${Math.round(tx)}px,${Math.round(ty)}px)`;
+  }
+
+  function localPos(e) { const r = stage.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; }
+
+  stage.addEventListener('pointerenter', () => { paused = true; });
+  stage.addEventListener('pointerleave', () => { paused = false; if (!dragging) setHover(null); });
+  stage.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    dragging = { x: e.clientX, y: e.clientY, yaw, pitch, moved: false };
+  });
+  window.addEventListener('pointermove', e => {
+    if (dragging) {
+      const dx = e.clientX - dragging.x, dy = e.clientY - dragging.y;
+      if (!dragging.moved && Math.hypot(dx, dy) > 3) {
+        dragging.moved = true; stage.classList.add('dragging'); setAuto(false); setHover(null);
+      }
+      if (dragging.moved) {
+        yaw = dragging.yaw + dx * 0.008;
+        pitch = Math.max(-0.3, Math.min(1.15, dragging.pitch + dy * 0.006));
+        dirty = true;
+        return;
+      }
+    }
+    if (!stage.contains(e.target)) return;
+    const id = e.target.getAttribute && e.target.getAttribute('data-part');
+    setHover(id || null, localPos(e));
+  });
+  window.addEventListener('pointerup', () => { if (dragging) { dragging = null; stage.classList.remove('dragging'); } });
+  stage.addEventListener('keydown', e => {
+    const k = { ArrowLeft: [-0.12, 0], ArrowRight: [0.12, 0], ArrowUp: [0, -0.08], ArrowDown: [0, 0.08] }[e.key];
+    if (!k) return;
+    e.preventDefault(); setAuto(false);
+    yaw += k[0]; pitch = Math.max(-0.3, Math.min(1.15, pitch + k[1])); dirty = true;
+  });
+
+  function setMode(m) {
+    mode = m;
+    document.getElementById('mHover').setAttribute('aria-pressed', String(m === 'hover'));
+    document.getElementById('mAll').setAttribute('aria-pressed', String(m === 'all'));
+    dirty = true;
+  }
+  function setAuto(on) { auto = on; document.getElementById('bAuto').setAttribute('aria-pressed', String(on)); }
+  document.getElementById('mHover').addEventListener('click', () => setMode('hover'));
+  document.getElementById('mAll').addEventListener('click', () => setMode('all'));
+  document.getElementById('bAuto').addEventListener('click', () => setAuto(!auto));
+  document.getElementById('bReset').addEventListener('click', () => { yaw = VIEW0.yaw; pitch = VIEW0.pitch; dirty = true; });
+
+  // parts list under the chart (hover/focus highlights the part on the boat)
+  {
+    const host = document.getElementById('parts');
+    ['Rig', 'Deck', 'Hull'].forEach(gname => {
+      const col = document.createElement('div');
+      col.innerHTML = `<h2>${gname}</h2>`;
+      const ul = document.createElement('ul');
+      PARTS.filter(p => p[2] === gname).forEach(([id, name, , desc]) => {
+        const li = document.createElement('li');
+        li.tabIndex = 0;
+        const cc = CAT_OF[id];
+        li.innerHTML = `<span class="dot" style="background:${cc.id === 'sails' ? '#c9bea4' : cc.color}"></span><b>${name}</b><br>${desc}`;
+        const on = () => setHover(id);
+        li.addEventListener('mouseenter', on); li.addEventListener('focus', on);
+        li.addEventListener('mouseleave', () => setHover(null)); li.addEventListener('blur', () => setHover(null));
+        listItems[id] = li;
+        ul.appendChild(li);
+      });
+      col.appendChild(ul);
+      host.appendChild(col);
+    });
+  }
+
+  // colour key: hover a family to light up every part in it
+  {
+    const host = document.getElementById('legend');
+    CATS.forEach(c => {
+      const row = document.createElement('div');
+      const lineLike = c.id === 'wires' || c.id === 'ropes';
+      row.innerHTML = `<span class="sw${lineLike ? '' : ' box'}" style="background:${c.color};${c.edge ? 'border:1px solid ' + c.edge : ''}"></span>${c.name}`;
+      row.addEventListener('pointerenter', () => { hover = null; tip.classList.remove('on'); setHighlight(new Set(c.parts)); });
+      row.addEventListener('pointerleave', () => setHighlight(null));
+      host.appendChild(row);
+    });
+    host.addEventListener('pointerdown', e => e.stopPropagation());
+  }
+
+  /* ---------------- Loop ---------------- */
+  let last = performance.now();
+  function tick(t) {
+    const dt = Math.min(0.05, (t - last) / 1000); last = t;
+    if (auto && !paused && !dragging) { yaw += dt * 0.22; dirty = true; }
+    if (dirty && chart) { dirty = false; render(); }
+    requestAnimationFrame(tick);
+  }
+
+  /* ---------------- Chart (created last, after everything above exists) ---------------- */
+  Highcharts.chart('chart', {
+    chart: {
+      backgroundColor: 'transparent', animation: false, spacing: [0, 0, 0, 0],
+      events: { load() { setup(this); requestAnimationFrame(tick); }, redraw() { if (chart) resize(); } }
+    },
+    title: { text: null },
+    tooltip: { enabled: false },
+    legend: { enabled: false },
+    xAxis: { visible: false }, yAxis: { visible: false },
+    credits: { enabled: true, text: 'Highcharts.com', href: 'https://www.highcharts.com', position: { y: -8 } },
+    accessibility: { description: 'A rotating 3D model of a sailing yacht with 20 labelled parts. The same parts and their descriptions are listed below the model.' },
+    series: []
+  });
+})();
+</script>
+</body>
+</html>

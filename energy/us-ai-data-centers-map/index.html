@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="https://mekhatria.github.io/interactive-chart/assets/logo.svg">
+<link rel="apple-touch-icon" href="https://mekhatria.github.io/interactive-chart/assets/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/">
+<meta name="description" content="Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Energy, Charted">
+<meta property="og:title" content="America&#x27;s AI Power Map">
+<meta property="og:description" content="Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.">
+<meta property="og:url" content="https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/">
+<meta property="og:image" content="https://mekhatria.github.io/interactive-chart/thumbs/us-ai-data-centers-map.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Mustapha Mekhatria">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/",
+  "url": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/",
+  "name": "America's AI Power Map",
+  "headline": "America's AI Power Map",
+  "description": "Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.",
+  "inLanguage": "en",
+  "image": "https://mekhatria.github.io/interactive-chart/thumbs/us-ai-data-centers-map.jpg",
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-15",
+  "author": {
+    "@type": "Person",
+    "name": "Mustapha Mekhatria",
+    "jobTitle": "Project Manager",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Highsoft AS",
+      "url": "https://www.highcharts.com"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/mustaphamekhatria/",
+      "https://github.com/mekhatria"
+    ]
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Energy, Charted",
+    "url": "https://mekhatria.github.io/interactive-chart/energy/"
+  },
+  "keywords": "AI data centers, electricity demand, United States, map, Epoch AI",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "AI data centers",
+      "publisher": "Epoch AI",
+      "url": "https://epoch.ai/data/ai-data-centers"
+    }
+  ],
+  "mainEntity": {
+    "@type": "Dataset",
+    "name": "America's AI Power Map (data)",
+    "description": "Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.",
+    "isBasedOn": [
+      "https://epoch.ai/data/ai-data-centers"
+    ],
+    "creator": [
+      {
+        "@type": "Organization",
+        "name": "Epoch AI"
+      }
+    ],
+    "spatialCoverage": "United States",
+    "temporalCoverage": "2023/2029",
+    "license": "https://creativecommons.org/licenses/by/4.0/"
+  }
+}
+</script>
+<title>America's AI Power Map</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark;
+  --page:#080C13; --card:#0E1520; --panel:#121B28; --line:#223044;
+  --ink:#EEF2F7; --muted:#8D98A8; --soft:#B9C2CF;
+  --blue:#5B95FA; --blue-deep:#2F6FE0; --ghost:#9DB5DA; --green:#3FCB95; --amber:#F2B630;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;padding:24px 16px 40px}
+main{max-width:1320px;margin:0 auto}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 28px 20px}
+header{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between}
+h1{margin:0;font-stretch:62%;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1;color:#fff;
+  text-shadow:0 0 2px rgba(91,149,250,.9),0 0 16px rgba(91,149,250,.6)}
+.sub{margin:8px 0 0;color:var(--soft);font-size:16px}
+
+.stats{display:flex;gap:28px;flex-wrap:wrap}
+.stat .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.stat .v{font-stretch:66%;font-weight:600;font-size:40px;line-height:1.05;font-variant-numeric:tabular-nums}
+.stat .v small{font-size:20px;color:var(--muted);font-weight:450;margin-left:3px}
+.stat .n{font-size:13px;color:var(--soft);margin-top:2px}
+.stat.on .v{color:var(--blue)}
+.stat.plan .v{color:var(--ghost)}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;margin-top:18px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+#map{height:clamp(380px,56vw,620px);min-width:0}
+
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--soft);margin:4px 0 0 4px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.dot{width:14px;height:14px;border-radius:50%;display:inline-block}
+.dot.on{background:var(--blue)}
+.dot.plan{border:1.5px dashed var(--ghost)}
+
+.list h2{margin:2px 0 10px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.item{padding:8px 0 9px;border-top:1px solid var(--line);cursor:pointer}
+.item:first-of-type{border-top:0}
+.item .top{display:flex;justify-content:space-between;gap:8px;font-size:14px}
+.item .name{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .mw{font-variant-numeric:tabular-nums;color:var(--soft);white-space:nowrap}
+.item .mw b{color:var(--blue);font-weight:600}
+.item .who{font-size:11.5px;color:var(--muted);margin-top:1px}
+.bar{position:relative;height:6px;border-radius:3px;margin-top:6px;background:rgba(157,181,218,.14)}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:3px}
+.bar .p{border:1px dashed rgba(157,181,218,.55);background:transparent}
+.bar .o{background:var(--blue)}
+.item.hl .name{color:var(--blue)}
+
+.timeline{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.date{font-stretch:66%;font-weight:600;font-size:28px;min-width:5.6em;font-variant-numeric:tabular-nums}
+.badge{font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.badge.proj{color:var(--amber);border-color:rgba(242,182,48,.5)}
+.slider{flex:1 1 280px;position:relative}
+.slider input{width:100%;accent-color:var(--blue)}
+.today{position:absolute;top:-14px;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);transform:translateX(-50%);pointer-events:none}
+.today::after{content:"";position:absolute;left:50%;top:13px;width:1px;height:16px;background:var(--amber)}
+button,select{font:inherit;font-size:14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+button:hover,select:hover{border-color:var(--blue)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+#play{min-width:84px}
+
+footer{margin-top:16px;font-size:12.5px;line-height:1.55;color:var(--muted)}
+footer a{color:var(--soft)}
+</style>
+<style>.home-nav{position:sticky;top:12px;z-index:50;max-width:1320px;margin:0 auto 14px;font:500 14px/1.4 "Archivo",system-ui,sans-serif}.home-nav a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border:0;border-radius:999px;font-weight:650;font-size:14.5px;letter-spacing:.01em;background:#2F6FEF;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 4px 18px rgba(47,111,239,.55);transition:background .15s,transform .15s,box-shadow .15s}.home-nav a:hover{background:#4A85FF;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 6px 24px rgba(74,133,255,.7)}.home-nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}</style>
+</head>
+<body>
+<nav class="home-nav" aria-label="Site"><a href="https://mekhatria.github.io/interactive-chart/energy/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>All energy charts</span></a></nav>
+<main>
+  <div class="card">
+    <header>
+      <div>
+        <h1>America's AI Power Map</h1>
+        <p class="sub">Facility power of 77 US AI data centers: what's online, and what's planned through 2029</p>
+      </div>
+      <div class="stats" aria-live="polite">
+        <div class="stat on"><div class="k">Online</div><div class="v" id="sOn">0<small>GW</small></div><div class="n" id="sOnN"></div></div>
+        <div class="stat plan"><div class="k">Planned peak</div><div class="v" id="sPlan">0<small>GW</small></div><div class="n" id="sPlanN"></div></div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div>
+        <div id="map" role="img" aria-label="Map of US AI data centers sized by power, animated over time"></div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="dot on"></i>Online at this date</span>
+          <span><i class="dot plan"></i>Planned peak capacity</span>
+          <span>Bubble area ∝ megawatts</span>
+        </div>
+      </div>
+      <div class="list" id="list"><h2>Largest campuses, planned peak</h2></div>
+    </div>
+
+    <div class="timeline">
+      <button id="play" aria-pressed="false">▶ Play</button>
+      <div class="date" id="date">—</div>
+      <span class="badge" id="badge">Estimate</span>
+      <div class="slider">
+        <span class="today" id="todayMark">Today</span>
+        <input id="t" type="range" min="0" max="1" step="1" value="0" aria-label="Date">
+      </div>
+      <button id="toToday">Today</button>
+      <select id="speed" aria-label="Speed">
+        <option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option>
+      </select>
+    </div>
+
+    <footer>
+      Data: <a href="https://epoch.ai/data/ai-data-centers">Epoch AI, "AI data centers"</a> (CC BY 4.0), retrieved Nov 13, 2026. Facility power in MW (IT load plus cooling and overhead), using Epoch's dated estimates for each site; values after today are Epoch projections, not commitments. Epoch tracks the AI-focused buildings at each campus, so older non-AI capacity at the same sites isn't counted.
+      Locations geocoded from Epoch's addresses (US Census, OpenStreetMap); sites without a street address are placed at their announced town or county.
+      Meta has said Hyperion could eventually scale to 5 GW; Epoch's projection through 2028 is shown. Reactor comparison: Vogtle Unit 4, 1,114 MW (EIA).
+      · <a href="https://www.highcharts.com" target="_blank" rel="noopener">Highcharts.com</a>
+    </footer>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/highmaps.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/modules/accessibility.js"></script>
+<script>
+(async () => {
+  const SITES = [{"n":"Microsoft Fairwater Wisconsin","owner":"Microsoft","users":"OpenAI, Microsoft","lat":42.6749,"lon":-87.8949,"now":369,"peak":2715,"peakDate":"2028-05-13","t":[["2023-07-14",0],["2025-09-26",0],["2026-01-28",0],["2026-04-16",442],["2026-05-15",442],["2027-02-20",885],["2028-05-13",2715]]},{"n":"OpenAI Stargate New Mexico","owner":"Oracle","users":"OpenAI","lat":31.86,"lon":-106.69,"now":0,"peak":2450,"peakDate":"2028-12-31","t":[["2025-10-01",0],["2026-02-06",0],["2026-06-22",0],["2028-12-31",2450]]},{"n":"Anthropic-Amazon New Carlisle","owner":"Amazon","users":"Anthropic","lat":41.6938,"lon":-86.4605,"now":1037,"peak":2310,"peakDate":"2028-03-17","t":[["2024-02-09",0],["2024-06-10",0],["2025-05-10",0],["2025-06-23",478],["2025-09-26",478],["2025-10-17",478],["2025-12-23",751],["2026-02-09",751],["2026-03-23",1092],["2026-06-03",1092],["2026-10-19",1244],["2028-03-17",2310]]},{"n":"Meta Hyperion","owner":"Meta","users":"Meta","lat":32.41,"lon":-91.79,"now":0,"peak":2203,"peakDate":"2028-01-01","t":[["2024-12-20",0],["2025-10-19",0],["2026-04-19",0],["2026-12-01",0],["2028-01-01",2203]]},{"n":"Colossus 2","owner":"SpaceXAI","users":"Anthropic, Cursor, SpaceXAI","lat":34.9995,"lon":-90.043,"now":946,"peak":2065,"peakDate":"2027-02-25","t":[["2025-02-28",0],["2025-09-08",0],["2025-10-19",323],["2026-01-13",323],["2026-04-06",661],["2026-06-15",1276],["2027-02-25",2065]]},{"n":"OpenAI Stargate Shackelford","owner":"Oracle","users":"OpenAI","lat":32.62,"lon":-99.47,"now":0,"peak":1960,"peakDate":"2028-11-11","t":[["2025-08-01",0],["2026-01-18",0],["2026-04-14",0],["2026-09-04",0],["2027-08-15",196],["2027-10-19",392],["2027-11-18",588],["2028-02-11",784],["2028-03-08",980],["2028-04-04",1176],["2028-05-12",1372],["2028-10-17",1568],["2028-10-18",1764],["2028-11-11",1960]]},{"n":"QTS Cedar Rapids","owner":"Meta","users":"Meta","lat":41.9056,"lon":-91.7511,"now":0,"peak":1587,"peakDate":"2027-11-15","t":[["2025-01-17",0],["2025-10-27",0],["2026-04-16",0],["2026-05-07",0],["2026-10-23",0],["2026-12-31",627],["2027-11-15",1587]]},{"n":"OpenAI Stargate Michigan","owner":"Oracle","users":"OpenAI","lat":42.15,"lon":-83.82,"now":0,"peak":1383,"peakDate":"2028-12-31","t":[["2025-12-04",0],["2026-01-20",0],["2026-03-12",0],["2028-12-31",1383]]},{"n":"Meta Prometheus","owner":"Meta","users":"Meta","lat":40.0812,"lon":-82.8088,"now":471,"peak":1328,"peakDate":"2028-07-01","t":[["2022-04-14",0],["2025-06-01",0],["2025-09-20",0],["2025-10-14",99],["2026-01-18",478],["2026-03-12",478],["2026-05-18",478],["2026-08-31",612],["2026-11-30",878],["2027-01-15",962],["2027-04-15",1045],["2027-07-14",1128],["2028-07-01",1328]]},{"n":"OpenAI Stargate Wisconsin","owner":"Oracle","users":"OpenAI","lat":43.39,"lon":-87.88,"now":0,"peak":1300,"peakDate":"2028-12-31","t":[["2026-01-02",0],["2026-02-14",0],["2026-07-24",0],["2028-12-31",1300]]},{"n":"Goodnight","owner":"Google","users":"Google DeepMind","lat":35.1081,"lon":-101.3627,"now":0,"peak":1294,"peakDate":"2027-10-01","t":[["2025-05-19",0],["2025-10-16",0],["2025-12-23",0],["2026-04-16",0],["2027-03-15",132],["2027-05-15",265],["2027-10-01",1294]]},{"n":"OpenAI Stargate Milam","owner":"Softbank","users":"OpenAI","lat":30.65,"lon":-97.0,"now":0,"peak":1200,"peakDate":"2028-12-31","t":[["2025-09-27",0],["2026-01-04",0],["2026-03-23",0],["2028-12-31",1200]]},{"n":"OpenAI Stargate Abilene","owner":"Oracle","users":"OpenAI","lat":32.4942,"lon":-99.8009,"now":824,"peak":1154,"peakDate":"2026-11-01","t":[["2024-05-31",0],["2025-06-28",0],["2025-09-26",144],["2025-12-24",288],["2026-01-15",288],["2026-03-24",288],["2026-05-23",577],["2026-07-28",577],["2026-09-10",865],["2026-11-01",1154]]},{"n":"Google Fort Wayne","owner":"Google","users":"Google DeepMind","lat":41.0312,"lon":-85.0578,"now":0,"peak":1035,"peakDate":"2028-06-23","t":[["2024-04-01",0],["2024-09-13",0],["2025-06-10",0],["2025-10-01",0],["2026-03-01",0],["2026-08-19",0],["2026-12-01",207],["2027-03-31",414],["2027-08-28",621],["2028-01-25",828],["2028-06-23",1035]]},{"n":"Amazon Ridgeland","owner":"Amazon","users":"Anthropic","lat":32.3995,"lon":-90.1205,"now":228,"peak":1008,"peakDate":"2028-09-29","t":[["2024-02-24",0],["2025-10-04",0],["2026-05-15",273],["2027-02-09",341],["2028-09-29",1008]]},{"n":"Crusoe Abilene Expansion","owner":"Microsoft","users":"Microsoft","lat":32.4942,"lon":-99.8009,"now":0,"peak":941,"peakDate":"2027-11-11","t":[["2025-11-02",0],["2026-01-15",0],["2027-09-17",470],["2027-11-11",941]]},{"n":"Microsoft Fairwater Atlanta","owner":"Microsoft","users":"OpenAI, Microsoft","lat":33.4453,"lon":-84.5254,"now":636,"peak":859,"peakDate":"2026-06-14","t":[["2023-04-09",0],["2025-10-14",433],["2026-02-13",433],["2026-05-15",433],["2026-06-14",859]]},{"n":"Amazon Madison Mega Site","owner":"Amazon","users":"Anthropic","lat":32.61,"lon":-89.99,"now":284,"peak":819,"peakDate":"2028-03-15","t":[["2023-10-02",0],["2025-03-11",0],["2025-06-23",341],["2025-10-04",341],["2026-06-04",341],["2027-03-01",478],["2028-03-15",819]]},{"n":"Coreweave Helios","owner":"CoreWeave","users":"OpenAI","lat":33.7806,"lon":-100.8671,"now":132,"peak":800,"peakDate":"2029-01-01","t":[["2025-05-31",0],["2025-08-27",0],["2026-04-04",0],["2026-06-17",0],["2026-08-30",200],["2028-01-01",600],["2029-01-01",800]]},{"n":"Meta Bowling Green","owner":"Meta","users":"Meta","lat":41.4583,"lon":-83.6362,"now":0,"peak":570,"peakDate":"2028-01-01","t":[["2024-11-01",0],["2026-02-14",0],["2026-07-30",0],["2027-02-01",117],["2027-04-01",220],["2028-01-01",570]]},{"n":"CoreWeave Ellendale ND","owner":"CoreWeave","users":"OpenAI","lat":46.0061,"lon":-98.5687,"now":68,"peak":520,"peakDate":"2027-06-01","t":[["2023-10-31",0],["2025-05-28",0],["2025-08-29",0],["2025-10-27",65],["2025-11-24",88],["2026-03-27",88],["2026-06-30",88],["2026-12-31",114],["2027-06-01",520]]},{"n":"STACK Infrastructure NVA02","owner":"","users":"","lat":38.7498,"lon":-77.5358,"now":85,"peak":487,"peakDate":"2028-01-01","t":[["2019-10-19",0],["2024-10-01",118],["2026-02-14",118],["2028-01-01",487]]},{"n":"Google Omaha","owner":"Google","users":"Google DeepMind","lat":41.3357,"lon":-96.0885,"now":237,"peak":474,"peakDate":"2028-07-23","t":[["2021-11-25",0],["2024-04-08",95],["2024-07-29",95],["2024-11-19",189],["2025-03-16",189],["2025-04-21",189],["2025-10-21",189],["2026-05-15",189],["2026-06-30",284],["2028-01-23",379],["2028-07-23",474]]},{"n":"Meta Montgomery","owner":"Meta","users":"Meta","lat":32.265,"lon":-86.3635,"now":153,"peak":465,"peakDate":"2027-02-23","t":[["2024-03-01",0],["2025-07-04",0],["2026-03-20",0],["2026-06-18",199],["2027-02-02",266],["2027-02-23",465]]},{"n":"Google Columbus","owner":"Google","users":"Google DeepMind","lat":39.8615,"lon":-83.004,"now":303,"peak":464,"peakDate":"2027-07-01","t":[["2021-10-01",0],["2023-07-01",0],["2024-04-01",78],["2025-03-01",156],["2025-10-01",260],["2026-02-21",260],["2026-05-01",364],["2026-08-05",364],["2027-07-01",464]]},{"n":"Google Pryor (North)","owner":"Google","users":"Google DeepMind","lat":36.2412,"lon":-95.33,"now":368,"peak":442,"peakDate":"2026-09-06","t":[["2024-07-19",63],["2025-01-28",63],["2025-10-19",63],["2026-05-26",63],["2026-09-06",442]]},{"n":"Colossus 1","owner":"SpaceXAI","users":"Anthropic","lat":35.0862,"lon":-90.0733,"now":340,"peak":442,"peakDate":"2025-07-22","t":[["2024-04-24",0],["2024-08-11",45],["2024-09-02",181],["2025-02-17",361],["2025-03-06",361],["2025-07-22",442],["2025-09-17",348],["2025-10-19",348],["2025-11-07",442],["2026-02-11",425],["2026-05-06",425],["2026-06-01",425],["2026-06-15",425]]},{"n":"Anthropic Lake Mariner","owner":"AI XPV Platform","users":"Anthropic","lat":43.3489,"lon":-78.6034,"now":210,"peak":441,"peakDate":"2027-03-31","t":[["2025-06-11",0],["2026-03-02",0],["2026-05-31",49],["2026-07-23",49],["2026-10-31",245],["2027-03-31",441]]},{"n":"QTS Eagle Mountain","owner":"Meta","users":"Meta","lat":40.2689,"lon":-112.0343,"now":0,"peak":411,"peakDate":"2027-07-01","t":[["2023-10-01",0],["2025-09-08",0],["2026-05-02",0],["2026-12-31",274],["2027-07-01",411]]},{"n":"AWS New Albany","owner":"Amazon","users":"","lat":40.08,"lon":-82.74,"now":213,"peak":405,"peakDate":"2027-07-01","t":[["2022-06-01",0],["2024-12-01",136],["2026-03-12",255],["2026-05-18",255],["2027-07-01",405]]},{"n":"Google New Albany","owner":"Google","users":"Google DeepMind","lat":40.0701,"lon":-82.754,"now":333,"peak":400,"peakDate":"2025-10-14","t":[["2021-03-01",0],["2024-04-20",80],["2024-09-13",173],["2025-06-01",267],["2025-10-14",400],["2026-01-18",400],["2026-03-12",400],["2026-05-18",400]]},{"n":"CoreWeave Denton TX","owner":"CoreWeave","users":"OpenAI","lat":33.2193,"lon":-97.1747,"now":262,"peak":395,"peakDate":"2027-05-31","t":[["2024-11-01",0],["2025-05-31",11],["2025-12-31",94],["2026-02-23",183],["2026-03-02",183],["2026-07-03",367],["2026-09-01",367],["2027-05-31",395]]},{"n":"Google Storey County","owner":"Google","users":"Google DeepMind","lat":39.53,"lon":-119.47,"now":161,"peak":389,"peakDate":"2027-06-30","t":[["2019-03-18",0],["2023-08-30",107],["2025-03-11",107],["2025-06-30",214],["2025-09-28",214],["2026-04-13",214],["2027-06-30",389]]},{"n":"Google Lincoln","owner":"Google","users":"","lat":40.9075,"lon":-96.6458,"now":141,"peak":339,"peakDate":"2027-10-01","t":[["2023-06-01",0],["2025-10-23",0],["2026-05-12",170],["2027-10-01",339]]},{"n":"QTS Richmond 3","owner":"","users":"","lat":37.5107,"lon":-77.3116,"now":144,"peak":336,"peakDate":"2027-02-13","t":[["2024-04-01",0],["2025-02-04",0],["2025-11-19",0],["2025-12-31",0],["2026-02-13",67],["2026-05-14",202],["2027-02-13",336]]},{"n":"QTS Richmond 1","owner":"","users":"","lat":37.4888,"lon":-77.2475,"now":238,"peak":333,"peakDate":"2025-11-19","t":[["2023-09-01",0],["2023-11-02",0],["2024-01-29",66],["2024-06-23",132],["2025-02-04",199],["2025-06-03",266],["2025-11-19",333],["2025-12-31",333],["2026-02-13",333]]},{"n":"Google Cedar Rapids","owner":"Google","users":"Google DeepMind","lat":41.9219,"lon":-91.7156,"now":0,"peak":314,"peakDate":"2027-05-23","t":[["2024-06-14",0],["2025-10-27",0],["2025-12-29",0],["2026-04-16",0],["2026-12-31",105],["2027-02-22",209],["2027-05-23",314]]},{"n":"Anthropic Barber Lake","owner":"Cipher Mining","users":"Anthropic","lat":32.39,"lon":-100.86,"now":0,"peak":300,"peakDate":"2027-04-30","t":[["2025-09-18",0],["2025-11-29",0],["2026-07-30",0],["2026-12-30",244],["2027-04-30",300]]},{"n":"OpenAI Stargate Lordstown","owner":"Softbank","users":"OpenAI","lat":41.1437,"lon":-80.8833,"now":0,"peak":300,"peakDate":"2027-03-01","t":[["2025-10-12",0],["2026-02-27",0],["2026-07-30",0],["2027-03-01",300]]},{"n":"Google Bristow","owner":"Google","users":"Google DeepMind","lat":38.7825,"lon":-77.5797,"now":238,"peak":286,"peakDate":"2026-05-20","t":[["2021-07-01",0],["2024-04-29",104],["2025-04-29",208],["2026-05-20",286]]},{"n":"Google Council Bluffs (East)","owner":"Google","users":"Google DeepMind","lat":41.1674,"lon":-95.7931,"now":237,"peak":284,"peakDate":"2026-07-07","t":[["2022-09-06",0],["2024-11-19",95],["2025-06-15",190],["2025-07-19",190],["2026-01-11",190],["2026-07-07",284]]},{"n":"Google Papillion","owner":"Google","users":"Google DeepMind","lat":41.15,"lon":-96.04,"now":237,"peak":284,"peakDate":"2024-08-03","t":[["2020-03-04",0],["2022-10-16",0],["2023-01-23",95],["2024-02-15",95],["2024-08-03",284],["2025-11-03",284],["2026-05-04",284]]},{"n":"Meta Los Lunas","owner":"Meta","users":"Meta","lat":34.8302,"lon":-106.7838,"now":118,"peak":273,"peakDate":"2028-01-01","t":[["2024-07-24",0],["2026-03-01",114],["2026-07-28",114],["2026-10-26",147],["2028-01-01",273]]},{"n":"Stream Phoenix","owner":"","users":"","lat":33.4793,"lon":-112.3593,"now":64,"peak":267,"peakDate":"2030-01-01","t":[["2022-10-30",0],["2026-01-31",0],["2026-05-01",77],["2030-01-01",267]]},{"n":"Microsoft Goodyear","owner":"Microsoft","users":"OpenAI, Microsoft","lat":33.409,"lon":-112.3648,"now":202,"peak":263,"peakDate":"2025-09-01","t":[["2021-06-21",0],["2023-04-24",53],["2025-01-16",105],["2025-09-01",263],["2025-11-12",263],["2026-04-27",263]]},{"n":"QTS Richmond 2","owner":"","users":"","lat":37.5107,"lon":-77.3116,"now":180,"peak":252,"peakDate":"2026-05-14","t":[["2022-04-01",0],["2024-01-29",0],["2024-06-23",0],["2025-02-04",101],["2025-11-19",101],["2025-12-31",202],["2026-02-13",202],["2026-05-14",252]]},{"n":"Meta Cheyenne","owner":"Meta","users":"Meta","lat":41.14,"lon":-104.8202,"now":152,"peak":249,"peakDate":"2027-02-15","t":[["2024-05-01",0],["2025-01-30",0],["2026-03-22",0],["2026-07-25",182],["2027-02-15",249]]},{"n":"Meta-QTS Hillsboro 2","owner":"Meta","users":"Meta","lat":45.557,"lon":-122.9319,"now":180,"peak":243,"peakDate":"2024-11-08","t":[["2021-04-01",0],["2023-04-29",0],["2023-08-02",61],["2024-11-08",243],["2025-04-14",243],["2026-04-17",243]]},{"n":"Meta Rosemount","owner":"Meta","users":"Meta","lat":44.7388,"lon":-93.057,"now":178,"peak":241,"peakDate":"2026-06-19","t":[["2024-02-01",0],["2026-03-21",0],["2026-06-19",241]]},{"n":"Meta Jeffersonville","owner":"Meta","users":"Meta","lat":38.2791,"lon":-85.7391,"now":178,"peak":241,"peakDate":"2026-06-04","t":[["2024-02-01",0],["2026-03-06",0],["2026-06-04",241]]},{"n":"Google Mesa","owner":"Google","users":"","lat":33.35,"lon":-111.63,"now":183,"peak":237,"peakDate":"2026-08-15","t":[["2023-08-01",0],["2025-07-01",126],["2025-09-07",126],["2026-05-15",126],["2026-08-15",237]]},{"n":"Meta Temple","owner":"Meta","users":"Meta","lat":31.126,"lon":-97.36,"now":178,"peak":231,"peakDate":"2026-09-30","t":[["2022-04-01",0],["2023-02-05",0],["2023-04-01",0],["2025-11-15",0],["2025-12-09",198],["2026-02-24",198],["2026-09-30",231]]},{"n":"Microsoft Project Osmium","owner":"Microsoft","users":"OpenAI","lat":41.4833,"lon":-93.7624,"now":190,"peak":228,"peakDate":"2025-03-01","t":[["2018-12-18",0],["2021-01-01",57],["2023-06-30",114],["2025-03-01",228],["2025-10-08",228],["2026-06-16",228]]},{"n":"AWS Berwick","owner":"Amazon","users":"Anthropic","lat":41.0838,"lon":-76.1435,"now":108,"peak":212,"peakDate":"2027-08-01","t":[["2021-07-01",0],["2023-01-17",0],["2024-03-04",0],["2024-06-01",0],["2025-09-09",66],["2026-01-07",102],["2026-03-12",102],["2026-05-05",102],["2026-08-01",139],["2027-08-01",212]]},{"n":"Meta Kuna","owner":"Meta","users":"Meta","lat":43.4592,"lon":-116.4211,"now":152,"peak":198,"peakDate":"2026-06-01","t":[["2022-07-01",0],["2026-03-15",0],["2026-06-01",198]]},{"n":"Meta Huntsville","owner":"Meta","users":"Meta","lat":34.8981,"lon":-86.7336,"now":146,"peak":198,"peakDate":"2026-06-02","t":[["2021-12-13",0],["2025-03-03",0],["2025-11-04",0],["2026-02-02",0],["2026-03-04",105],["2026-06-02",198]]},{"n":"CoreWeave Chester VA","owner":"CoreWeave","users":"OpenAI","lat":37.3617,"lon":-77.3253,"now":82,"peak":197,"peakDate":"2027-06-30","t":[["2023-09-18",0],["2024-01-31",25],["2024-04-30",38],["2025-01-22",38],["2026-05-20",114],["2027-06-30",197]]},{"n":"Google The Dalles","owner":"Google","users":"","lat":45.6254,"lon":-121.2024,"now":154,"peak":185,"peakDate":"2026-04-29","t":[["2023-03-01",0],["2025-03-07",93],["2026-04-29",185]]},{"n":"Google Red Oak","owner":"Google","users":"","lat":32.53,"lon":-96.7998,"now":77,"peak":185,"peakDate":"2026-12-01","t":[["2023-04-30",0],["2025-08-25",93],["2026-02-06",93],["2026-12-01",185]]},{"n":"CoreWeave Muskogee OK","owner":"CoreWeave","users":"OpenAI","lat":35.6969,"lon":-95.3839,"now":0,"peak":181,"peakDate":"2027-12-31","t":[["2024-11-18",0],["2026-04-09",0],["2026-06-13",0],["2026-12-31",98],["2027-12-31",181]]},{"n":"Meta Eagle Mountain","owner":"Meta","users":"Meta","lat":40.3093,"lon":-112.012,"now":133,"peak":179,"peakDate":"2025-12-07","t":[["2023-08-01",0],["2025-09-08",0],["2025-12-07",179],["2026-05-02",179]]},{"n":"Vantage TX1","owner":"","users":"","lat":29.4167,"lon":-98.7886,"now":32,"peak":179,"peakDate":"2027-08-31","t":[["2023-12-15",0],["2026-02-15",45],["2027-08-31",179]]},{"n":"Meta Aiken","owner":"Meta","users":"Meta","lat":33.7417,"lon":-81.8423,"now":129,"peak":168,"peakDate":"2026-11-05","t":[["2024-05-30",0],["2026-04-08",0],["2026-08-07",90],["2026-11-05",168]]},{"n":"Google Lancaster","owner":"Google","users":"","lat":39.727,"lon":-82.6831,"now":137,"peak":164,"peakDate":"2025-10-31","t":[["2021-10-01",0],["2024-01-01",82],["2025-09-11",82],["2025-10-31",164],["2026-03-12",164]]},{"n":"Google Kansas City East","owner":"Google","users":"","lat":39.17,"lon":-94.48,"now":105,"peak":126,"peakDate":"2026-08-01","t":[["2023-12-01",0],["2024-03-01",0],["2024-10-01",0],["2025-07-01",0],["2025-11-01",0],["2026-04-16",0],["2026-08-01",126]]},{"n":"CoreWeave Lancaster Greenfield site","owner":"CoreWeave","users":"OpenAI","lat":40.0487,"lon":-76.2561,"now":0,"peak":124,"peakDate":"2027-06-30","t":[["2025-07-15",0],["2026-07-13",0],["2027-06-30",124]]},{"n":"Google Midlothian","owner":"Google","users":"","lat":32.4389,"lon":-97.0508,"now":103,"peak":123,"peakDate":"2026-07-01","t":[["2023-04-01",0],["2024-10-01",0],["2026-04-19",82],["2026-07-01",123]]},{"n":"Meta Gallatin","owner":"Meta","users":"Meta","lat":36.3883,"lon":-86.4476,"now":87,"peak":114,"peakDate":"2026-08-24","t":[["2023-09-11",0],["2026-02-09",0],["2026-08-24",114]]},{"n":"Microsoft SAT40","owner":"Microsoft","users":"","lat":29.4246,"lon":-98.4951,"now":75,"peak":106,"peakDate":"2025-12-01","t":[["2018-12-28",0],["2024-05-24",66],["2025-12-01",106],["2026-02-04",106]]},{"n":"Meta Sarpy","owner":"Meta","users":"Meta","lat":41.1036,"lon":-96.1479,"now":80,"peak":105,"peakDate":"2026-08-02","t":[["2024-08-01",0],["2026-05-04",0],["2026-08-02",105]]},{"n":"Google Arcola","owner":"Google","users":"","lat":39.0037,"lon":-77.4083,"now":77,"peak":93,"peakDate":"2026-06-16","t":[["2024-10-01",0],["2025-09-08",0],["2026-04-09",0],["2026-06-16",93]]},{"n":"CoreWeave Marble NC","owner":"CoreWeave","users":"OpenAI","lat":35.185,"lon":-83.9141,"now":65,"peak":91,"peakDate":"2026-05-06","t":[["2024-06-25",0],["2026-03-13",50],["2026-04-17",50],["2026-05-06",91]]},{"n":"Microsoft-Nebius New Jersey","owner":"Nebius","users":"Microsoft","lat":39.4282,"lon":-75.0185,"now":50,"peak":70,"peakDate":"2026-04-15","t":[["2024-05-31",0],["2025-12-15",0],["2026-04-15",70],["2026-07-12",70]]},{"n":"Microsoft SAT14","owner":"Microsoft","users":"","lat":29.4732,"lon":-98.6815,"now":47,"peak":66,"peakDate":"2026-03-31","t":[["2022-02-18",0],["2024-07-01",26],["2025-08-03",26],["2026-02-28",26],["2026-03-31",66]]},{"n":"Core42 Lake Mariner","owner":"Core42","users":"G42","lat":43.3489,"lon":-78.6034,"now":58,"peak":58,"peakDate":"2026-03-31","t":[["2024-10-01",0],["2025-10-01",19],["2026-03-02",19],["2026-03-31",58],["2026-07-23",58]]},{"n":"CoreWeave Dalton 1 & 2","owner":"CoreWeave","users":"OpenAI","lat":34.7135,"lon":-84.9522,"now":28,"peak":40,"peakDate":"2026-02-20","t":[["2024-06-03",0],["2025-05-01",0],["2025-08-29",0],["2026-02-20",40]]},{"n":"xAI QTS Atlanta","owner":"SpaceXAI","users":"SpaceXAI","lat":33.7757,"lon":-84.4226,"now":17,"peak":24,"peakDate":"2025-02-20","t":[["2024-01-23",0],["2025-02-20",24],["2025-08-21",24],["2026-07-10",24]]}];
+  const TODAY = '2026-11-13';
+  const REACTOR_MW = 1114;                                  // Vogtle Unit 4 (EIA)
+
+  // ---------- time axis: monthly frames ----------
+  const START = new Date(Date.UTC(2023, 0, 1)), END = new Date(Date.UTC(2029, 11, 1));
+  const months = (END.getUTCFullYear() - START.getUTCFullYear()) * 12 + END.getUTCMonth() - START.getUTCMonth();
+  const toTime = m => Date.UTC(START.getUTCFullYear(), START.getUTCMonth() + Math.floor(m), 1)
+                    + (m % 1) * 30.44 * 864e5;
+  const todayTime = Date.parse(TODAY);
+  const todayM = ((new Date(todayTime)).getUTCFullYear() - START.getUTCFullYear()) * 12
+               + (new Date(todayTime)).getUTCMonth() - START.getUTCMonth() + (new Date(todayTime)).getUTCDate() / 30.44;
+
+  SITES.forEach(s => { s.ts = s.t.map(([d, v]) => [Date.parse(d), v]); });
+  // facility power at time t: Epoch's latest dated estimate on or before t (held until the next one)
+  function powerAt(s, t) {
+    let v = 0;
+    for (const [d, x] of s.ts) { if (d <= t) v = x; else break; }
+    return v;
+  }
+
+  const maxPeak = Math.max(...SITES.map(s => s.peak));
+  const totalPeak = SITES.reduce((a, s) => a + s.peak, 0);
+  const fmt = (v, d = 0) => Highcharts.numberFormat(v, d, '.', ',');
+  const shortName = n => n.replace(/^OpenAI /, '').replace(/^Anthropic-Amazon /, 'Amazon ').replace('Microsoft ', 'Microsoft ');
+
+  // ---------- map ----------
+  const topology = await fetch('https://cdn.jsdelivr.net/npm/@highcharts/map-collection@2.3.0/countries/us/us-all.topo.json').then(r => r.json());
+
+  const BUBBLE = { zMin: 0, zMax: maxPeak, minSize: 3, maxSize: '13%', sizeBy: 'area', displayNegative: false };
+  const ghostData = SITES.map(s => ({ id: 'g-' + s.n, name: s.n, lat: s.lat, lon: s.lon, z: s.peak, s }));
+
+  const chart = Highcharts.mapChart('map', {
+    chart: { map: topology, backgroundColor: 'transparent', animation: false,
+             style: { fontFamily: 'Archivo, system-ui, sans-serif' }, spacing: [0, 0, 0, 0] },
+    title: { text: null }, credits: { enabled: false }, legend: { enabled: false },
+    mapNavigation: { enabled: true, enableMouseWheelZoom: false, buttonOptions: {
+      theme: { fill: '#121B28', stroke: '#223044', style: { color: '#EEF2F7' }, states: { hover: { fill: '#1C2A3E' } } } } },
+    accessibility: { description: 'Bubble map of AI data centers in the United States. Outlined bubbles show each site\'s planned peak facility power; solid bubbles show power online at the selected date.' },
+    tooltip: {
+      useHTML: true, backgroundColor: '#121B28', borderColor: '#223044', style: { color: '#EEF2F7' },
+      formatter() {
+        const s = this.point.s, now = powerAt(s, curTime);
+        return `<div style="font-weight:600;font-size:14px">${s.n}</div>
+          <div style="color:#8D98A8;font-size:12px;margin-bottom:4px">${s.owner || '—'}${s.users ? ' · for ' + s.users : ''}</div>
+          <div><span style="color:#5B95FA">●</span> Online ${dateLabel(curTime)}: <b>${fmt(now)} MW</b></div>
+          <div><span style="color:#9DB5DA">○</span> Planned peak: <b>${fmt(s.peak)} MW</b> <span style="color:#8D98A8">(${s.peakDate.slice(0, 7)})</span></div>`;
+      }
+    },
+    plotOptions: {
+      mapbubble: { ...BUBBLE, animation: false, states: { inactive: { opacity: .35 } } }
+    },
+    series: [{
+      name: 'States', type: 'map', enableMouseTracking: false,
+      color: '#172131', borderColor: '#2A3A52', borderWidth: .8, nullColor: '#172131'
+    }, {
+      name: 'Planned peak', type: 'mapbubble', id: 'ghost', data: ghostData,
+      color: 'rgba(157,181,218,0.06)', marker: { lineColor: 'rgba(157,181,218,0.55)', lineWidth: 1, dashStyle: 'Dash' },
+      dataLabels: {
+        enabled: true, allowOverlap: false, crop: false, overflow: 'allow',
+        style: { color: '#B9C2CF', textOutline: '2px #0E1520', fontWeight: '500', fontSize: '11px' },
+        formatter() { return this.point.z >= 1150 ? shortName(this.point.name) : null; }
+      }
+    }, {
+      name: 'Online', type: 'mapbubble', id: 'on',
+      data: SITES.map(s => ({ id: 'o-' + s.n, name: s.n, lat: s.lat, lon: s.lon, z: null, s })),
+      color: 'rgba(91,149,250,0.78)', marker: { lineColor: '#9CC0FF', lineWidth: 1 }
+    }]
+  });
+
+  // ---------- ranked list ----------
+  const list = document.getElementById('list');
+  const top = SITES.slice(0, 10);
+  top.forEach(s => {
+    const el = document.createElement('div');
+    el.className = 'item';
+    el.innerHTML = `<div class="top"><span class="name">${shortName(s.n)}</span><span class="mw"><b class="cur">0</b> / ${fmt(s.peak)} MW</span></div>
+      <div class="who">${s.owner || ''}${s.users && s.users !== s.owner ? ' · ' + s.users : ''}</div>
+      <div class="bar"><i class="p" style="width:${s.peak / maxPeak * 100}%"></i><i class="o" style="width:0"></i></div>`;
+    const ghost = chart.get('g-' + s.n), on = chart.get('o-' + s.n);
+    el.addEventListener('mouseenter', () => { el.classList.add('hl'); ghost.setState('hover'); chart.tooltip.refresh(on.z ? on : ghost); });
+    el.addEventListener('mouseleave', () => { el.classList.remove('hl'); ghost.setState(''); chart.tooltip.hide(0); });
+    s.el = { cur: el.querySelector('.cur'), bar: el.querySelector('.o') };
+    list.appendChild(el);
+  });
+
+  // ---------- frame update ----------
+  const $ = id => document.getElementById(id);
+  const slider = $('t');
+  slider.max = months * 4;                                   // quarter-month resolution
+  $('todayMark').style.left = (todayM / months * 100) + '%';
+  const dateLabel = t => new Date(t).toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+
+  let curTime = 0, curM = 0;
+  function setM(m) {
+    curM = Math.max(0, Math.min(months, m));
+    curTime = toTime(curM);
+    let total = 0;
+    const onData = SITES.map(s => {
+      const v = powerAt(s, curTime);
+      total += v;
+      return { id: 'o-' + s.n, z: v > 1 ? v : null };
+    });
+    chart.get('on').setData(onData, true, false, true);
+
+    $('sOn').innerHTML = `${fmt(total / 1000, 1)}<small>GW</small>`;
+    $('sOnN').textContent = `≈ ${fmt(total / REACTOR_MW)} nuclear reactors`;
+    $('date').textContent = dateLabel(curTime);
+    const proj = curTime > todayTime + 2 * 864e5;
+    $('badge').textContent = proj ? 'Projection' : 'Estimate';
+    $('badge').classList.toggle('proj', proj);
+    slider.value = Math.round(curM * 4);
+    top.forEach(s => {
+      const v = powerAt(s, curTime);
+      s.el.cur.textContent = fmt(v);
+      s.el.bar.style.width = (v / maxPeak * 100) + '%';
+    });
+  }
+  $('sPlan').innerHTML = `${fmt(totalPeak / 1000, 1)}<small>GW</small>`;
+  $('sPlanN').textContent = `≈ ${fmt(totalPeak / REACTOR_MW)} nuclear reactors`;
+
+  // ---------- playback ----------
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const MONTHS_PER_SEC = 3.5;                                // 1× ≈ 24 s for 2023 → 2029
+  let playing = false, raf = null, last = 0, acc = 0;
+  function frame(now) {
+    const dt = Math.min(now - last, 100); last = now;
+    acc += dt;
+    const m = curM + dt / 1000 * MONTHS_PER_SEC * parseFloat($('speed').value);
+    if (acc > 33 || m >= months) { acc = 0; setM(m); } else { curM = m; }
+    if (curM >= months) return stop();
+    raf = requestAnimationFrame(frame);
+  }
+  function play() {
+    if (curM >= months) setM(0);
+    playing = true; $('play').textContent = '❚❚ Pause'; $('play').setAttribute('aria-pressed', 'true');
+    last = performance.now(); raf = requestAnimationFrame(frame);
+  }
+  function stop() {
+    playing = false; cancelAnimationFrame(raf);
+    $('play').textContent = '▶ Play'; $('play').setAttribute('aria-pressed', 'false');
+  }
+  $('play').addEventListener('click', () => playing ? stop() : play());
+  slider.addEventListener('input', () => { stop(); setM(slider.value / 4); });
+  $('toToday').addEventListener('click', () => { stop(); setM(todayM); });
+
+  if (reduceMotion) { setM(todayM); }
+  else { setM(0); setTimeout(play, 600); }
+})();
+</script>
+</body>
+</html>

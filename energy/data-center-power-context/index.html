@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="https://mekhatria.github.io/interactive-chart/assets/logo.svg">
+<link rel="apple-touch-icon" href="https://mekhatria.github.io/interactive-chart/assets/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://mekhatria.github.io/interactive-chart/energy/data-center-power-context/">
+<meta name="description" content="Isometric animated comparison of a planned 5 GW AI data center campus with everyday US power users: a bus depot, hospital, town, NASA wind tunnel, city and nuclear reactor.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Energy, Charted">
+<meta property="og:title" content="How Much Power Does AI Need?">
+<meta property="og:description" content="Isometric animated comparison of a planned 5 GW AI data center campus with everyday US power users: a bus depot, hospital, town, NASA wind tunnel, city and nuclear reactor.">
+<meta property="og:url" content="https://mekhatria.github.io/interactive-chart/energy/data-center-power-context/">
+<meta property="og:image" content="https://mekhatria.github.io/interactive-chart/thumbs/data-center-power-context.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Mustapha Mekhatria">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://mekhatria.github.io/interactive-chart/energy/data-center-power-context/",
+  "url": "https://mekhatria.github.io/interactive-chart/energy/data-center-power-context/",
+  "name": "How Much Power Does AI Need?",
+  "headline": "How Much Power Does AI Need?",
+  "description": "Isometric animated comparison of a planned 5 GW AI data center campus with everyday US power users: a bus depot, hospital, town, NASA wind tunnel, city and nuclear reactor.",
+  "inLanguage": "en",
+  "image": "https://mekhatria.github.io/interactive-chart/thumbs/data-center-power-context.jpg",
+  "datePublished": "2026-11-13",
+  "dateModified": "2026-11-15",
+  "author": {
+    "@type": "Person",
+    "name": "Mustapha Mekhatria",
+    "jobTitle": "Project Manager",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Highsoft AS",
+      "url": "https://www.highcharts.com"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/mustaphamekhatria/",
+      "https://github.com/mekhatria"
+    ]
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Energy, Charted",
+    "url": "https://mekhatria.github.io/interactive-chart/energy/"
+  },
+  "keywords": "AI, data centers, megawatts, electricity, comparison",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Today in Energy: Vogtle Unit 4",
+      "publisher": "U.S. Energy Information Administration",
+      "url": "https://www.eia.gov/todayinenergy/detail.php?id=61963"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Record electric demand 2024",
+      "publisher": "Colorado Springs Utilities",
+      "url": "https://www.csu.org/blog/record-electric-demand-2024"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Mark Zuckerberg says Meta is building a 5GW AI data center",
+      "publisher": "TechCrunch",
+      "url": "https://techcrunch.com/2025/07/14/mark-zuckerberg-says-meta-is-building-a-5gw-ai-data-center"
+    }
+  ],
+  "mainEntity": {
+    "@type": "Dataset",
+    "name": "How Much Power Does AI Need? (data)",
+    "description": "Isometric animated comparison of a planned 5 GW AI data center campus with everyday US power users: a bus depot, hospital, town, NASA wind tunnel, city and nuclear reactor.",
+    "isBasedOn": [
+      "https://www.eia.gov/todayinenergy/detail.php?id=61963",
+      "https://www.csu.org/blog/record-electric-demand-2024",
+      "https://techcrunch.com/2025/07/14/mark-zuckerberg-says-meta-is-building-a-5gw-ai-data-center"
+    ],
+    "creator": [
+      {
+        "@type": "Organization",
+        "name": "U.S. Energy Information Administration"
+      },
+      {
+        "@type": "Organization",
+        "name": "Colorado Springs Utilities"
+      },
+      {
+        "@type": "Organization",
+        "name": "TechCrunch"
+      }
+    ],
+    "spatialCoverage": "United States"
+  }
+}
+</script>
+<title>How Much Power Does AI Need?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: dark;
+  --page:#080C13; --card:#0E1520; --panel:#121B28; --line:#223044;
+  --ink:#EEF2F7; --muted:#8D98A8; --soft:#B9C2CF;
+  --blue:#5B95FA; --green:#3FCB95; --grey:#DDE2E9;
+  --speed:1;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;padding:24px 16px 40px}
+
+.scroller{max-width:1320px;margin:0 auto;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.frame{
+  position:relative;width:100%;min-width:640px;aspect-ratio:1320/930;overflow:hidden;border-radius:16px;
+  background:var(--card);
+  border:1px solid var(--line);
+}
+.stage{position:absolute;left:0;top:0;width:1320px;height:930px;transform-origin:0 0}
+#hc{position:absolute;inset:0}
+
+.abs{position:absolute}
+.fade{opacity:0;transform:translateY(6px);transition:opacity calc(3.2s / var(--speed,1)) ease,transform calc(3.2s / var(--speed,1)) ease}
+.ready .fade{opacity:1;transform:none}
+
+.title{left:48px;top:44px;margin:0;font-stretch:62%;font-weight:700;font-size:58px;line-height:1;color:#fff;
+  text-shadow:0 0 2px rgba(91,149,250,.9),0 0 16px rgba(91,149,250,.7),0 0 36px rgba(91,149,250,.4)}
+.key{left:50px;top:826px;display:flex;align-items:center;gap:11px;color:var(--soft)}
+.key svg{flex:none}
+.key b{display:block;font-stretch:66%;font-size:21px;font-weight:600;line-height:1;color:var(--ink)}
+.key span{display:block;font-size:12.5px;margin-top:3px}
+.key em{font-style:normal;font-weight:450;color:var(--soft);font-size:17px}
+.credit{right:36px;top:890px;font-size:13px}
+.credit a{color:var(--muted);text-decoration:none}
+.credit a:hover{color:var(--ink);text-decoration:underline}
+
+/* floating MW tags above towers */
+.tag{position:absolute;transform:translate(-50%,-100%);white-space:nowrap;font-stretch:66%;font-weight:600;font-size:38px;line-height:1;
+  padding:5px 11px 4px;border-radius:6px;background:rgba(14,21,32,.82);border:1px solid var(--line);color:var(--grey);cursor:pointer;
+  transition:opacity .25s}
+.u-homes .tag{font-size:30px;padding:4px 9px 3px}
+.u-homes .tag small{font-size:16px}
+.tag small{font-size:19px;font-weight:450;color:var(--muted);margin-left:3px}
+.tag.dc{color:var(--blue);border-color:rgba(91,149,250,.55)}
+.tag.nuc{color:var(--green);border-color:rgba(63,203,149,.55)}
+
+/* name labels on the floor, in front of each tower */
+/* name plates printed on the base's front face, directly under each tower (isometric shear set in JS) */
+.flr{position:absolute;left:0;top:0;width:115px;height:36px;transform-origin:0 0;overflow:hidden;cursor:pointer;transition:opacity .25s}
+.flr .in{height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;white-space:nowrap}
+.flr .k{font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#AEB6C2}
+.flr.dc .k{color:var(--blue)} .flr.nuc .k{color:var(--green)}
+.flr .n{font-size:12.5px;font-stretch:88%;color:var(--ink);margin-top:2px}
+.dim .flr:not(.active){opacity:.3}
+
+/* ranked list */
+.list{right:24px;top:40px;width:266px}
+.list h2{margin:0 0 10px 4px;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.row{display:grid;grid-template-columns:4px 1fr;gap:0 12px;padding:7px 10px 8px 8px;margin-bottom:6px;border-radius:8px;
+  background:rgba(18,27,40,.55);border:1px solid transparent;cursor:pointer;transition:background .3s,border-color .3s,opacity .25s}
+.row .bar{grid-row:1 / span 2;border-radius:2px;background:#C9CFD8}
+.row.dc .bar{background:var(--blue)} .row.nuc .bar{background:var(--green)}
+.row .head{display:flex;align-items:baseline;gap:10px}
+.row .mw{font-stretch:66%;font-size:25px;font-weight:600;line-height:1;color:var(--grey)}
+.row.dc .mw{color:var(--blue)} .row.nuc .mw{color:var(--green)}
+.row .mw small{font-size:15px;font-weight:450;color:var(--muted);margin-left:2px}
+.row .cat{white-space:nowrap;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.row .name{font-size:14px;color:var(--ink);margin-top:3px;line-height:1.25}
+.row .name span{display:block;font-size:12.5px;color:var(--muted)}
+.row .homes{display:none;font-size:12.5px;color:var(--blue);margin-top:3px}
+.row.now,.row.active{background:rgba(40,60,92,.6);border-color:rgba(91,149,250,.45)}
+.row.active .homes{display:block}
+.dim .row:not(.active),.dim .tag:not(.active){opacity:.3}
+
+.bar-ui{max-width:1320px;margin:12px auto 0;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.bar-ui p{margin:0 auto 0 2px;font-size:13px;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;border-radius:0}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--blue);color:#fff}
+.speed{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--soft)}
+.speed input{width:160px;accent-color:var(--blue)}
+.speed output{min-width:3.2em;font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+button{font:inherit;font-size:14px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:7px 14px;cursor:pointer}
+button:hover{border-color:var(--blue)}
+button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+.sources{max-width:1320px;margin:28px auto 0;font-size:14px;line-height:1.55;color:var(--soft)}
+.sources h2{font-size:15px;font-weight:650;margin:0 0 8px;color:var(--ink)}
+.sources ol{margin:0;padding-left:20px}
+.sources li{margin-bottom:6px}
+.sources a{color:var(--blue)}
+.sources p{color:var(--muted);margin:12px 0 0}
+</style>
+<style>.home-nav{position:sticky;top:12px;z-index:50;max-width:1320px;margin:0 auto 14px;font:500 14px/1.4 "Archivo",system-ui,sans-serif}.home-nav a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border:0;border-radius:999px;font-weight:650;font-size:14.5px;letter-spacing:.01em;background:#2F6FEF;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 4px 18px rgba(47,111,239,.55);transition:background .15s,transform .15s,box-shadow .15s}.home-nav a:hover{background:#4A85FF;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 6px 24px rgba(74,133,255,.7)}.home-nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}</style>
+</head>
+<body>
+<nav class="home-nav" aria-label="Site"><a href="https://mekhatria.github.io/interactive-chart/energy/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>All energy charts</span></a></nav>
+
+<div class="scroller">
+  <div class="frame" id="frame">
+    <div class="stage" id="stage" role="img"
+      aria-label="How much power does AI need? AI data centers compared with American power users. Electric bus depot 4.1 MW; university hospital 24 MW; Burlington Vermont 60 MW; NASA wind tunnel 104 MW; Colorado Springs city peak 1,011 MW; one Vogtle nuclear reactor 1,114 MW generation; Meta Hyperion data center 5,000 MW planned.">
+      <div id="hc"></div>
+
+      <h1 class="abs title fade">How Much Power<br>Does AI Need?</h1>
+
+      <div class="abs list fade" id="list"><h2>Ranked by megawatts</h2></div>
+
+      <div class="abs key fade">
+        <svg width="32" height="36" viewBox="-23 -27 46 52" aria-hidden="true">
+          <path d="M0 -24 L20.8 -12 L0 0 L-20.8 -12 Z" fill="#F1F3F6"/>
+          <path d="M-20.8 -12 L0 0 L0 24 L-20.8 12 Z" fill="#D5DAE1"/>
+          <path d="M0 0 L20.8 -12 L20.8 12 L0 24 Z" fill="#AEB6C2"/>
+        </svg>
+        <div><b>1 cube = 2 MW <em>≈ 1,700 US homes</em></b><span>Block volume is proportional to megawatts</span></div>
+      </div>
+      <div class="abs credit fade"><a href="https://www.highcharts.com" target="_blank" rel="noopener">Highcharts.com</a></div>
+    </div>
+  </div>
+</div>
+
+<div class="bar-ui">
+  <p>Switch to “US homes” to compare with normal household use.</p>
+  <div class="seg" role="group" aria-label="Show values as">
+    <button id="uMW" aria-pressed="true">Megawatts</button>
+    <button id="uHomes" aria-pressed="false">US homes</button>
+  </div>
+  <label class="speed" for="speed">Speed
+    <input id="speed" type="range" min="0.25" max="4" step="0.25" value="1" aria-describedby="speedOut">
+    <output id="speedOut" for="speed">1×</output>
+  </label>
+  <button id="pause" aria-pressed="false">Pause</button>
+  <button id="replay">Replay animation</button>
+</div>
+
+<section class="sources">
+  <h2>Sources</h2>
+  <ol>
+    <li><b>Electric bus fleet, 4.14 MW</b>: charging capacity of Montgomery County's Brookville Smart Energy Bus Depot, Maryland, built for 70 electric buses. <a href="https://www.masstransitmag.com/bus/vehicles/hybrid-hydrogen-electric-vehicles/article/21285735/brookville-smart-energy-depot-opens-as-largest-bus-microgrid-and-charging-infrastructure-project-in-the-us">Mass Transit, Nov 2022</a></li>
+    <li><b>Hospital, 24 MW</b>: on-site cogeneration plant of the 536-bed University of Illinois Hospital, Chicago, which covers 100% of campus power needs in winter. <a href="https://www.microgridknowledge.com/google-news-feed/article/11432645/cogeneration-case-study-university-of-illinois-hospital">Microgrid Knowledge</a></li>
+    <li><b>Town, 60 MW</b>: Burlington Electric Department's 2019 distribution-system annual peak load (60.40 MW), Burlington, Vermont. <a href="https://www.burlingtonelectric.com/sites/default/files/IRP2020/4_T&amp;D.pdf">BED 2020 Integrated Resource Plan, ch. 4 (PDF)</a></li>
+    <li><b>NASA, 104 MW</b>: electricity used by the National Full-Scale Aerodynamics Complex at NASA Ames, the world's largest wind tunnel. <a href="https://phys.org/news/2012-12-size-years-largest-tunnel-world.html">Phys.org / NASA, Dec 2012</a></li>
+    <li><b>City, 1,011 MW</b>: Colorado Springs Utilities' all-time peak electric demand, set on July 30, 2024. <a href="https://www.csu.org/blog/record-electric-demand-2024">Colorado Springs Utilities</a></li>
+    <li><b>Nuclear reactor, 1,114 MW</b>: generating capacity of Vogtle Unit 4, Georgia, one of the four reactors at America's largest nuclear plant. <a href="https://www.eia.gov/todayinenergy/detail.php?id=61963">EIA Today in Energy, May 2024</a></li>
+    <li><b>Meta Hyperion, 5,000 MW (planned)</b>: Richland Parish, Louisiana; 2 GW by 2030, scaling to 5 GW over several years. <a href="https://techcrunch.com/2025/07/14/mark-zuckerberg-says-meta-is-building-a-5gw-ai-data-center">TechCrunch, Jul 2025</a></li>
+    <li><b>Home comparison</b>: US residential customers used an average of 861 kWh per month in 2023, about 1.18 kW of continuous demand per home. <a href="https://www.eia.gov/todayinenergy/detail.php?id=61903">EIA Today in Energy, Apr 2024</a></li>
+  </ol>
+  <p>Note: these figures measure different things: peak demand, charging or generating capacity, and planned capacity. They are shown together to compare scale, not as like-for-like measurements.</p>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/highcharts.js"></script>
+<script>
+(() => {
+  const W = 1320, H = 930;
+  const C = Math.cos(Math.PI / 6), S = 0.5;          // isometric projection
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Towers stand in one row along the world x-axis (screen: down-right), smallest at the back
+  // Two rows, each on its own raised base: the giants at the back, everyday users in front.
+  // Rows run along the world x-axis (screen: down-right); Y offsets the back row up-right.
+  const O = { x: 300, y: 590 };                       // screen position of world (0, 0)
+  const ROWS = {
+    back:  { Y: -290, half: 66, step: 130, x0: -5,  x1: 385 },
+    front: { Y: 0,    half: 55, step: 110, x0: -55, x1: 385 }
+  };
+  const ROW_ORDER = ['back', 'front'];                // paint order: far row first
+
+  // Block volume ∝ MW: VOL_PER_MW world units³ per megawatt (5,000 MW → 60×60×293 tower)
+  const CUBE = 7.5;                                   // edge of one grid cube (world units)
+  const VOL_PER_MW = CUBE ** 3 / 2;                   // so one cube = 2 MW
+  const HOME_KW = 861 / 730;                          // EIA 2023: 861 kWh/month ≈ 1.18 kW
+
+  // boxes: [x0, x1, y0, y1, relativeHeight]; heights are scaled so total volume matches MW
+  const ITEMS = [
+    { id: 'bus', row: 'front', X: 0, mw: 4.14, kind: 'other', short: ['Bus fleet', 'Brookville, MD'], cat: 'Electric bus fleet', name: 'Brookville depot, MD', note: '70 buses · charging capacity',
+      pad: 16, boxes: [[-7.5, 7.5, -3.75, 3.75, 1]] },
+    { id: 'hosp', row: 'front', X: 110, mw: 24, kind: 'other', short: ['Hospital', 'Univ. of Illinois'], cat: 'Hospital', name: 'University of Illinois', note: 'on-site power plant',
+      pad: 22, boxes: [[-7.5, 7.5, -7.5, 7.5, 1]] },
+    { id: 'town', row: 'front', X: 220, mw: 60.4, kind: 'other', short: ['Town', 'Burlington, VT'], cat: 'Town', name: 'Burlington, Vermont', note: '2019 peak demand',
+      pad: 24, boxes: [[-15, 0, -15, 0, 1], [0, 15, -15, 0, .6], [-15, 0, 0, 15, .75], [0, 15, 0, 15, .45]] },
+    { id: 'nasa', row: 'front', X: 330, mw: 104, kind: 'other', short: ['NASA', 'Ames, California'], cat: 'NASA', name: 'Ames wind tunnel', note: "world's largest",
+      pad: 28, boxes: [[-15, 15, -15, 15, 1]] },
+    { id: 'city', row: 'back', X: 60, mw: 1011, kind: 'other', short: ['City', 'Colorado Springs'], cat: 'City', name: 'Colorado Springs, Colorado', note: '2024 record peak demand',
+      pad: 50, boxes: [[-30, 30, -30, 30, 1]] },
+    { id: 'vogtle', row: 'back', X: 190, mw: 1114, kind: 'nuc', short: ['Nuclear', 'Vogtle Unit 4'], cat: 'Nuclear reactor', name: 'Vogtle Unit 4, Georgia', note: 'one reactor · generation',
+      pad: 54, boxes: [[-30, 30, -30, 30, 1]] },
+    { id: 'hyperion', row: 'back', X: 320, mw: 5000, kind: 'dc', short: ['Data center', 'Meta Hyperion, LA'], cat: 'AI data center', name: 'Meta Hyperion, Louisiana', note: 'planned, 2 GW by 2030',
+      pad: 53, boxes: [[-30, 30, -30, 30, 1]] }
+  ];
+  ITEMS.forEach((it, i) => {
+    it.order = i;
+    const Y = ROWS[it.row].Y;
+    it.at = { x: O.x + (it.X - Y) * C, y: O.y + (it.X + Y) * S };
+    const base = it.boxes.reduce((s, [x0, x1, y0, y1, r]) => s + (x1 - x0) * (y1 - y0) * r, 0);
+    const k = VOL_PER_MW * it.mw / base;
+    it.boxes = it.boxes
+      .map(([x0, x1, y0, y1, r]) => [x0, x1, y0, y1, r * k])
+      .sort((a, b) => (a[0] + a[2]) - (b[0] + b[2]));  // paint back-to-front
+    it.maxH = Math.max(...it.boxes.map(b => b[4]));
+    it.leader = 30;
+  });
+
+  const PAL = {
+    dc:    { top: '#7DAEFB', left: '#3B7EF2', right: '#2462DA', grid: 'rgba(205,226,255,.6)', band: 'rgba(255,255,255,.35)', pad: '#5B95FA' },
+    nuc:   { top: '#76DDB4', left: '#2FAF80', right: '#1E8E66', grid: 'rgba(215,255,238,.55)', band: 'rgba(255,255,255,0)', pad: '#3FCB95' },
+    other: { top: '#F1F3F6', left: '#D5DAE1', right: '#AEB6C2', grid: 'rgba(60,72,90,.35)', band: 'rgba(255,255,255,0)', pad: '#3D4A5E' }
+  };
+
+  // ---------- geometry ----------
+  const ORIGIN = { at: O };
+  const P = (it, x, y, z) => [it.at.x + (x - y) * C, it.at.y + (x + y) * S - z];
+  const f = n => n.toFixed(1);
+  const poly = pts => 'M' + pts.map(p => f(p[0]) + ' ' + f(p[1])).join('L') + 'Z';
+
+  function faces(it, x0, x1, y0, y1, z0, z1) {
+    return {
+      top:   poly([P(it, x0, y0, z1), P(it, x1, y0, z1), P(it, x1, y1, z1), P(it, x0, y1, z1)]),
+      left:  poly([P(it, x0, y1, z0), P(it, x1, y1, z0), P(it, x1, y1, z1), P(it, x0, y1, z1)]),
+      right: poly([P(it, x1, y1, z0), P(it, x1, y0, z0), P(it, x1, y0, z1), P(it, x1, y1, z1)])
+    };
+  }
+
+  // Cube grid, rows anchored to the top so towers look like they rise out of the ground
+  function gridPath(it, x0, x1, y0, y1, z1, L) {
+    let d = '';
+    const seg = (a, b) => { d += `M${f(a[0])} ${f(a[1])}L${f(b[0])} ${f(b[1])}`; };
+    for (let x = x0 + L; x < x1 - .01; x += L) { seg(P(it, x, y1, 0), P(it, x, y1, z1)); seg(P(it, x, y0, z1), P(it, x, y1, z1)); }
+    for (let y = y0 + L; y < y1 - .01; y += L) { seg(P(it, x1, y, 0), P(it, x1, y, z1)); seg(P(it, x0, y, z1), P(it, x1, y, z1)); }
+    for (let z = z1 - L; z > .01; z -= L) { seg(P(it, x0, y1, z), P(it, x1, y1, z)); seg(P(it, x1, y1, z), P(it, x1, y0, z)); }
+    return d || 'M0 0';
+  }
+
+  // ---------- Highcharts canvas ----------
+  let R, built = false;
+  const deco = {}, tags = {}, rows = {};
+
+  function build() {
+    // faint isometric floor grid
+    const gGrid = R.g('floor').attr({ opacity: 0 }).add();
+    let d = '';
+    const G = 57.5;
+    for (let k = -14; k <= 26; k++) {
+      const a = P(ORIGIN, k * G, -900, 0), b = P(ORIGIN, k * G, 900, 0);
+      const c = P(ORIGIN, -900, k * G, 0), e = P(ORIGIN, 1400, k * G, 0);
+      d += `M${f(a[0])} ${f(a[1])}L${f(b[0])} ${f(b[1])}M${f(c[0])} ${f(c[1])}L${f(e[0])} ${f(e[1])}`;
+    }
+    R.path(d).attr({ stroke: 'rgba(140,170,220,.075)', 'stroke-width': 1 }).add(gGrid);
+    deco.grid = gGrid;
+
+    // one layer stack per row (base → pads → leaders → towers), far row painted first
+    ROW_ORDER.forEach(r => {
+      const row = ROWS[r];
+      const gBase = R.g('base-' + r).add();
+      row.base = R.path('M0 0').attr({ fill: '#151E2C', stroke: '#26354B', 'stroke-width': 1 }).add(gBase);
+      row.gPads = R.g().add();
+      row.gLeaders = R.g().add();
+      row.gTowers = R.g().add();
+    });
+
+    ITEMS.forEach(it => {
+      const pal = PAL[it.kind];
+      const pad = R.g().add(ROWS[it.row].gPads);
+      it.padEls = {
+        right: R.path('M0 0').attr({ fill: '#0C121B' }).add(pad),
+        left:  R.path('M0 0').attr({ fill: '#131C2A' }).add(pad),
+        top:   R.path('M0 0').attr({
+          fill: '#1B2638', stroke: pal.pad,
+          'stroke-width': it.kind === 'other' ? 1.5 : 2.5, 'stroke-linejoin': 'round'
+        }).add(pad)
+      };
+      it.leaderEl = R.path('M0 0').attr({
+        stroke: it.kind === 'other' ? 'rgba(200,210,225,.45)' : pal.pad, 'stroke-width': 1.2, 'stroke-dasharray': '3 3'
+      }).add(ROWS[it.row].gLeaders);
+    });
+
+    ITEMS.forEach(it => {                              // within a row, items are listed back-to-front
+      const pal = PAL[it.kind];
+      const g = R.g(it.id).css({ cursor: 'pointer' }).add(ROWS[it.row].gTowers);
+      it.group = g;
+      it.boxEls = it.boxes.map(() => ({
+        left:  R.path('M0 0').attr({ fill: pal.left }).add(g),
+        right: R.path('M0 0').attr({ fill: pal.right }).add(g),
+        top:   R.path('M0 0').attr({ fill: pal.top }).add(g),
+        band:  R.path('M0 0').attr({ fill: pal.band }).add(g),
+        grid:  R.path('M0 0').attr({ stroke: pal.grid, 'stroke-width': .8, fill: 'none' }).add(g)
+      }));
+      g.on('mouseover', () => setActive(it.id)).on('mouseout', () => setActive(null));
+    });
+
+    // HTML: floating MW tags + ranked list rows
+    const stage = document.getElementById('stage');
+    const list = document.getElementById('list');
+    ITEMS.forEach(it => {
+      const top = P(it, 0, 0, it.maxH);
+      it.tagPos = { x: top[0], y: top[1] - it.leader };
+
+      const tag = document.createElement('div');
+      tag.className = `tag${it.kind !== 'other' ? ' ' + it.kind : ''}`;
+      tag.style.left = it.tagPos.x + 'px';
+      tag.style.top = it.tagPos.y + 'px';
+      tag.innerHTML = `<span class="v">0</span><small class="u">MW</small>`;
+      stage.appendChild(tag);
+
+      // plate's top-left corner = top edge of the base's front face, half a step before the tower
+      const baseRow = ROWS[it.row];
+      const fp = P(it, -baseRow.step / 2, baseRow.half + 6, -6);
+      const flr = document.createElement('div');
+      flr.className = `flr${it.kind !== 'other' ? ' ' + it.kind : ''}`;
+      flr.style.width = baseRow.step + 'px';
+      flr.style.transform = `matrix(${C}, ${S}, ${-C}, ${S}, ${fp[0]}, ${fp[1]})`;   // lay flat on the floor
+      flr.innerHTML = `<div class="in"><div class="k">${it.short[0]}</div></div>`;
+      it.flrIn = flr.firstElementChild;
+      stage.appendChild(flr);
+      it.flr = flr;
+
+      const row = document.createElement('div');
+      row.className = `row${it.kind !== 'other' ? ' ' + it.kind : ''}`;
+      row.innerHTML = `<div class="bar"></div>
+        <div class="head"><div class="mw"><span class="rv"></span><small class="ru"></small></div><div class="cat">${it.cat}</div></div>
+        <div class="name">${it.name}<span>${it.note}</span><div class="homes"></div></div>`;
+      list.appendChild(row);
+
+      [tag, row, flr].forEach(el => {
+        el.addEventListener('mouseenter', () => setActive(it.id));
+        el.addEventListener('mouseleave', () => setActive(null));
+      });
+      tags[it.id] = { el: tag, v: tag.querySelector('.v'), u: tag.querySelector('.u') };
+      rows[it.id] = row;
+      it.rowEls = { v: row.querySelector('.rv'), u: row.querySelector('.ru'), alt: row.querySelector('.homes') };
+    });
+
+    built = true;
+    applyUnit();
+    fit();
+    play();
+  }
+
+  // "Normal use" comparison: average US home ≈ 1.18 kW (EIA 2023)
+  const homesOf = mw => mw * 1000 / HOME_KW;
+  function fmtHomes(n) {
+    if (n >= 1e6) return (n / 1e6).toFixed(1) + 'M';
+    if (n >= 1e4) return Highcharts.numberFormat(Math.round(n / 1000) * 1000, 0, '.', ',');
+    return Highcharts.numberFormat(Math.round(n / 100) * 100, 0, '.', ',');
+  }
+  let unit = 'mw';
+  // value + unit label for the current unit, at fraction `e` of the final value
+  function shown(it, e) {
+    return unit === 'mw'
+      ? [fmtMW(it.mw * e, it.mw), 'MW']
+      : [fmtHomes(homesOf(it.mw) * e), 'homes'];
+  }
+  function applyUnit() {
+    ITEMS.forEach(it => {
+      const [v, u] = shown(it, 1);
+      it.rowEls.v.textContent = v;
+      it.rowEls.u.textContent = u;
+      tags[it.id].u.textContent = u;
+      it.rowEls.alt.textContent = unit === 'mw'
+        ? `≈ average use of ${fmtHomes(homesOf(it.mw)).replace('M', ' million')} US homes`
+        : `= ${fmtMW(it.mw, it.mw)} MW`;
+    });
+    document.getElementById('frame').classList.toggle('u-homes', unit === 'homes');
+    document.getElementById('uMW').setAttribute('aria-pressed', String(unit === 'mw'));
+    document.getElementById('uHomes').setAttribute('aria-pressed', String(unit === 'homes'));
+  }
+  function fmtMW(v, final) {
+    return final < 10 ? v.toFixed(1) : Highcharts.numberFormat(Math.round(v), 0, '.', ',');
+  }
+
+  // ---------- hover ----------
+  function setActive(id) {
+    document.getElementById('frame').classList.toggle('dim', !!id);
+    ITEMS.forEach(it => {
+      const on = it.id === id;
+      rows[it.id].classList.toggle('active', on);
+      tags[it.id].el.classList.toggle('active', on);
+      it.flr.classList.toggle('active', on);
+      it.group.attr({ opacity: !id || on ? 1 : .3 });
+    });
+  }
+
+  // ---------- drawing a frame ----------
+  function drawBase(e) {
+    ROW_ORDER.forEach(r => {
+      const row = ROWS[r];
+      if (e <= 0) { row.base.attr({ d: 'M0 0' }); return; }
+      const x1 = row.x0 + (row.x1 - row.x0) * e;
+      row.base.attr({ d: faces(ORIGIN, row.x0, x1, row.Y - row.half, row.Y + row.half, -6, -6).top });
+    });
+  }
+
+  function drawTower(it, grow, padScale, leaderE, bandPos) {
+    const a = it.pad * padScale;
+    if (a > .2) {
+      const pf = faces(it, -a, a, -a, a, -6, 0);
+      it.padEls.top.attr({ d: pf.top }); it.padEls.left.attr({ d: pf.left }); it.padEls.right.attr({ d: pf.right });
+    } else {
+      ['top', 'left', 'right'].forEach(k => it.padEls[k].attr({ d: 'M0 0' }));
+    }
+    // leader from the tower's current top up to its tag
+    if (leaderE > 0) {
+      const from = P(it, 0, 0, it.maxH * grow);
+      const toY = from[1] + (it.tagPos.y - from[1]) * leaderE;
+      it.leaderEl.attr({ d: `M${f(from[0])} ${f(from[1])}L${f(from[0])} ${f(toY)}` });
+    } else {
+      it.leaderEl.attr({ d: 'M0 0' });
+    }
+    const L = CUBE;
+    it.boxes.forEach(([x0, x1, y0, y1, h], i) => {
+      const els = it.boxEls[i];
+      const z = h * grow;
+      if (z < .3) { ['top', 'left', 'right', 'band', 'grid'].forEach(k => els[k].attr({ d: 'M0 0' })); return; }
+      const fc = faces(it, x0, x1, y0, y1, 0, z);
+      els.top.attr({ d: fc.top }); els.left.attr({ d: fc.left }); els.right.attr({ d: fc.right });
+      els.grid.attr({ d: gridPath(it, x0, x1, y0, y1, z, L) });
+      if (it.kind === 'dc' && bandPos != null && z > L * 2) {
+        const b0 = bandPos * (z - L), b1 = b0 + L;
+        const lf = poly([P(it, x0, y1, b0), P(it, x1, y1, b0), P(it, x1, y1, b1), P(it, x0, y1, b1)]);
+        const rf = poly([P(it, x1, y1, b0), P(it, x1, y0, b0), P(it, x1, y0, b1), P(it, x1, y1, b1)]);
+        els.band.attr({ d: lf + rf });
+      } else {
+        els.band.attr({ d: 'M0 0' });
+      }
+    });
+  }
+
+  // ---------- animation ----------
+  const clamp = v => Math.max(0, Math.min(1, v));
+  const easeOut = t => 1 - Math.pow(1 - t, 3);
+  const easeInOut = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const easeBack = t => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
+
+  // One tower at a time: pad pops, tag and list row appear, tower rises while its number
+  // counts up, then a short hold before the next one. Times are at 1× speed (the default).
+  const T_BASE = 4000;           // floor grid fades in and the base strip extends
+  const T_TOWER0 = 3600;         // first tower starts as the base finishes
+  const PAD_DUR = 1600;
+  const GROW_DELAY = 1000;
+  const TOWER_DUR = 4400;
+  const TOWER_STEP = 6000;       // start-to-start gap between towers (≈0.6 s hold after each tower finishes)
+  const INTRO_END = T_TOWER0 + TOWER_STEP * (ITEMS.length - 1) + GROW_DELAY + TOWER_DUR;
+
+  let raf = null, elapsed = 0, last = 0, speed = 1, paused = false;
+
+  function render(t) {
+    deco.grid.attr({ opacity: easeInOut(clamp(t / T_BASE)) });
+    drawBase(easeInOut(clamp((t - 400) / (T_BASE - 400))));
+
+    ITEMS.forEach(it => {
+      const ts = T_TOWER0 + it.order * TOWER_STEP;
+      const tp = clamp((t - ts) / PAD_DUR);
+      const grow = easeOut(clamp((t - ts - GROW_DELAY) / TOWER_DUR));
+      const tl = clamp((t - ts) / 1800);
+      const band = (it.kind === 'dc' && t > INTRO_END && !reduceMotion)
+        ? ((t - INTRO_END) / 10400 + it.order * 0.21) % 1 : null;
+      drawTower(it, grow, tp === 0 ? 0 : easeBack(tp), easeOut(tl), band);
+
+      const tag = tags[it.id];
+      tag.el.style.opacity = clamp((t - ts - 600) / 1200);
+      tag.v.textContent = shown(it, grow)[0];
+      const fo = clamp((t - ts - 300) / 1200);
+      it.flr.style.opacity = fo;
+      it.flrIn.style.transform = `translateX(${(1 - easeOut(fo)) * -18}px)`;
+
+      const row = rows[it.id];
+      row.style.opacity = tl;
+      row.style.transform = `translateX(${(1 - easeOut(tl)) * 16}px)`;
+      row.classList.toggle('now', t >= ts && t < ts + TOWER_STEP && t < INTRO_END);
+    });
+  }
+
+  // Animation clock: advances by real frame time × speed, so speed changes are seamless
+  function loop(now) {
+    const dt = Math.min(now - last, 100);
+    last = now;
+    if (!paused) elapsed += dt * speed;
+    render(elapsed);
+    raf = requestAnimationFrame(loop);
+  }
+
+  function play() {
+    cancelAnimationFrame(raf);
+    const frame = document.getElementById('frame');
+    frame.classList.remove('ready');
+    void frame.offsetWidth;
+    frame.classList.add('ready');
+    if (reduceMotion) { render(INTRO_END + 1); return; }
+    elapsed = 0;
+    last = performance.now();
+    raf = requestAnimationFrame(loop);
+  }
+
+  // ---------- scale the fixed design to the available width ----------
+  function fit() {
+    const frame = document.getElementById('frame');
+    document.getElementById('stage').style.transform = `scale(${frame.clientWidth / W})`;
+  }
+  window.addEventListener('resize', fit);
+
+  // ---------- controls ----------
+  const speedIn = document.getElementById('speed');
+  const speedOut = document.getElementById('speedOut');
+  const pauseBtn = document.getElementById('pause');
+  speedIn.addEventListener('input', () => {
+    speed = parseFloat(speedIn.value);
+    speedOut.textContent = speed + '×';
+    document.documentElement.style.setProperty('--speed', speed);
+  });
+  function togglePause() {
+    paused = !paused;
+    pauseBtn.textContent = paused ? 'Play' : 'Pause';
+    pauseBtn.setAttribute('aria-pressed', String(paused));
+  }
+  pauseBtn.addEventListener('click', togglePause);
+  function setUnit(u) {
+    unit = u;
+    if (!built) return;
+    applyUnit();
+    if (reduceMotion) render(INTRO_END + 1);        // no animation loop running to refresh the tags
+  }
+  document.getElementById('uMW').addEventListener('click', () => setUnit('mw'));
+  document.getElementById('uHomes').addEventListener('click', () => setUnit('homes'));
+  document.getElementById('replay').addEventListener('click', () => {
+    if (paused) togglePause();
+    built && play();
+  });
+  if (reduceMotion) { speedIn.disabled = true; pauseBtn.disabled = true; }
+
+  // Create the Highcharts canvas last: its load event runs build() synchronously
+  Highcharts.chart('hc', {
+    chart: {
+      width: W, height: H, reflow: false, animation: false,
+      backgroundColor: 'transparent', spacing: [0, 0, 0, 0],
+      events: { load() { R = this.renderer; build(); } }
+    },
+    title: { text: null }, credits: { enabled: false }, legend: { enabled: false },
+    tooltip: { enabled: false }, series: []
+  });
+})();
+</script>
+</body>
+</html>

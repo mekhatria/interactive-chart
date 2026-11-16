@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="https://mekhatria.github.io/interactive-chart/assets/logo.svg">
+<link rel="apple-touch-icon" href="https://mekhatria.github.io/interactive-chart/assets/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="canonical" href="https://mekhatria.github.io/interactive-chart/energy/us-energy-losses/">
+<meta name="description" content="Animated Sankey of all US energy in 2024, from source to use: two-thirds is lost as heat and one-third becomes useful energy. Data: Lawrence Livermore National Laboratory.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Energy, Charted">
+<meta property="og:title" content="Where America&#x27;s Energy Goes">
+<meta property="og:description" content="Animated Sankey of all US energy in 2024, from source to use: two-thirds is lost as heat and one-third becomes useful energy. Data: Lawrence Livermore National Laboratory.">
+<meta property="og:url" content="https://mekhatria.github.io/interactive-chart/energy/us-energy-losses/">
+<meta property="og:image" content="https://mekhatria.github.io/interactive-chart/thumbs/us-energy-losses.jpg">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="450">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="author" content="Mustapha Mekhatria">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://mekhatria.github.io/interactive-chart/energy/us-energy-losses/",
+  "url": "https://mekhatria.github.io/interactive-chart/energy/us-energy-losses/",
+  "name": "Where America's Energy Goes",
+  "headline": "Where America's Energy Goes",
+  "description": "Animated Sankey of all US energy in 2024, from source to use: two-thirds is lost as heat and one-third becomes useful energy. Data: Lawrence Livermore National Laboratory.",
+  "inLanguage": "en",
+  "image": "https://mekhatria.github.io/interactive-chart/thumbs/us-energy-losses.jpg",
+  "datePublished": "2026-11-15",
+  "dateModified": "2026-11-15",
+  "author": {
+    "@type": "Person",
+    "name": "Mustapha Mekhatria",
+    "jobTitle": "Project Manager",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Highsoft AS",
+      "url": "https://www.highcharts.com"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/mustaphamekhatria/",
+      "https://github.com/mekhatria"
+    ]
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Energy, Charted",
+    "url": "https://mekhatria.github.io/interactive-chart/energy/"
+  },
+  "keywords": "US energy, Sankey diagram, energy efficiency, waste heat, LLNL, 2024",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "United States Energy Consumption in 2024",
+      "publisher": "Lawrence Livermore National Laboratory",
+      "url": "https://flowcharts.llnl.gov/commodities/energy"
+    }
+  ],
+  "mainEntity": {
+    "@type": "Dataset",
+    "name": "Where America's Energy Goes (data)",
+    "description": "Animated Sankey of all US energy in 2024, from source to use: two-thirds is lost as heat and one-third becomes useful energy. Data: Lawrence Livermore National Laboratory.",
+    "isBasedOn": [
+      "https://flowcharts.llnl.gov/commodities/energy"
+    ],
+    "creator": [
+      {
+        "@type": "Organization",
+        "name": "Lawrence Livermore National Laboratory"
+      }
+    ],
+    "spatialCoverage": "United States",
+    "temporalCoverage": "2024"
+  }
+}
+</script>
+<title>Where America's Energy Goes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>.home-nav{position:sticky;top:12px;z-index:50;max-width:1320px;margin:0 auto 14px;font:500 14px/1.4 "Archivo",system-ui,sans-serif}.home-nav a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border:0;border-radius:999px;font-weight:650;font-size:14.5px;letter-spacing:.01em;background:#2F6FEF;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 4px 18px rgba(47,111,239,.55);transition:background .15s,transform .15s,box-shadow .15s}.home-nav a:hover{background:#4A85FF;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 6px 24px rgba(74,133,255,.7)}.home-nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}</style>
+<style>
+:root{
+  color-scheme: dark;
+  --page:#080C13; --card:#0E1520; --panel:#121B28; --line:#223044;
+  --ink:#EEF2F7; --muted:#8D98A8; --soft:#B9C2CF; --lost:#8A93A3; --use:#F4F7FB; --accent:#FF8A4C;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--page);color:var(--ink);font-family:"Archivo",system-ui,sans-serif;padding:24px 16px 40px}
+main{max-width:1320px;margin:0 auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 26px 18px}
+
+header{display:flex;flex-wrap:wrap;gap:14px 40px;align-items:flex-end;justify-content:space-between}
+h1{margin:0;font-stretch:62%;font-weight:700;font-size:clamp(38px,6vw,62px);line-height:1;color:#fff;
+  text-shadow:0 0 2px rgba(255,138,76,.9),0 0 18px rgba(255,138,76,.45)}
+.sub{margin:8px 0 0;max-width:62ch;color:var(--soft);font-size:16px}
+.big{display:flex;gap:26px;text-align:right}
+.big .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.big .v{font-stretch:62%;font-weight:700;font-size:clamp(44px,6vw,64px);line-height:.95;font-variant-numeric:tabular-nums}
+.big .n{font-size:13px;color:var(--soft)}
+
+#chart{height:clamp(460px,52vw,640px);margin-top:12px;min-width:0}
+
+.story{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;margin-top:10px;padding:12px 14px;border-radius:10px;background:var(--panel);border:1px solid var(--line)}
+.dots{display:flex;gap:6px}
+.dots button{width:30px;height:30px;padding:0;border-radius:50%;font-weight:700;transition:background .4s,border-color .4s,color .4s}
+.dots button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1A0E06}
+#storyText{font-size:15px;line-height:1.5;color:var(--soft);transition:opacity .35s ease,transform .35s ease}
+#storyText.out{opacity:0;transform:translateY(4px)}
+.dots button{position:relative;overflow:hidden}
+.dots button::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:#FFE0CC}
+.dots button.run::after{width:100%;transition:width var(--dur,6.5s) linear}
+#storyText b{color:var(--ink)}
+button{font:inherit;font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+footer{margin-top:14px;font-size:12.5px;line-height:1.55;color:var(--muted)}
+footer a{color:var(--soft)}
+</style>
+</head>
+<body>
+<nav class="home-nav" aria-label="Site"><a href="https://mekhatria.github.io/interactive-chart/energy/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>All energy charts</span></a></nav>
+<main>
+  <div class="card">
+    <header>
+      <div>
+        <h1>Where America's Energy Goes</h1>
+        <p class="sub">US energy in 2024, from source to use. Most of it is lost as heat.</p>
+      </div>
+      <div class="big">
+        <div><div class="k">Lost as heat</div><div class="v" style="color:var(--lost)">66%</div></div>
+        <div><div class="k">Useful energy</div><div class="v" style="color:var(--use)">34%</div></div>
+      </div>
+    </header>
+
+    <div id="chart" role="img" aria-label="Sankey diagram of US energy flows in 2024 from nine sources through electricity generation and four sectors to useful energy or energy lost as heat"></div>
+
+    <div class="story">
+      <div class="dots" role="group" aria-label="Story steps"></div>
+      <div id="storyText" aria-live="polite"></div>
+      <button id="auto" aria-pressed="true">❚❚ Pause tour</button>
+    </div>
+
+    <footer>
+      Data: <a href="https://flowcharts.llnl.gov/commodities/energy">Lawrence Livermore National Laboratory, "United States Energy Consumption in 2024"</a> (LLNL, July 2026), based on DOE/EIA State Energy Data System. Credit: Lawrence Livermore National Laboratory and the US Department of Energy.
+      Values in quads (quadrillion BTU; 1 quad ≈ 293 TWh). End-use efficiency is LLNL's estimate: 65% residential, 65% commercial, 49% industrial, 21% transportation. "Lost as heat" is what LLNL calls rejected energy and "useful energy" is its energy services. Net electricity imports (0.01 quad) omitted.
+      · <a href="https://www.highcharts.com" target="_blank" rel="noopener">Highcharts.com</a>
+    </footer>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/highcharts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/modules/sankey.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/modules/accessibility.js"></script>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const fmt = (v, d = 2) => Highcharts.numberFormat(v, d, '.', ',');
+
+  // LLNL 2024 US energy flow chart (quads)
+  const NODES = [
+    ['Solar', '#FFC83D'], ['Nuclear', '#E2524B'], ['Hydro', '#3C7BE0'], ['Wind', '#A66BE0'], ['Geothermal', '#B08A5A'],
+    ['Natural Gas', '#5FB3F5'], ['Coal', '#8A93A0'], ['Biomass', '#6FD38A'], ['Petroleum', '#2FA866'],
+    ['Electricity Generation', '#F2A33A'],
+    ['Residential', '#E58FB0'], ['Commercial', '#E58FB0'], ['Industrial', '#E58FB0'], ['Transportation', '#E58FB0'],
+    ['Lost as Heat', '#6B7480'], ['Useful Energy', '#FFFFFF']
+  ];
+  const L = [
+    ['Solar', 'Electricity Generation', .75], ['Solar', 'Residential', .26], ['Solar', 'Commercial', .08], ['Solar', 'Industrial', .02],
+    ['Nuclear', 'Electricity Generation', 8.17], ['Hydro', 'Electricity Generation', .83], ['Wind', 'Electricity Generation', 1.54],
+    ['Geothermal', 'Electricity Generation', .05], ['Geothermal', 'Residential', .04], ['Geothermal', 'Commercial', .02],
+    ['Natural Gas', 'Electricity Generation', 13.94], ['Natural Gas', 'Residential', 4.58], ['Natural Gas', 'Commercial', 3.46], ['Natural Gas', 'Industrial', 10.9], ['Natural Gas', 'Transportation', 1.39],
+    ['Coal', 'Electricity Generation', 7.01], ['Coal', 'Commercial', .01], ['Coal', 'Industrial', .85],
+    ['Biomass', 'Electricity Generation', .32], ['Biomass', 'Residential', .37], ['Biomass', 'Commercial', .17], ['Biomass', 'Industrial', 2.36], ['Biomass', 'Transportation', 1.89],
+    ['Petroleum', 'Electricity Generation', .17], ['Petroleum', 'Residential', .92], ['Petroleum', 'Commercial', .8], ['Petroleum', 'Industrial', 8.73], ['Petroleum', 'Transportation', 24.97],
+    ['Electricity Generation', 'Residential', 5.06], ['Electricity Generation', 'Commercial', 4.95], ['Electricity Generation', 'Industrial', 3.53], ['Electricity Generation', 'Transportation', .02],
+    ['Electricity Generation', 'Lost as Heat', 19.21],
+    ['Residential', 'Lost as Heat', 3.93], ['Residential', 'Useful Energy', 7.3],
+    ['Commercial', 'Lost as Heat', 3.32], ['Commercial', 'Useful Energy', 6.17],
+    ['Industrial', 'Lost as Heat', 13.46], ['Industrial', 'Useful Energy', 12.93],
+    ['Transportation', 'Lost as Heat', 22.35], ['Transportation', 'Useful Energy', 5.94]
+  ];
+  const COLOR = Object.fromEntries(NODES);
+  const linkColor = (from, to) => to === 'Lost as Heat' ? 'rgba(138,147,163,.55)' : to === 'Useful Energy' ? 'rgba(255,255,255,.45)'
+    : Highcharts.color(COLOR[from]).setOpacity(.42).get();
+
+  const chart = Highcharts.chart('chart', {
+    chart: { backgroundColor: 'transparent', spacing: [10, 175, 10, 150], style: { fontFamily: 'Archivo, system-ui, sans-serif' } },
+    title: { text: null }, credits: { enabled: false },
+    accessibility: { point: { valueDescriptionFormat: '{point.from} to {point.to}: {point.weight} quads.' } },
+    tooltip: {
+      backgroundColor: '#121B28', borderColor: '#223044', style: { color: '#EEF2F7' }, useHTML: true,
+      formatter() {
+        const p = this.point;
+        if (p.isNode) {
+          const out = p.linksFrom.reduce((a, l) => a + l.weight, 0), lost = p.linksFrom.filter(l => l.toNode.id === 'Lost as Heat').reduce((a, l) => a + l.weight, 0);
+          const tot = Math.max(p.sum, out);
+          return `<b>${p.id}</b>: ${fmt(tot)} quads` + (lost ? `<br><span style="color:#8A93A3">${fmt(lost / tot * 100, 0)}% lost as heat</span>` : '') +
+            `<br><span style="color:#8D98A8">${fmt(tot / 94.6 * 100, 1)}% of all US energy</span>`;
+        }
+        return `${p.fromNode.id} → <b>${p.toNode.id}</b><br><b>${fmt(p.weight)}</b> quads <span style="color:#8D98A8">(≈ ${fmt(p.weight * 293.07, 0)} TWh)</span>`;
+      }
+    },
+    plotOptions: { sankey: { animation: { duration: 1400 } } },
+    series: [{
+      type: 'sankey', name: 'US energy 2024', keys: ['from', 'to', 'weight'],
+      nodeWidth: 22, nodePadding: 14, curveFactor: .45, borderWidth: 0, minLinkWidth: 1,
+      // sources: label to the left of the bar; final outputs: label to the right
+      nodes: NODES.map(([id, color], i) => ({ id, color,
+        dataLabels: i < 9 ? { align: 'right', x: -22 } : i >= 14 ? { align: 'left', x: 22 } : {} })),
+      data: L.map(([from, to, weight]) => ({ from, to, weight, color: linkColor(from, to) })),
+      dataLabels: {
+        enabled: true, nodeFormatter() { return this.point.id; },
+        style: { color: '#EEF2F7', textOutline: '3px #0E1520', fontSize: '16px', fontWeight: '650' }, allowOverlap: true, crop: false, overflow: 'allow'
+      },
+      states: { inactive: { linkOpacity: .12, opacity: .35 }, hover: { linkOpacity: .8 } }
+    }]
+  });
+
+  // ---------- particles flowing along every link ----------
+  const R = chart.renderer, series = chart.series[0];
+  const QUAD_PER_DOT = 0.42, SPEED = 75;               // px per second
+  const NS = 'http://www.w3.org/2000/svg';
+  let dots = [], gDots = null;
+  function buildParticles() {
+    if (gDots) gDots.destroy();
+    gDots = R.g('particles').attr({ zIndex: 5 }).add(series.group);
+    dots = [];
+    series.points.forEach(p => {
+      const d = p.shapeArgs && p.shapeArgs.d;
+      if (!d || !p.toNode) return;
+      // link ribbon = top edge (M, C) + bottom edge; centre line = top edge moved down by half the thickness
+      const m = d[0], c = d[1], lastC = [...d].reverse().find(s => s[0] === 'C');
+      const thick = Math.abs(lastC[6] - m[2]) || p.shapeArgs.height || 2;
+      const off = thick / 2;
+      const center = document.createElementNS(NS, 'path');
+      center.setAttribute('d', `M${m[1]} ${m[2] + off} C${c[1]} ${c[2] + off} ${c[3]} ${c[4] + off} ${c[5]} ${c[6] + off}`);
+      const len = center.getTotalLength();
+      const n = Math.max(1, Math.round(p.weight / QUAD_PER_DOT));
+      const toLost = p.toNode.id === 'Lost as Heat', toUse = p.toNode.id === 'Useful Energy';
+      const fill = toLost ? '#9AA3B2' : toUse ? '#FFFFFF' : Highcharts.color(COLOR[p.fromNode.id]).brighten(.25).get();
+      for (let k = 0; k < n; k++) {
+        const el = R.circle(0, 0, toUse ? 2.2 : 1.8).attr({ fill, opacity: .9 }).add(gDots);
+        dots.push({ el, p, center, len, phase: Math.random(), spread: (Math.random() - .5) * Math.max(0, thick - 4) });
+      }
+    });
+  }
+  let t0 = performance.now();
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let lastTick = performance.now();
+  function tick(now) {
+    const t = (now - t0) / 1000, dt = Math.min(.1, (now - lastTick) / 1000); lastTick = now;
+    for (const o of dots) {
+      const s = ((o.phase * o.len + t * SPEED) % o.len);
+      const q = o.center.getPointAtLength(s);
+      o.el.element.setAttribute('cx', q.x.toFixed(1));
+      o.el.element.setAttribute('cy', (q.y + o.spread * Math.min(1, 1)).toFixed(1));
+      const target = o.p.state === 'inactive' || dimmed(o.p) ? .1 : .9;
+      o.op = o.op == null ? target : o.op + (target - o.op) * Math.min(1, dt * 4.5);   // ~0.6 s ease
+      o.el.element.style.opacity = o.op.toFixed(3);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ---------- guided tour ----------
+  const STEPS = [
+    { txt: 'In 2024 the US used <b>94.6 quads</b> of energy. That is about 27,700 TWh. <b>Petroleum</b> and <b>natural gas</b> supply almost three-quarters of it.', focus: null },
+    { txt: '<b>Power plants</b> burn 32.8 quads but deliver only <b>13.6 quads</b> of electricity. <b>19.2 quads (59%)</b> leave as heat from cooling towers and chimneys.', focus: ['Electricity Generation'] },
+    { txt: '<b>Transportation</b> is the least efficient: of 28.3 quads, mostly gasoline and diesel, only <b>5.9 quads (21%)</b> moves vehicles. The rest heats up engines and exhausts.', focus: ['Transportation'] },
+    { txt: '<b>Homes and businesses</b> do better: about <b>65%</b> becomes useful heat, light and cooling. <b>Industry</b> uses roughly half.', focus: ['Residential', 'Commercial', 'Industrial'] },
+    { txt: 'Altogether, <b>62.3 quads, two-thirds of all the energy</b>, is <b>lost as heat</b>. Only about a third becomes <b>useful energy</b>.', focus: ['Lost as Heat'] }
+  ];
+  let focusSet = null;
+  function dimmed(p) {
+    if (!focusSet) return false;
+    return !(focusSet.has(p.fromNode.id) || focusSet.has(p.toNode.id));
+  }
+  function applyFocus(instant) {
+    const anim = instant ? false : { duration: 800, easing: 'easeInOutSine' };
+    series.points.forEach(p => p.graphic && p.graphic.animate({ opacity: dimmed(p) ? .12 : 1 }, anim));
+    series.nodes.forEach(n => {
+      const on = !focusSet || focusSet.has(n.id) || n.linksFrom.concat(n.linksTo).some(l => !dimmed(l));
+      n.graphic && n.graphic.animate({ opacity: on ? 1 : .3 }, anim);
+      n.dataLabel && n.dataLabel.animate({ opacity: on ? 1 : .35 }, anim);
+    });
+  }
+  Highcharts.easing = Highcharts.easing || {};
+  Highcharts.easing.easeInOutSine = pos => -(Math.cos(Math.PI * pos) - 1) / 2;
+  const dotsBox = document.querySelector('.dots');
+  let step = 0, auto = !reduceMotion, timer = null;
+  STEPS.forEach((s, i) => {
+    const b = document.createElement('button'); b.textContent = i + 1; b.setAttribute('aria-label', 'Step ' + (i + 1));
+    b.addEventListener('click', () => { setAuto(false); go(i); });
+    dotsBox.appendChild(b);
+  });
+  const STEP_MS = 6500;
+  let textTimer = null, first = true;
+  function progress() {
+    dotsBox.querySelectorAll('button').forEach((b, k) => {
+      b.classList.remove('run');
+      if (auto && k === step) { b.style.setProperty('--dur', STEP_MS / 1000 + 's'); void b.offsetWidth; b.classList.add('run'); }
+    });
+  }
+  function go(i) {
+    step = i;
+    focusSet = STEPS[i].focus ? new Set(STEPS[i].focus) : null;
+    const el = $('storyText');
+    clearTimeout(textTimer);
+    if (first) { el.innerHTML = STEPS[i].txt; first = false; }
+    else { el.classList.add('out'); textTimer = setTimeout(() => { el.innerHTML = STEPS[i].txt; el.classList.remove('out'); }, 350); }
+    dotsBox.querySelectorAll('button').forEach((b, k) => b.setAttribute('aria-pressed', String(k === i)));
+    applyFocus();
+    clearTimeout(timer);
+    if (auto) timer = setTimeout(() => go((step + 1) % STEPS.length), STEP_MS);
+    progress();
+  }
+  function setAuto(on) {
+    auto = on; $('auto').textContent = on ? '❚❚ Pause tour' : '▶ Play tour'; $('auto').setAttribute('aria-pressed', String(on));
+    clearTimeout(timer); if (on) timer = setTimeout(() => go((step + 1) % STEPS.length), STEP_MS);
+    progress();
+  }
+  $('auto').addEventListener('click', () => setAuto(!auto));
+
+  // build particles once the sankey's own animation has laid out the links; rebuild on resize
+  setTimeout(() => { buildParticles(); go(0); if (!reduceMotion) requestAnimationFrame(tick); else tick(performance.now()); }, 1500);
+  Highcharts.addEvent(chart, 'redraw', () => setTimeout(() => { buildParticles(); applyFocus(true); }, 50));
+})();
+</script>
+</body>
+</html>
