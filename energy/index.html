@@ -24,24 +24,93 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Person",
-      "@id": "https://mekhatria.github.io/interactive-chart/#author",
-      "name": "Mustapha Mekhatria",
-      "jobTitle": "Project Manager",
-      "worksFor": { "@type": "Organization", "name": "Highsoft AS", "url": "https://www.highcharts.com" },
-      "image": "https://mekhatria.github.io/interactive-chart/assets/mustapha-mekhatria.jpg",
-      "sameAs": ["https://www.linkedin.com/in/mustaphamekhatria/", "https://github.com/mekhatria"]
-    },
-    {
       "@type": "CollectionPage",
       "@id": "https://mekhatria.github.io/interactive-chart/energy/",
       "url": "https://mekhatria.github.io/interactive-chart/energy/",
       "name": "Energy",
       "description": "Interactive charts on how electricity is made and used: AI data centers, US power demand, China's night lights and Norway's power stations. Built with Highcharts.",
-      "isPartOf": { "@type": "WebSite", "@id": "https://mekhatria.github.io/interactive-chart/#website", "url": "https://mekhatria.github.io/interactive-chart/" },
-      "author": { "@id": "https://mekhatria.github.io/interactive-chart/#author" },
+      "isPartOf": {
+        "@id": "https://mekhatria.github.io/interactive-chart/#website"
+      },
+      "author": {
+        "@id": "https://mekhatria.github.io/interactive-chart/#author"
+      },
       "dateModified": "2026-11-16",
-      "mainEntity": { "@type": "ItemList", "itemListElement": [ { "@type": "ListItem", "position": 1, "url": "https://mekhatria.github.io/interactive-chart/energy/us-energy-losses/", "name": "Where America's Energy Goes" }, { "@type": "ListItem", "position": 2, "url": "https://mekhatria.github.io/interactive-chart/energy/china-night-lights/", "name": "China After Dark" }, { "@type": "ListItem", "position": 3, "url": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/", "name": "America's AI Power Map" }, { "@type": "ListItem", "position": 4, "url": "https://mekhatria.github.io/interactive-chart/energy/data-center-power-context/", "name": "How Much Power Does AI Need?" }, { "@type": "ListItem", "position": 5, "url": "https://mekhatria.github.io/interactive-chart/energy/norwegian-power-station-locations/", "name": "Norway's Power Stations" } ] }
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "url": "https://mekhatria.github.io/interactive-chart/energy/us-energy-losses/",
+            "name": "Where America's Energy Goes"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "url": "https://mekhatria.github.io/interactive-chart/energy/china-night-lights/",
+            "name": "China After Dark"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "url": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/",
+            "name": "America's AI Power Map"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "url": "https://mekhatria.github.io/interactive-chart/energy/data-center-power-context/",
+            "name": "How Much Power Does AI Need?"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "url": "https://mekhatria.github.io/interactive-chart/energy/norwegian-power-station-locations/",
+            "name": "Norway's Power Stations"
+          }
+        ]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mekhatria.github.io/interactive-chart/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Energy",
+            "item": "https://mekhatria.github.io/interactive-chart/energy/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mekhatria.github.io/interactive-chart/#author",
+      "name": "Mustapha Mekhatria",
+      "jobTitle": "Project Manager",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Highsoft AS",
+        "url": "https://www.highcharts.com"
+      },
+      "url": "https://www.linkedin.com/in/mustaphamekhatria/",
+      "image": "https://mekhatria.github.io/interactive-chart/assets/mustapha-mekhatria.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/mustaphamekhatria/",
+        "https://github.com/mekhatria"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mekhatria.github.io/interactive-chart/#website",
+      "name": "Interactive Charts by Mustapha Mekhatria",
+      "url": "https://mekhatria.github.io/interactive-chart/"
     }
   ]
 }

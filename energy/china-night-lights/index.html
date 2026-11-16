@@ -20,72 +20,115 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://mekhatria.github.io/interactive-chart/energy/china-night-lights/",
-  "url": "https://mekhatria.github.io/interactive-chart/energy/china-night-lights/",
-  "name": "China After Dark",
-  "headline": "China After Dark",
-  "description": "Animated satellite night-light map of China from 1992 to 2024: the lit share of the country grows from 2.3% to 21.9%, with major and newly lit cities labelled.",
-  "inLanguage": "en",
-  "image": "https://mekhatria.github.io/interactive-chart/thumbs/china-night-lights.jpg",
-  "datePublished": "2026-11-14",
-  "dateModified": "2026-11-15",
-  "author": {
-    "@type": "Person",
-    "name": "Mustapha Mekhatria",
-    "jobTitle": "Project Manager",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Highsoft AS",
-      "url": "https://www.highcharts.com"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/mustaphamekhatria/",
-      "https://github.com/mekhatria"
-    ]
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Energy, Charted",
-    "url": "https://mekhatria.github.io/interactive-chart/energy/"
-  },
-  "keywords": "night lights, satellite, China, electrification, DMSP, VIIRS",
-  "citation": [
+  "@graph": [
     {
-      "@type": "CreativeWork",
-      "name": "Harmonization of DMSP and VIIRS nighttime light data from 1992-2024 at the global scale",
-      "publisher": "Li, Zhou, Zhao & Zhao (figshare v10)",
-      "url": "https://doi.org/10.6084/m9.figshare.9828827.v10"
-    },
-    {
-      "@type": "CreativeWork",
-      "name": "Natural Earth",
-      "publisher": "Natural Earth",
-      "url": "https://www.naturalearthdata.com/"
-    }
-  ],
-  "mainEntity": {
-    "@type": "Dataset",
-    "name": "China After Dark (data)",
-    "description": "Animated satellite night-light map of China from 1992 to 2024: the lit share of the country grows from 2.3% to 21.9%, with major and newly lit cities labelled.",
-    "isBasedOn": [
-      "https://doi.org/10.6084/m9.figshare.9828827.v10",
-      "https://www.naturalearthdata.com/"
-    ],
-    "creator": [
-      {
-        "@type": "Organization",
-        "name": "Li, Zhou, Zhao & Zhao (figshare v10)"
+      "@type": "WebPage",
+      "@id": "https://mekhatria.github.io/interactive-chart/energy/china-night-lights/",
+      "url": "https://mekhatria.github.io/interactive-chart/energy/china-night-lights/",
+      "name": "China After Dark",
+      "headline": "China After Dark",
+      "description": "Animated satellite night-light map of China from 1992 to 2024: the lit share of the country grows from 2.3% to 21.9%, with major and newly lit cities labelled.",
+      "inLanguage": "en",
+      "image": "https://mekhatria.github.io/interactive-chart/thumbs/china-night-lights.jpg",
+      "datePublished": "2026-11-14",
+      "dateModified": "2026-11-16",
+      "author": {
+        "@id": "https://mekhatria.github.io/interactive-chart/#author"
       },
-      {
-        "@type": "Organization",
-        "name": "Natural Earth"
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "@id": "https://mekhatria.github.io/interactive-chart/energy/",
+        "name": "Energy",
+        "url": "https://mekhatria.github.io/interactive-chart/energy/",
+        "isPartOf": {
+          "@id": "https://mekhatria.github.io/interactive-chart/#website"
+        }
+      },
+      "keywords": "night lights, satellite, China, electrification, DMSP, VIIRS",
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "name": "Harmonization of DMSP and VIIRS nighttime light data from 1992-2024 at the global scale",
+          "publisher": "Li, Zhou, Zhao & Zhao (figshare v10)",
+          "url": "https://doi.org/10.6084/m9.figshare.9828827.v10"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Natural Earth",
+          "publisher": "Natural Earth",
+          "url": "https://www.naturalearthdata.com/"
+        }
+      ],
+      "mainEntity": {
+        "@type": "Dataset",
+        "name": "China After Dark (data)",
+        "description": "Animated satellite night-light map of China from 1992 to 2024: the lit share of the country grows from 2.3% to 21.9%, with major and newly lit cities labelled.",
+        "isBasedOn": [
+          "https://doi.org/10.6084/m9.figshare.9828827.v10",
+          "https://www.naturalearthdata.com/"
+        ],
+        "creator": [
+          {
+            "@type": "Organization",
+            "name": "Li, Zhou, Zhao & Zhao (figshare v10)"
+          },
+          {
+            "@type": "Organization",
+            "name": "Natural Earth"
+          }
+        ],
+        "spatialCoverage": "China",
+        "temporalCoverage": "1992/2024",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mekhatria.github.io/interactive-chart/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Energy",
+            "item": "https://mekhatria.github.io/interactive-chart/energy/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "China After Dark",
+            "item": "https://mekhatria.github.io/interactive-chart/energy/china-night-lights/"
+          }
+        ]
       }
-    ],
-    "spatialCoverage": "China",
-    "temporalCoverage": "1992/2024",
-    "license": "https://creativecommons.org/licenses/by/4.0/"
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mekhatria.github.io/interactive-chart/#author",
+      "name": "Mustapha Mekhatria",
+      "jobTitle": "Project Manager",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Highsoft AS",
+        "url": "https://www.highcharts.com"
+      },
+      "url": "https://www.linkedin.com/in/mustaphamekhatria/",
+      "image": "https://mekhatria.github.io/interactive-chart/assets/mustapha-mekhatria.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/mustaphamekhatria/",
+        "https://github.com/mekhatria"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mekhatria.github.io/interactive-chart/#website",
+      "name": "Interactive Charts by Mustapha Mekhatria",
+      "url": "https://mekhatria.github.io/interactive-chart/"
+    }
+  ]
 }
 </script>
 <title>China After Dark</title>

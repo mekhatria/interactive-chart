@@ -20,61 +20,104 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/",
-  "url": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/",
-  "name": "America's AI Power Map",
-  "headline": "America's AI Power Map",
-  "description": "Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.",
-  "inLanguage": "en",
-  "image": "https://mekhatria.github.io/interactive-chart/thumbs/us-ai-data-centers-map.jpg",
-  "datePublished": "2026-11-13",
-  "dateModified": "2026-11-15",
-  "author": {
-    "@type": "Person",
-    "name": "Mustapha Mekhatria",
-    "jobTitle": "Project Manager",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Highsoft AS",
-      "url": "https://www.highcharts.com"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/mustaphamekhatria/",
-      "https://github.com/mekhatria"
-    ]
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Energy, Charted",
-    "url": "https://mekhatria.github.io/interactive-chart/energy/"
-  },
-  "keywords": "AI data centers, electricity demand, United States, map, Epoch AI",
-  "citation": [
+  "@graph": [
     {
-      "@type": "CreativeWork",
-      "name": "AI data centers",
-      "publisher": "Epoch AI",
-      "url": "https://epoch.ai/data/ai-data-centers"
-    }
-  ],
-  "mainEntity": {
-    "@type": "Dataset",
-    "name": "America's AI Power Map (data)",
-    "description": "Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.",
-    "isBasedOn": [
-      "https://epoch.ai/data/ai-data-centers"
-    ],
-    "creator": [
-      {
-        "@type": "Organization",
-        "name": "Epoch AI"
+      "@type": "WebPage",
+      "@id": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/",
+      "url": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/",
+      "name": "America's AI Power Map",
+      "headline": "America's AI Power Map",
+      "description": "Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.",
+      "inLanguage": "en",
+      "image": "https://mekhatria.github.io/interactive-chart/thumbs/us-ai-data-centers-map.jpg",
+      "datePublished": "2026-11-13",
+      "dateModified": "2026-11-16",
+      "author": {
+        "@id": "https://mekhatria.github.io/interactive-chart/#author"
+      },
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "@id": "https://mekhatria.github.io/interactive-chart/energy/",
+        "name": "Energy",
+        "url": "https://mekhatria.github.io/interactive-chart/energy/",
+        "isPartOf": {
+          "@id": "https://mekhatria.github.io/interactive-chart/#website"
+        }
+      },
+      "keywords": "AI data centers, electricity demand, United States, map, Epoch AI",
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "name": "AI data centers",
+          "publisher": "Epoch AI",
+          "url": "https://epoch.ai/data/ai-data-centers"
+        }
+      ],
+      "mainEntity": {
+        "@type": "Dataset",
+        "name": "America's AI Power Map (data)",
+        "description": "Animated map of 77 US AI data centers, online and planned, 2023 to 2029: facility power grows from almost nothing to more than 40 GW. Data: Epoch AI.",
+        "isBasedOn": [
+          "https://epoch.ai/data/ai-data-centers"
+        ],
+        "creator": [
+          {
+            "@type": "Organization",
+            "name": "Epoch AI"
+          }
+        ],
+        "spatialCoverage": "United States",
+        "temporalCoverage": "2023/2029",
+        "license": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mekhatria.github.io/interactive-chart/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Energy",
+            "item": "https://mekhatria.github.io/interactive-chart/energy/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "America's AI Power Map",
+            "item": "https://mekhatria.github.io/interactive-chart/energy/us-ai-data-centers-map/"
+          }
+        ]
       }
-    ],
-    "spatialCoverage": "United States",
-    "temporalCoverage": "2023/2029",
-    "license": "https://creativecommons.org/licenses/by/4.0/"
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mekhatria.github.io/interactive-chart/#author",
+      "name": "Mustapha Mekhatria",
+      "jobTitle": "Project Manager",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Highsoft AS",
+        "url": "https://www.highcharts.com"
+      },
+      "url": "https://www.linkedin.com/in/mustaphamekhatria/",
+      "image": "https://mekhatria.github.io/interactive-chart/assets/mustapha-mekhatria.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/mustaphamekhatria/",
+        "https://github.com/mekhatria"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mekhatria.github.io/interactive-chart/#website",
+      "name": "Interactive Charts by Mustapha Mekhatria",
+      "url": "https://mekhatria.github.io/interactive-chart/"
+    }
+  ]
 }
 </script>
 <title>America's AI Power Map</title>

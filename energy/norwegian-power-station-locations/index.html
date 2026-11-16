@@ -20,59 +20,102 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://mekhatria.github.io/interactive-chart/energy/norwegian-power-station-locations/",
-  "url": "https://mekhatria.github.io/interactive-chart/energy/norwegian-power-station-locations/",
-  "name": "Norway's Power Stations",
-  "headline": "Norway's Power Stations",
-  "description": "Map of every Norwegian power station with a known location, sized by installed capacity: 39.2 GW in total, 85% of it hydropower.",
-  "inLanguage": "en",
-  "image": "https://mekhatria.github.io/interactive-chart/thumbs/norwegian-power-station-locations.jpg",
-  "datePublished": "2026-11-13",
-  "dateModified": "2026-11-15",
-  "author": {
-    "@type": "Person",
-    "name": "Mustapha Mekhatria",
-    "jobTitle": "Project Manager",
-    "worksFor": {
-      "@type": "Organization",
-      "name": "Highsoft AS",
-      "url": "https://www.highcharts.com"
-    },
-    "sameAs": [
-      "https://www.linkedin.com/in/mustaphamekhatria/",
-      "https://github.com/mekhatria"
-    ]
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "Energy, Charted",
-    "url": "https://mekhatria.github.io/interactive-chart/energy/"
-  },
-  "keywords": "Norway, power stations, hydropower, map, energy",
-  "citation": [
+  "@graph": [
     {
-      "@type": "CreativeWork",
-      "name": "powerplantmatching",
-      "publisher": "PyPSA",
-      "url": "https://github.com/PyPSA/powerplantmatching"
-    }
-  ],
-  "mainEntity": {
-    "@type": "Dataset",
-    "name": "Norway's Power Stations (data)",
-    "description": "Map of every Norwegian power station with a known location, sized by installed capacity: 39.2 GW in total, 85% of it hydropower.",
-    "isBasedOn": [
-      "https://github.com/PyPSA/powerplantmatching"
-    ],
-    "creator": [
-      {
-        "@type": "Organization",
-        "name": "PyPSA"
+      "@type": "WebPage",
+      "@id": "https://mekhatria.github.io/interactive-chart/energy/norwegian-power-station-locations/",
+      "url": "https://mekhatria.github.io/interactive-chart/energy/norwegian-power-station-locations/",
+      "name": "Norway's Power Stations",
+      "headline": "Norway's Power Stations",
+      "description": "Map of every Norwegian power station with a known location, sized by installed capacity: 39.2 GW in total, 85% of it hydropower.",
+      "inLanguage": "en",
+      "image": "https://mekhatria.github.io/interactive-chart/thumbs/norwegian-power-station-locations.jpg",
+      "datePublished": "2026-11-13",
+      "dateModified": "2026-11-16",
+      "author": {
+        "@id": "https://mekhatria.github.io/interactive-chart/#author"
+      },
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "@id": "https://mekhatria.github.io/interactive-chart/energy/",
+        "name": "Energy",
+        "url": "https://mekhatria.github.io/interactive-chart/energy/",
+        "isPartOf": {
+          "@id": "https://mekhatria.github.io/interactive-chart/#website"
+        }
+      },
+      "keywords": "Norway, power stations, hydropower, map, energy",
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "name": "powerplantmatching",
+          "publisher": "PyPSA",
+          "url": "https://github.com/PyPSA/powerplantmatching"
+        }
+      ],
+      "mainEntity": {
+        "@type": "Dataset",
+        "name": "Norway's Power Stations (data)",
+        "description": "Map of every Norwegian power station with a known location, sized by installed capacity: 39.2 GW in total, 85% of it hydropower.",
+        "isBasedOn": [
+          "https://github.com/PyPSA/powerplantmatching"
+        ],
+        "creator": [
+          {
+            "@type": "Organization",
+            "name": "PyPSA"
+          }
+        ],
+        "spatialCoverage": "Norway"
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mekhatria.github.io/interactive-chart/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Energy",
+            "item": "https://mekhatria.github.io/interactive-chart/energy/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Norway's Power Stations",
+            "item": "https://mekhatria.github.io/interactive-chart/energy/norwegian-power-station-locations/"
+          }
+        ]
       }
-    ],
-    "spatialCoverage": "Norway"
-  }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mekhatria.github.io/interactive-chart/#author",
+      "name": "Mustapha Mekhatria",
+      "jobTitle": "Project Manager",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Highsoft AS",
+        "url": "https://www.highcharts.com"
+      },
+      "url": "https://www.linkedin.com/in/mustaphamekhatria/",
+      "image": "https://mekhatria.github.io/interactive-chart/assets/mustapha-mekhatria.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/mustaphamekhatria/",
+        "https://github.com/mekhatria"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mekhatria.github.io/interactive-chart/#website",
+      "name": "Interactive Charts by Mustapha Mekhatria",
+      "url": "https://mekhatria.github.io/interactive-chart/"
+    }
+  ]
 }
 </script>
 <title>Power stations of Norway</title>
