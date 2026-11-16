@@ -71,8 +71,8 @@
     el.innerHTML = C.categories.filter(c => c.id !== exclude).map(c => {
       const list = inCat(c.id), b = built(list), thumbs = b.filter(ch => ch.thumb).slice(0, 3);
       const pics = [0, 1, 2].map(i => thumbs[i] ? `<img src="${abs(thumbs[i].thumb)}" alt="" loading="lazy">` : `<div class="ph">${i === 0 ? 'Coming soon' : ''}</div>`).join('');
-      const live = list.filter(ch => ch.status === 'live').length, draft = list.filter(ch => ch.status === 'draft').length, soon = list.filter(ch => ch.status === 'soon').length;
-      const meta = [live && `${live} live`, draft && `${draft} draft`, soon && `${soon} coming soon`].filter(Boolean).join(' · ');
+      const n = b.length, soon = list.length - n;
+      const meta = [`${n} chart${n === 1 ? '' : 's'}`, soon && `${soon} coming soon`].filter(Boolean).join(' · ');
       return `<a class="col" href="${ROOT + c.page}" style="--a:${c.accent}"><div class="mosaic">${pics}</div>
         <div class="cb"><h2>${esc(c.title)}</h2><p>${esc(c.blurb)}</p><div class="meta">${meta} →</div></div></a>`;
     }).join('');
