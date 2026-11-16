@@ -27,6 +27,16 @@ window.CATALOG = {
       desc: 'Compute, storage, networking, power and cooling. Hover any part to see what it does and how it connects.'
     },
     {
+      id: 'ak-12', title: 'Anatomy of the AK-12', cats: ['anatomy'], isNew: true,
+      tags: ['3D', 'Exploded view'], thumb: '/thumbs/ak-12.jpg', href: '/anatomy/ak-12/',
+      desc: 'A 3D model you can turn and take apart. Hover any part, from the muzzle brake to the folding stock, to see what it does.'
+    },
+    {
+      id: 'hk416-a8', title: 'Anatomy of the HK416 A8', cats: ['anatomy'], isNew: true,
+      tags: ['3D', 'Exploded view'], thumb: '/thumbs/hk416-a8.jpg', href: '/anatomy/hk416-a8/',
+      desc: 'A 3D model you can turn and take apart. Hover any part, from the flash hider to the buffer tube, to see what it does.'
+    },
+    {
       id: 'us-energy-losses', title: "Where America's Energy Goes", cats: ['energy'],
       tags: ['Sankey', 'Animated'], thumb: '/thumbs/us-energy-losses.jpg', href: '/energy/us-energy-losses/',
       desc: 'All US energy in 2024, from source to use. Follow the particles and a short guided tour: two-thirds of it is lost as heat.'
