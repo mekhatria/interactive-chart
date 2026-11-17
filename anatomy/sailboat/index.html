@@ -166,9 +166,14 @@ footer a{color:var(--ink)}
 <div class="wrap">
   <nav class="home-nav" aria-label="Site"><a href="https://mekhatria.github.io/interactive-chart/anatomy/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>All anatomy charts</span></a></nav>
   <h1>Anatomy of a Sailboat</h1>
-  <p class="sub">The parts every sailor should know. Drag to turn the boat, hover any part to see what it is.</p>
+  <p class="sub">The parts every sailor should know. Drag to turn the boat, hover any part to see what it is, or switch to Exploded to pull the parts apart.</p>
 
   <div class="toolbar">
+    <span class="lbl">View</span>
+    <div class="seg" role="group" aria-label="View">
+      <button id="vAsm" aria-pressed="true">Assembled</button>
+      <button id="vExp" aria-pressed="false">Exploded</button>
+    </div>
     <span class="lbl">Labels</span>
     <div class="seg" role="group" aria-label="Label mode">
       <button id="mHover" aria-pressed="true">On hover</button>
@@ -268,6 +273,15 @@ footer a{color:var(--ink)}
   // Coordinates: x = along the boat (bow at +x), y = up, z = across (port/starboard). 1 unit ≈ 1 m.
   const LIGHT = nrm([0.35, 0.85, -0.5]);
   const items = [];      // faces + line segments, depth sorted every frame
+  // exploded view: every item belongs to a group, and each group slides out along its own vector (metres)
+  const GRP = { keel: 'keel', rudder: 'rudder', mast: 'rig', spreader: 'rig', gooseneck: 'rig', shrouds: 'rig', forestay: 'rig',
+    backstay: 'rig', boom: 'boom', mainsail: 'main', jib: 'jib', jibsheet: 'jsheet', mainsheet: 'msheet', winch: 'gear',
+    lifelines: 'gear', bowPulpit: 'gear', wheel: 'wheel' };
+  const OFF = { hull: [0, 0, 0], keel: [0, -2.2, 0], rudder: [-0.7, -1.8, 0], rig: [0, 3.2, 0], boom: [0, 2.3, 0],
+    main: [-0.7, 3.6, 0], jib: [2.2, 1.8, 0.6], jsheet: [0.9, 1.1, 0.9], msheet: [0, 1.2, 0], gear: [0, 1.0, 0],
+    wheel: [-0.6, 1.6, 0], hatch: [0, 0.8, 0] };
+  let curGrp = null;
+  const grpOf = part => curGrp || GRP[part] || 'hull';
   const hits = [];       // invisible wide strokes on top, to make thin wires easy to hover
 
   function face(pts, color, part, o = {}) {
@@ -278,12 +292,12 @@ footer a{color:var(--ink)}
     const l = dot(n, LIGHT);
     const k = o.bright ? 0.9 + 0.12 * Math.abs(l) : o.two ? 0.66 + 0.42 * Math.abs(l) : 0.58 + 0.52 * Math.max(0, l) + 0.06 * Math.max(0, -l);
     const base = hex2rgb(color).map(v => v * k);
-    const it = { t: 'f', pts, part: part || null, n, two: !!o.two, base, bias: o.bias || 0, op: o.op || 1 };
+    const it = { t: 'f', pts, part: part || null, n, two: !!o.two, base, bias: o.bias || 0, op: o.op || 1, g: grpOf(part) };
     items.push(it);
     return it;
   }
   function decal(parent, pts, color, part, layer = 1) {
-    const it = { t: 'f', pts, part: part || null, parent, layer, base: hex2rgb(color) };
+    const it = { t: 'f', pts, part: part || null, parent, layer, base: hex2rgb(color), g: parent.g };
     items.push(it);
     return it;
   }
@@ -293,10 +307,10 @@ footer a{color:var(--ink)}
       const n = Math.max(1, Math.ceil(dist(a, b) / (o.seg || 1.25)));
       for (let j = 0; j < n; j++) {
         items.push({ t: 'l', pts: [lerp(a, b, j / n), lerp(a, b, (j + 1) / n)], part: part || null,
-          base: hex2rgb(color), width, cullN: o.cullN || null, bias: o.bias || 0, deco: !!o.deco });
+          base: hex2rgb(color), width, cullN: o.cullN || null, bias: o.bias || 0, deco: !!o.deco, g: grpOf(part) });
       }
     }
-    if (part && o.hit !== false) hits.push({ pts, part });
+    if (part && o.hit !== false) hits.push({ pts, part, g: grpOf(part) });
   }
   function prism(a, b, rf, n, segs, color, part, o = {}) {
     const ax = nrm(sub(b, a));
@@ -451,7 +465,9 @@ footer a{color:var(--ink)}
   });
   // companionway opening + sliding hatch
   decal(back, [[-1.81, floorY(-1.8) + 0.1, -0.33], [-1.81, floorY(-1.8) + 0.1, 0.33], [-1.79, 1.6, 0.3], [-1.79, 1.6, -0.3]], '#5b3c22', 'companionway');
+  curGrp = 'hatch';
   box(-1.75, -0.75, 1.63, 1.72, -0.4, 0.4, '#d7dbe1', 'companionway');
+  curGrp = null;
   // hatches
   box(1.45, 1.92, 1.565, 1.64, -0.33, 0.33, '#56627a', null);
   box(3.35, 3.95, deckY(3.65, 0.42), deckY(3.65, 0) + 0.1, -0.42, 0.42, '#56627a', null);
@@ -505,7 +521,9 @@ footer a{color:var(--ink)}
   }
   const mainS = sail([0.86, 2.88, 0], [0.86, 14.3, 0], [-4.35, 2.99, 0], 0.22, 0.12, 'mainsail');
   box(0.8, 1.0, 2.6, 2.84, -0.11, 0.11, SPAR_D, 'gooseneck');
-  line([[0.97, 1.8, 0], [-0.3, 2.66, 0]], DARK, 2.6, null, { hit: false, deco: true });
+  curGrp = 'boom';
+  line([[0.97, 1.8, 0], [-0.3, 2.66, 0]], DARK, 2.6, null, { hit: false, deco: true });   // vang
+  curGrp = null;
   // spreaders
   line([[0.85, 6.5, -0.95], [MX, 6.5, 0], [0.85, 6.5, 0.95]], SPAR, 4, 'spreader');
   line([[0.85, 10.5, -0.65], [MX, 10.5, 0], [0.85, 10.5, 0.65]], SPAR, 4, 'spreader');
@@ -545,7 +563,7 @@ footer a{color:var(--ink)}
     box(MSX - 0.12, MSX + 0.12, by - 0.2, by, -0.11, 0.11, '#0b6e45', 'mainsheet');                    // upper block
     [-0.075, -0.025, 0.025, 0.075].forEach(dz => line([[MSX, ty + 0.2, dz], [MSX, by - 0.18, dz]], ROPE, 1.8, 'mainsheet', { hit: false }));
     line([[MSX, ty + 0.12, 0.1], [MSX + 0.2, ty + 0.05, 0.6], [-2.5, deckY(-2.5, 1.32) + 0.2, 1.32]], ROPE, 1.8, 'mainsheet', { hit: false }); // tail to the winch
-    hits.push({ pts: [[MSX, ty, 0], [MSX, by, 0]], part: 'mainsheet' });
+    hits.push({ pts: [[MSX, ty, 0], [MSX, by, 0]], part: 'mainsheet', g: 'msheet' });
   }
 
   /* ---------------- Deck gear ---------------- */
@@ -576,9 +594,11 @@ footer a{color:var(--ink)}
       line(rail, GEAR, 1.4, 'lifelines');
       line(rail.map(p => [p[0], p[1] - 0.32, p[2]]), GEAR, 1.4, 'lifelines');
       // stern pulpit
+      curGrp = 'gear';
       const st = [[-5.5, sheer(-5.5) + 0.72, s * 0.55], [-5.5, sheer(-5.5) + 0.72, s * 1.2], sp(-5.1, s, 0.72)];
       line(st, GEAR, 2.6, null, { hit: false, deco: true });
       [st[0], st[1], st[2]].forEach(p => line([p, [p[0], sheer(p[0]), p[2]]], GEAR, 2.2, null, { hit: false, deco: true }));
+      curGrp = null;
     });
     // bow pulpit loop
     const bp = (x, s) => [x, sheer(x) + 0.74, s * Math.max(0.16, beam(x) - 0.12)];
@@ -610,11 +630,18 @@ footer a{color:var(--ink)}
   const DCAM = 46;
   const VIEW0 = { yaw: -0.5, pitch: 0.2 };
   let yaw = VIEW0.yaw, pitch = VIEW0.pitch;
-  let W = 1000, H = 780, F = 1000, CX = 500, CY = 390;
+  let W = 1000, H = 780, F = 1000, F0 = 1000, CX = 500, CY = 390;
   let frame = 0, cyw, syw, cpt, spt;
-  function proj(p) {
-    if (p._f === frame) return p._s;
-    const x = p[0] - CENTER[0], y = p[1] - CENTER[1], z = p[2] - CENTER[2];
+  const CY0 = CENTER[1], Z3 = [0, 0, 0], OFFV = {};
+  Object.keys(OFF).forEach(k => { OFFV[k] = [0, 0, 0]; });
+  let ex = 0, exT = 0;                  // explode amount (0 = assembled, 1 = exploded) and its target
+  const ease = t => t * t * (3 - 2 * t);
+  const anchorOf = id => proj(ANCHOR[id], GRP[id] || 'hull');
+  function proj(p, g) {
+    const o = g ? OFFV[g] : Z3;
+    if (p._f === frame && p._o === o) return p._s;
+    p._o = o;
+    const x = p[0] + o[0] - CENTER[0], y = p[1] + o[1] - CENTER[1], z = p[2] + o[2] - CENTER[2];
     const X = x * cyw - z * syw, Z1 = x * syw + z * cyw;
     const Y2 = y * cpt + Z1 * spt, Z2 = -y * spt + Z1 * cpt;
     const d = Z2 + DCAM;
@@ -702,7 +729,7 @@ footer a{color:var(--ink)}
     W = chart.chartWidth; H = chart.chartHeight;
     const side = W >= 820 ? 170 : 12;
     const upx = Math.min((H - 20) / 17.2, (W - 2 * side) / 13.5);
-    F = upx * DCAM; CX = W / 2; CY = H / 2 + 0.035 * H;
+    F0 = upx * DCAM; CX = W / 2; CY = H / 2 + 0.035 * H;
     const fs = W < 600 ? '12px' : '15px';
     Object.values(labels).forEach(l => l.text.css({ fontSize: fs }));
     dirty = true;
@@ -711,6 +738,10 @@ footer a{color:var(--ink)}
   const f1 = v => Math.round(v * 10) / 10;
   function render() {
     frame++;
+    const e = ease(ex);
+    for (const k in OFF) for (let i = 0; i < 3; i++) OFFV[k][i] = OFF[k][i] * e;
+    F = F0 * (1 - 0.24 * e);              // zoom out so the spread-out parts still fit
+    CENTER[1] = CY0 + 0.6 * e;
     cyw = Math.cos(yaw); syw = Math.sin(yaw); cpt = Math.cos(pitch); spt = Math.sin(pitch);
     const vis = [];
     let minX = 1e9, maxX = -1e9;
@@ -721,14 +752,14 @@ footer a{color:var(--ink)}
       } else {
         const nn = it.t === 'f' ? (it.two ? null : it.n) : it.cullN;
         if (nn) {
-          const q = proj(it.pts[0]), r = rotN(nn);
+          const q = proj(it.pts[0], it.g), r = rotN(nn);
           it.vis = r[0] * q[3] + r[1] * q[4] + r[2] * (q[2] + DCAM) < 0;
         } else it.vis = true;
       }
       if (!it.vis) { if (it.shown) { it.el.style.display = 'none'; it.shown = false; } continue; }
       let dsum = 0, d = '';
       for (let i = 0; i < it.pts.length; i++) {
-        const q = proj(it.pts[i]);
+        const q = proj(it.pts[i], it.g);
         dsum += q[2];
         d += (i ? 'L' : 'M') + f1(q[0]) + ' ' + f1(q[1]);
         if (q[0] < minX) minX = q[0];
@@ -744,14 +775,14 @@ footer a{color:var(--ink)}
     const g = gModel.element;
     for (const it of vis) g.appendChild(it.el);
 
-    for (const h of hits) h.el.setAttribute('d', h.pts.map((p, i) => { const q = proj(p); return (i ? 'L' : 'M') + f1(q[0]) + ' ' + f1(q[1]); }).join(''));
+    for (const h of hits) h.el.setAttribute('d', h.pts.map((p, i) => { const q = proj(p, h.g); return (i ? 'L' : 'M') + f1(q[0]) + ' ' + f1(q[1]); }).join(''));
 
     layoutLabels(minX, maxX);
   }
 
   function layoutLabels(minX, maxX) {
     const A = {};
-    PARTS.forEach(([id]) => { const q = proj(ANCHOR[id]); A[id] = q; });
+    PARTS.forEach(([id]) => { A[id] = anchorOf(id); });
     // dots
     PARTS.forEach(([id]) => {
       const l = labels[id], q = A[id], on = hl && hl.has(id);
@@ -825,7 +856,7 @@ footer a{color:var(--ink)}
     tip.classList.add('on');
     let x, y;
     if (pos) { x = pos[0]; y = pos[1]; }
-    else { frame++; const q = proj(ANCHOR[id]); x = q[0]; y = q[1]; }
+    else { frame++; const q = anchorOf(id); x = q[0]; y = q[1]; }
     const tw = tip.offsetWidth, th = tip.offsetHeight, sw = stage.clientWidth, shh = stage.clientHeight;
     let tx = x + 18, ty = y - th - 12;
     if (tx + tw > sw - 8) tx = x - tw - 18;
@@ -874,6 +905,16 @@ footer a{color:var(--ink)}
     document.getElementById('mAll').setAttribute('aria-pressed', String(m === 'all'));
     dirty = true;
   }
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setView(v) {
+    exT = v === 'exp' ? 1 : 0;
+    if (reduceMotion) ex = exT;
+    document.getElementById('vAsm').setAttribute('aria-pressed', String(!exT));
+    document.getElementById('vExp').setAttribute('aria-pressed', String(!!exT));
+    dirty = true;
+  }
+  document.getElementById('vAsm').addEventListener('click', () => setView('asm'));
+  document.getElementById('vExp').addEventListener('click', () => setView('exp'));
   function setAuto(on) { auto = on; document.getElementById('bAuto').setAttribute('aria-pressed', String(on)); }
   document.getElementById('mHover').addEventListener('click', () => setMode('hover'));
   document.getElementById('mAll').addEventListener('click', () => setMode('all'));
@@ -922,6 +963,7 @@ footer a{color:var(--ink)}
   function tick(t) {
     const dt = Math.min(0.05, (t - last) / 1000); last = t;
     if (auto && !paused && !dragging) { yaw += dt * 0.22; dirty = true; }
+    if (ex !== exT) { ex = exT > ex ? Math.min(exT, ex + dt / 0.8) : Math.max(exT, ex - dt / 0.8); dirty = true; }
     if (dirty && chart) { dirty = false; render(); }
     requestAnimationFrame(tick);
   }
@@ -937,7 +979,7 @@ footer a{color:var(--ink)}
     legend: { enabled: false },
     xAxis: { visible: false }, yAxis: { visible: false },
     credits: { enabled: true, text: 'Highcharts.com', href: 'https://www.highcharts.com', position: { y: -8 } },
-    accessibility: { description: 'A rotating 3D model of a sailing yacht with 20 labelled parts. The same parts and their descriptions are listed below the model.' },
+    accessibility: { description: 'A rotating 3D model of a sailing yacht with 22 labelled parts and an exploded view that pulls the rig, sails, deck gear, keel and rudder apart. The same parts and their descriptions are listed below the model.' },
     series: []
   });
 })();
