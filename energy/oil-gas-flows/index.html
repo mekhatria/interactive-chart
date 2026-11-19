@@ -569,7 +569,7 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
       series.push({ type: 'mapline', id: c + '-pf-' + p.id, com: c, layer: 'land', className: p.dead ? '' : 'flow-pipe', data: data.map(x => ({ ...x })), lineWidth: pipeW(p.cap), color: p.dead ? '#8D98A8' : '#F39A4E', dashStyle: p.dead ? 'ShortDot' : 'Solid', enableMouseTracking: false, states: { inactive: { opacity: 1 } } });
     });
     series.push({
-      type: 'mapbubble', id: c + '-choke', com: c, layer: 'choke', name: 'Chokepoints', kind: 'choke', visible: false, minSize: 10, maxSize: '9%', zMin: 0,
+      type: 'mapbubble', id: c + '-choke', com: c, layer: 'choke', name: 'Chokepoints', kind: 'choke', minSize: 10, maxSize: '9%', zMin: 0,
       data: d.choke.map(k => ({ id: k.id, lon: k.lon, lat: k.lat, z: Math.max(k.v, 0.05), name: k.name, c: k })),
       color: 'rgba(242,182,48,0.32)', marker: { lineColor: '#F2B630', lineWidth: 1.6 }, states: { inactive: { opacity: 1 }, hover: { brightness: 0.2 } },
       dataLabels: { enabled: true, allowOverlap: true, crop: false, overflow: 'allow', y: -2,
@@ -607,38 +607,53 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
     xAxis: { categories: [], lineColor: '#223044', tickLength: 0, labels: { style: { color: '#B9C2CF', fontSize: '12px' } } },
     yAxis: { title: { text: '', style: { color: '#8D98A8' } }, gridLineColor: 'rgba(141,152,168,0.14)', labels: { style: { color: '#8D98A8' } } },
     tooltip: { backgroundColor: '#121B28', borderColor: '#2f415c', style: { color: '#EEF2F7' },
-      formatter() { const c = DS[com].choke[this.point.index]; return `<b>${c.name}</b><br>${c.lt ? 'under ' : ''}${fmt(c.v)} ${DS[com].unit}${c.notChoke ? '<br><span style="color:#8D98A8">not a chokepoint</span>' : ''}`; } },
+      formatter() { const c = this.point.options.c; if (!c) return false; return `<b>${c.name}</b><br>${c.lt ? 'under ' : ''}${fmt(c.v)} ${this.point.options.u}${c.notChoke ? '<br><span style="color:#8D98A8">not a chokepoint</span>' : ''}`; } },
     plotOptions: { bar: { borderRadius: 4, borderWidth: 0, pointPadding: 0.1, groupPadding: 0.05, cursor: 'pointer',
-      dataLabels: { enabled: true, style: { color: '#B9C2CF', textOutline: 'none', fontWeight: '500' }, formatter() { const c = DS[com].choke[this.point.index]; return (c.lt ? '< ' : '') + fmt(c.v); } },
+      dataLabels: { enabled: true, style: { color: '#B9C2CF', textOutline: 'none', fontWeight: '500' }, formatter() { const c = this.point.options.c; return c ? (c.lt ? '< ' : '') + fmt(c.v) : ''; } },
       point: { events: { mouseOver() { hiChoke(this.index, true); }, mouseOut() { hiChoke(this.index, false); } } } } },
     series: [{ name: 'Flow', data: [] }]
   });
   function hiChoke(i, on) {
-    const s = chart.get(com + '-choke'); if (!s || !s.visible) return;
+    const s = chart.get(com + '-choke'); if (!s || !s._op) return;
     const p = s.points[i]; if (!p) return;
     if (on) { p.setState('hover'); chart.tooltip.refresh(p); } else { p.setState(''); chart.tooltip.hide(0); }
   }
 
+  /* ---------- smooth transitions ---------- */
+  const DUR = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 550;
+  function fade(s, op) {
+    if (s._op === op) return;
+    const first = s._op === undefined; s._op = op;
+    [s.group, s.markerGroup, s.dataLabelsGroup].forEach(g => {
+      if (!g) return;
+      const el = g.element;                               // CSS transition: smooth and cheap, independent of redraws
+      el.style.transition = first || !DUR ? 'none' : `opacity ${DUR}ms ease`;
+      el.style.opacity = op;
+      el.style.pointerEvents = op < 0.5 ? 'none' : '';
+    });
+  }
+  function softSwap(el) { if (DUR && el.animate) el.animate([{ opacity: 0.15, transform: 'translateY(3px)' }, { opacity: 1, transform: 'none' }], { duration: DUR * 0.7, easing: 'ease-out' }); }
+
   /* ---------- apply ---------- */
   function apply(c, m) {
+    const d = DS[c], V = d.view[m], changed = c !== com || m !== mode;
     com = c; mode = m;
-    const d = DS[c], V = d.view[m];
     V.stats.forEach(([k, v, u, n], i) => { $('k' + (i + 1)).textContent = k; $('v' + (i + 1)).innerHTML = v + (u ? `<small>${u}</small>` : ''); $('n' + (i + 1)).textContent = n; });
     $('storyTitle').textContent = V.title; $('story').innerHTML = V.story; $('story').scrollTop = 0;
+    if (changed) { softSwap(document.querySelector('.stats')); softSwap($('story')); }
+    // cross-fade every layer to its new opacity instead of switching it on/off
     chart.series.forEach(s => {
       const o = s.options; if (!o.com) return;
-      if (o.layer === 'choke') { const want = o.com === c && chokeOn[c] && m !== 'land'; if (s.visible !== want) s.setVisible(want, false); return; }
-      const mine = o.com === c, show = mine && (m === 'all' || (m === 'sea' ? o.layer === 'sea' : o.layer === 'land'));
-      const want = mine;
-      if (s.visible !== want) s.setVisible(want, false);
-      if (want) s.update({ opacity: show ? 1 : 0.08 }, false);
+      let op;
+      if (o.layer === 'choke') op = o.com === c && chokeOn[c] && m !== 'land' ? 1 : 0;
+      else { const mine = o.com === c; op = !mine ? 0 : (m === 'all' || (m === 'sea' ? o.layer === 'sea' : o.layer === 'land')) ? 1 : 0.08; }
+      fade(s, op);
     });
-    chart.redraw(false);
     $('barTitle').textContent = d.barTitle;
     bars.xAxis[0].setCategories(d.choke.map(k => k.name.replace('Strait of ', '')), false);
     bars.yAxis[0].update({ max: d.barMax, title: { text: d.unit } }, false);
-    bars.series[0].setData(d.choke.map(k => ({ y: k.v, color: k.notChoke ? 'rgba(242,182,48,0.45)' : '#F2B630' })), false);
-    bars.redraw(false);
+    bars.series[0].setData(d.choke.map(k => ({ c: k, u: d.unit, y: k.v, color: k.notChoke ? 'rgba(242,182,48,0.45)' : '#F2B630' })), false);
+    bars.redraw(DUR ? { duration: DUR } : false);
     document.querySelectorAll('.modes button').forEach(b => {
       const sel = b.dataset.com === c && b.dataset.m === m;
       b.setAttribute('aria-checked', String(sel)); b.tabIndex = sel ? 0 : -1; if (sel) b.classList.remove('new');
