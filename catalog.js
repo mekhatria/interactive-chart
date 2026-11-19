@@ -12,10 +12,19 @@ window.CATALOG = {
     {
       id: 'anatomy', name: 'Anatomy', title: 'Anatomy', accent: '#F2A65A', page: '/anatomy/',
       blurb: 'Take things apart. Interactive diagrams you can turn and explore, part by part.'
+    },
+    {
+      id: 'history', name: 'History', title: 'History', accent: '#3FBFAD', page: '/history/',
+      blurb: 'The past, mapped. Follow famous journeys and events across the world, year by year.'
     }
   ],
 
   charts: [
+    {
+      id: 'great-explorers', title: 'The Journeys of 10 Great Explorers', cats: ['history'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/great-explorers.jpg', href: '/history/great-explorers/',
+      desc: 'Every major journey of ten famous explorers, from Leif Erikson to Amundsen. Press play to watch the routes unfold across 900 years.'
+    },
     {
       id: 'sailboat', title: 'Anatomy of a Sailboat', cats: ['anatomy'], isNew: true,
       tags: ['3D', 'Interactive'], thumb: '/thumbs/sailboat.jpg', href: '/anatomy/sailboat/',
