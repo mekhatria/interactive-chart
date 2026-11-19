@@ -21,6 +21,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'oil-gas-flows', title: 'How Oil and Gas Move Around the World', cats: ['energy'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/oil-gas-flows.jpg', href: '/energy/oil-gas-flows/',
+      desc: 'Where the world\'s oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca and Suez, and the big pipelines across land.'
+    },
+    {
       id: 'magnetic-shield', title: "Earth's Magnetic Shield vs. Solar Storms", cats: ['energy'], isNew: true,
       tags: ['Diagram', 'Animated'], thumb: '/thumbs/magnetic-shield.jpg', href: '/energy/magnetic-shield/',
       desc: 'How Earth\'s magnetic field shields us from the solar wind, and what a solar flare and a CME do to it: radio blackouts, squeezed shield, auroras and power grids.'
