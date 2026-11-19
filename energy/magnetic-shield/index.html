@@ -182,13 +182,35 @@ h1{margin:0;font-stretch:62%;font-weight:700;font-size:clamp(34px,5vw,56px);line
   text-shadow:0 0 2px rgba(91,149,250,.9),0 0 16px rgba(91,149,250,.6)}
 .sub{margin:8px 0 0;color:var(--soft);font-size:16px;max-width:70ch}
 
-.modes{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0}
-.modes button{font:inherit;font-size:15px;font-weight:650;color:var(--soft);background:var(--panel);border:1px solid var(--line);
-  border-radius:999px;padding:9px 16px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.modes button .d{width:10px;height:10px;border-radius:50%}
-.modes button:hover{color:#fff;border-color:#3A5376}
-.modes button[aria-pressed="true"]{color:#fff;background:#16233a;border-color:var(--blue);box-shadow:inset 0 -2px 0 var(--blue)}
-.modes .hint{align-self:center;font-size:13px;color:var(--muted);margin-left:4px}
+.picker{margin:20px 0 0;padding:14px;border-radius:14px;background:linear-gradient(180deg,#132036,#0f1828);border:1px solid #2a3d5c}
+.picker .ask{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px 2px}
+.picker .ask b{font-size:17px;color:#fff;font-weight:700}
+.picker .ask .tap{font-size:13px;color:#cfe0ff;background:#1d2e4d;border:1px solid #2f4d7f;border-radius:999px;padding:3px 10px}
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:640px){.modes{grid-template-columns:1fr}}
+.modes button{--c:#5B95FA;font:inherit;color:#fff;background:#0E1520;border:2px solid color-mix(in srgb,var(--c) 45%,transparent);
+  border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;align-items:center;gap:12px;text-align:left;transition:transform .15s,background .15s,border-color .15s,box-shadow .15s}
+.modes button .rb{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid color-mix(in srgb,var(--c) 70%,#fff);display:grid;place-items:center}
+.modes button .rb::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--c);transform:scale(0);transition:transform .15s}
+.modes button[aria-checked="true"] .rb::after{transform:scale(1)}
+.modes button .ic{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:19px;background:color-mix(in srgb,var(--c) 22%,transparent)}
+.modes button .txt{flex:1;min-width:0}
+.modes button .t{display:block;font-size:17px;font-weight:700;line-height:1.15}
+.modes button .s{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
+.modes button .go{flex:none;font-size:12px;font-weight:700;letter-spacing:.04em;padding:4px 10px;border-radius:999px;color:#0b1220;background:var(--c);white-space:nowrap}
+.modes button[aria-checked="true"] .go{background:transparent;color:var(--c);border:1px solid var(--c)}
+.modes button:hover{transform:translateY(-2px);border-color:var(--c);background:color-mix(in srgb,var(--c) 10%,#0E1520)}
+.modes button[aria-checked="true"]{border-color:var(--c);background:color-mix(in srgb,var(--c) 20%,#0E1520);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 30%,transparent),0 8px 24px color-mix(in srgb,var(--c) 25%,transparent)}
+.modes button[aria-checked="true"] .ic{background:var(--c);color:#0b1220}
+.modes button.new{animation:nudge 2.2s ease-in-out infinite}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c) 0%,transparent)}50%{box-shadow:0 0 0 6px color-mix(in srgb,var(--c) 28%,transparent)}}
+.replay{margin:10px 0 0 auto;display:flex;justify-content:flex-end}
+.replay button{font:inherit;font-size:14px;font-weight:650;color:#fff;background:#1d2e4d;border:1px solid #2f4d7f;border-radius:999px;padding:7px 14px;cursor:pointer}
+.replay button:hover{background:#26406b}
+.replay button[hidden]{display:none}
+.modes button[aria-checked="false"]{filter:grayscale(1) brightness(.75);opacity:.45;transition:transform .15s,background .15s,border-color .15s,box-shadow .15s,filter .2s,opacity .2s}
+.modes button[aria-checked="false"]:hover,.modes button[aria-checked="false"]:focus-visible{filter:none;opacity:1}
+@media (prefers-reduced-motion:reduce){.modes button.new{animation:none}}
 button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
@@ -230,7 +252,7 @@ aside h2{margin:0;font-size:12px;font-weight:600;letter-spacing:.12em;text-trans
 
 footer{margin-top:16px;font-size:12.5px;line-height:1.6;color:var(--muted)}
 footer a{color:var(--soft)}
-.thumb{padding:0}.thumb .home-nav,.thumb .sub,.thumb .modes,.thumb .stats,.thumb aside,.thumb .legend,.thumb footer{display:none!important}
+.thumb{padding:0}.thumb .home-nav,.thumb .sub,.thumb .picker,.thumb .stats,.thumb aside,.thumb .legend,.thumb footer{display:none!important}
 .thumb .card{border:0;border-radius:0;padding:14px 16px;height:450px}.thumb h1{font-size:40px}.thumb .grid{grid-template-columns:1fr;margin-top:8px}.thumb #scene{aspect-ratio:auto;height:362px}.thumb #scene text{display:none}
 </style>
 <style>.home-nav{position:sticky;top:12px;z-index:50;max-width:1320px;margin:0 auto 14px;font:500 14px/1.4 "Archivo",system-ui,sans-serif}.home-nav a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border:0;border-radius:999px;font-weight:650;font-size:14.5px;letter-spacing:.01em;background:#2F6FEF;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 4px 14px rgba(0,0,0,.45)}.home-nav a:hover{background:#3D7BFF}.home-nav a:focus-visible{outline:2px solid #fff;outline-offset:2px}</style>
@@ -240,13 +262,16 @@ footer a{color:var(--soft)}
 <main>
   <div class="card">
     <h1>Earth's Magnetic Shield vs. Solar Storms</h1>
-    <p class="sub">Earth's magnetic field deflects the solar wind, a constant stream of particles from the Sun. Switch between a calm day, a solar flare and a coronal mass ejection to see what gets through, and hover any part to learn what it is.</p>
+    <p class="sub">Earth's magnetic field deflects the solar wind, a constant stream of particles from the Sun. Choose what the Sun is doing below to see what gets through, and hover any part to learn what it is.</p>
 
-    <div class="modes" role="group" aria-label="Space weather">
-      <button id="mCalm" aria-pressed="true"><i class="d" style="background:#5B95FA"></i>Calm solar wind</button>
-      <button id="mFlare" aria-pressed="false"><i class="d" style="background:#FFE08A"></i>Solar flare</button>
-      <button id="mCme" aria-pressed="false"><i class="d" style="background:#FF6B5B"></i>CME hits Earth</button>
-      <span class="hint">Click again to replay</span>
+    <div class="picker">
+      <div class="ask"><b>☀️ What is the Sun doing?</b><span class="tap">👆 Click a card to change the scene</span></div>
+      <div class="modes" role="radiogroup" aria-label="What is the Sun doing?">
+        <button id="mCalm" role="radio" aria-checked="true" tabindex="0" style="--c:#5B95FA"><span class="rb" aria-hidden="true"></span><span class="ic" aria-hidden="true">🌍</span><span class="txt"><span class="t">Calm solar wind</span><span class="s">A normal day</span></span><span class="go">Showing</span></button>
+        <button id="mFlare" role="radio" aria-checked="false" tabindex="-1" class="new" style="--c:#FFD86B"><span class="rb" aria-hidden="true"></span><span class="ic" aria-hidden="true">⚡</span><span class="txt"><span class="t">Solar flare</span><span class="s">A flash of light and X-rays</span></span><span class="go">Try it ›</span></button>
+        <button id="mCme" role="radio" aria-checked="false" tabindex="-1" class="new" style="--c:#FF6B5B"><span class="rb" aria-hidden="true"></span><span class="ic" aria-hidden="true">💥</span><span class="txt"><span class="t">CME hits Earth</span><span class="s">A solar storm arrives</span></span><span class="go">Try it ›</span></button>
+      </div>
+      <div class="replay"><button id="bReplay" hidden>↻ Replay</button></div>
     </div>
 
     <div class="stats" aria-live="polite">
@@ -313,6 +338,7 @@ footer a{color:var(--soft)}
     aurora: ['Aurora', 'Light made when particles guided down the field lines hit the upper atmosphere. Normally a ring around the poles; during big storms it spreads toward the equator.'],
     earth: ['Earth', 'The magnetic field comes from molten iron moving in Earth\'s outer core, about 3,000 km below the surface.'],
     flare: ['Solar flare', 'A sudden burst of light and X-rays from the Sun. It travels at the speed of light, so it reaches Earth in about 8 minutes, before any warning.'],
+    protons: ['Solar energetic particles', 'Protons blasted out by the flare at a good fraction of the speed of light. Most are turned away, but some slide down the open field lines into the polar caps, where they disrupt radio and can harm astronauts and satellites.'],
     iono: ['Sunlit ionosphere', 'X-rays from a flare charge up the upper atmosphere on the day side, which absorbs high-frequency radio signals: a radio blackout. The magnetic shield cannot stop light.'],
     cme: ['Coronal mass ejection (CME)', 'A cloud of about a billion tons of solar plasma with its own magnetic field, moving at 250 to 3,000 km/s. The fastest reach Earth in 15 to 18 hours, most take several days.'],
     xday: ['Reconnection on the day side', 'When the CME\'s magnetic field points south, opposite to Earth\'s, the two fields join here. That opens the door for solar wind energy to pour into the magnetosphere.'],
@@ -348,6 +374,7 @@ footer a{color:var(--soft)}
       title: 'A solar flare',
       story: `<p>A <b>flare</b> is a flash of light and X-rays from the Sun. It travels at the speed of light, so it reaches Earth in about <b>8 minutes</b>, with no warning.</p>
         <p>The magnetic shield <b>cannot stop light</b>. The X-rays charge up the upper atmosphere on the <b>sunlit side</b> and block high-frequency radio: a <b>radio blackout</b>, rated R1 to R5 by NOAA.</p>
+        <p>Big flares also fire <b>energetic protons</b> (white streaks). The shield turns most away, but some slide down the field lines into the <b>polar caps</b>.</p>
         <p>The shield itself barely changes. The bigger danger often comes later, if the flare launched a <b>CME</b>.</p>`,
       stats: [['~10 R⊕', 'unchanged: light passes through'], ['~400 km/s', 'unchanged'], ['Polar', 'no change'], ['R1–R5', 'radio blackout scale (not G)']]
     },
@@ -383,10 +410,21 @@ footer a{color:var(--soft)}
   const P = (x, y) => [OX + (x - X0) * S, OY - y * S];
   const path = pts => pts.length ? 'M' + pts.map(p => { const q = P(p[0], p[1]); return f1(q[0]) + ' ' + f1(q[1]); }).join('L') : 'M0 0';
   // Shue-type boundary: r = r0 (2 / (1 + cos θ))^a, θ measured from the Sun direction
-  function boundary(r0, a, xmax = X1 + 2) {
+  // the field is never still: waves run along it, stronger when the solar wind gusts
+  let T = 0;
+  const amp = () => lerp(0.12, 0.3, cur.hot);
+  function wobble(pts, ph, gain = 1) {
+    const A = amp() * gain;
+    return pts.map(([x, y]) => {
+      const r = Math.hypot(x, y), w = clamp((r - 1.3) / 3.5, 0, 1);                 // stays pinned at Earth
+      return [x + A * 0.12 * w * Math.sin(0.6 * y + 2.1 * T + ph), y + A * w * Math.sin(0.32 * x - 2.6 * T + ph) * (1 + Math.max(0, x) / 22)];
+    });
+  }
+  function boundary(r0, a, xmax = X1 + 2, rip = 0) {
     const out = [];
     for (let th = 0; th < 2.9; th += 0.025) {
-      const r = r0 * Math.pow(2 / (1 + Math.cos(th)), a), x = -r * Math.cos(th), y = r * Math.sin(th);
+      const r = r0 * Math.pow(2 / (1 + Math.cos(th)), a) * (1 + rip * (0.012 * Math.sin(1.3 * T) + amp() * 0.06 * Math.sin(7 * th - 2.4 * T))),
+        x = -r * Math.cos(th), y = r * Math.sin(th);
       out.push([x, y]); if (x > xmax) break;
     }
     return out;
@@ -462,7 +500,9 @@ footer a{color:var(--soft)}
     els.sun = mk('sun', { fill: 'url(#gSun)' });
     els.gap = mk(null, { stroke: '#4a5a72', 'stroke-width': 1.2, fill: 'none' });
     els.gapT = R.text('~150 million km', 0, 0).css({ color: '#6d7b92', fontSize: '11px' }).attr({ align: 'center' }).add(els.g);
-    els.wave = mk('flare', { stroke: '#fff2b0', 'stroke-width': 3, fill: 'none', opacity: 0 }, true);
+    els.loop = mk('flare', { stroke: '#fff1b8', 'stroke-width': 3, fill: 'none', 'stroke-linecap': 'round', opacity: 0 }); els.loop.setAttribute('filter', 'url(#bl2)');
+    els.rays = mk(null, { stroke: '#fff6d0', 'stroke-width': 2, fill: 'none', 'stroke-linecap': 'round', opacity: 0 }); els.rays.setAttribute('filter', 'url(#bl2)');
+    els.waves = [6, 3.5, 2].map(w => { const e = mk('flare', { stroke: '#fff2b0', 'stroke-width': w, fill: 'none', 'stroke-linecap': 'round', opacity: 0 }, true); e.setAttribute('filter', 'url(#bl2)'); return e; });
     els.cme = mk('cme', { fill: 'url(#gCme)', stroke: '#ffb0a6', 'stroke-width': 1.5, opacity: 0 });
     els.bow = mk('bow', { stroke: '#8D98A8', 'stroke-width': 1.4, 'stroke-dasharray': '6 5', fill: 'none' }, true);
     els.sheath = mk('mp', { fill: 'rgba(95,224,208,0.05)' });
@@ -480,12 +520,17 @@ footer a{color:var(--soft)}
     els.earthGlow = mk(null, { fill: '#2f6fd0', opacity: 0.35 }); els.earthGlow.setAttribute('filter', 'url(#bl5)');
     els.iono = mk('iono', { stroke: '#ff9a6a', 'stroke-width': 4, fill: 'none', opacity: 0, 'stroke-linecap': 'round' }, true);
     els.iono.setAttribute('filter', 'url(#bl2)');
+    els.ionoHalo = mk('iono', { stroke: '#ff7a4a', 'stroke-width': 10, fill: 'none', opacity: 0, 'stroke-linecap': 'round' }); els.ionoHalo.setAttribute('filter', 'url(#bl5)');
+    els.protons = mk('protons', { stroke: '#e8f4ff', 'stroke-width': 1.6, 'stroke-linecap': 'round', fill: 'none' }); els.protons.style.pointerEvents = 'stroke';
+    els.sceneFlash = mk(null, { fill: '#fff8e0', opacity: 0 });
     els.earth = mk('earth', { fill: 'url(#gEarth)', stroke: '#9cc4ff', 'stroke-width': 0.8 });
     els.aur = [0, 1, 2, 3].map(() => { const e = mk('aurora', { stroke: '#3FCB95', fill: 'none', 'stroke-linecap': 'round' }, true); e.setAttribute('filter', 'url(#bl2)'); return e; });
-    els.xday = mk('xday', { stroke: '#fff', 'stroke-width': 2.4, fill: 'none', opacity: 0 }, true);
-    els.xtail = mk('xtail', { stroke: '#fff', 'stroke-width': 2.4, fill: 'none', opacity: 0 }, true);
-    els.xglow = [mk(null, { fill: '#FFE08A', opacity: 0 }), mk(null, { fill: '#FFE08A', opacity: 0 })];
-    els.xglow.forEach(e => e.setAttribute('filter', 'url(#bl5)'));
+    // reconnection sites: a soft flickering glow, field lines pinching in, and particle jets shooting out
+    grad('gRx', [[0, '#fffbe6', 0.95], [0.35, '#ffe08a', 0.55], [1, '#ff9a3c', 0]], true);
+    els.xglow = [mk(null, { fill: 'url(#gRx)', opacity: 0 }), mk(null, { fill: 'url(#gRx)', opacity: 0 })];
+    els.xday = mk('xday', { stroke: '#a9c9ff', 'stroke-width': 1.4, fill: 'none', opacity: 0, 'stroke-linecap': 'round' }, true);
+    els.xtail = mk('xtail', { stroke: '#a9c9ff', 'stroke-width': 1.4, fill: 'none', opacity: 0, 'stroke-linecap': 'round' }, true);
+    els.jets = mk(null, { stroke: '#FFE08A', 'stroke-width': 2, fill: 'none', 'stroke-linecap': 'round', opacity: 0 });
     els.labels = ['Bow shock', 'Magnetopause', 'Van Allen belts', 'Geostationary orbit'].map((t, i) =>
       R.text(t, 0, 0).css({ color: ['#8D98A8', '#5FE0D0', '#c9a6f5', '#B9C2CF'][i], fontSize: '11.5px', fontWeight: '600' })
         .attr({ stroke: '#070b12', 'stroke-width': 3, 'paint-order': 'stroke' }).add(els.g));
@@ -501,13 +546,14 @@ footer a{color:var(--soft)}
   }
 
   /* ---------- animation ---------- */
-  let flareT = -1, cmeT = -1, xpulse = 0;
+  let flareT = -1, cmeT = -1, xpulse = 0, protons = [], protonsOut = false;
   function frame(dt) {
     // ease toward the target state
     const k = 1 - Math.exp(-dt * 1.6);
     ['r0', 'a', 'st', 'aur', 'belt', 'wind', 'hot'].forEach(p => { cur[p] = lerp(cur[p], target[p], k); });
     cur.windCol = cur.windCol.map((c, i) => lerp(c, target.windCol[i], k));
-    const s = cur, MP = boundary(s.r0, s.a), BS = boundary(s.r0 * 1.38, Math.max(0.78, s.a + 0.12));
+    T += dt;
+    const s = cur, MP = boundary(s.r0, s.a, X1 + 2, 1), BS = boundary(s.r0 * 1.38, Math.max(0.78, s.a + 0.12), X1 + 2, 0.7);
 
     // Sun and distance gap
     const sunC = [X0 - 7.5, 0], sr = 9.5;
@@ -518,14 +564,61 @@ footer a{color:var(--soft)}
 
     // flare: flash on the Sun, light front racing to Earth, sunlit ionosphere lights up
     if (flareT >= 0) flareT += dt;
-    const fl = flareT < 0 ? 0 : flareT;
-    els.flash.setAttribute('opacity', mode === 'flare' ? clamp(1 - fl / 2.5, 0.25, 1) * (0.7 + 0.3 * Math.sin(fl * 9)) : 0);
-    setD(els.flash, path(circ([sunC[0] + 6.5, 4.5], 4.5)) + 'Z');
-    const waveX = lerp(sunC[0] + 8, 2, clamp(fl / 1.4, 0, 1));
-    els.wave.setAttribute('opacity', mode === 'flare' && fl < 1.6 ? 0.9 : 0);
-    setD(els.wave, path(Array.from({ length: 31 }, (_, i) => { const a = (i / 30 - 0.5) * 1.6; return [waveX - (waveX - sunC[0]) * (1 - Math.cos(a)), (waveX - sunC[0]) * Math.sin(a)]; })));
-    els.iono.setAttribute('opacity', mode === 'flare' ? clamp((fl - 1.3) * 2, 0, 1) * (0.75 + 0.25 * Math.sin(fl * 4)) : 0);
+    // the flare repeats every 7 s: loop brightens, blinding flash, light fronts race out, Earth's sunlit side lights up,
+    // then a burst of energetic protons arrives and pours into the polar caps
+    const on = mode === 'flare', fl = flareT < 0 ? 0 : flareT % 7, spot = [sunC[0] + sr * Math.cos(0.42), sr * Math.sin(0.42)];
+    const build = clamp(fl / 0.6, 0, 1), burst = fl < 0.6 ? 0 : Math.exp(-(fl - 0.6) * 1.6), hitT = 0.6 + 1.3;
+    els.flash.setAttribute('opacity', on ? clamp(0.25 + 0.35 * build + burst, 0, 1) * (0.85 + 0.15 * Math.sin(fl * 23)) : 0);
+    setD(els.flash, path(circ(spot, 2.2 + 6 * burst, 40)) + 'Z');
+    // glowing magnetic loop on the Sun's edge that brightens and snaps
+    const lp = [];
+    for (let i = 0; i <= 24; i++) { const a = 0.22 + 0.4 * i / 24, h = 1 + (1.6 + 1.2 * burst) * Math.sin(Math.PI * i / 24) / sr;
+      lp.push([sunC[0] + sr * h * Math.cos(a), sr * h * Math.sin(a)]); }
+    setD(els.loop, path(lp)); els.loop.setAttribute('opacity', on ? clamp(0.35 + build * 0.6 - (fl > 0.6 ? (fl - 0.6) * 0.3 : 0), 0.15, 1) : 0);
+    els.loop.setAttribute('stroke-width', 3 + 5 * burst);
+    // rays bursting from the flare
+    let rd = '';
+    if (on && burst > 0.02) for (let i = 0; i < 14; i++) { const a = -1.1 + 2.2 * i / 13 + 0.08 * Math.sin(i * 7), r0 = 1.2, r1 = 1.2 + (3 + 5 * ((i * 37) % 7) / 7) * (0.4 + burst);
+      rd += path([[spot[0] + r0 * Math.cos(a), spot[1] + r0 * Math.sin(a)], [spot[0] + r1 * Math.cos(a), spot[1] + r1 * Math.sin(a)]]); }
+    setD(els.rays, rd || 'M0 0'); els.rays.setAttribute('opacity', on ? burst : 0);
+    // three light / X-ray fronts, staggered
+    const dEarth = Math.hypot(spot[0], spot[1]);
+    els.waves.forEach((e, k) => {
+      const tk = fl - 0.6 - k * 0.14, R = dEarth * clamp(tk / 1.3, 0, 1.35);
+      const show = on && tk > 0 && R < dEarth * 1.3;
+      e.setAttribute('opacity', show ? (1 - k * 0.3) * clamp(1.3 - R / dEarth, 0, 1) : 0);
+      setD(e, show ? path(Array.from({ length: 41 }, (_, i) => { const a = Math.atan2(-spot[1], -spot[0]) + (i / 40 - 0.5) * 1.3; return [spot[0] + R * Math.cos(a), spot[1] + R * Math.sin(a)]; })) : 'M0 0');
+    });
+    // when the light hits: the whole scene flashes and the sunlit ionosphere glows
+    const hit = on && fl > hitT ? Math.exp(-(fl - hitT) * 2.2) : 0;
+    els.sceneFlash.setAttribute('opacity', hit * 0.28);
+    setD(els.sceneFlash, path([[X0 - 10, -YH - 2], [X1 + 2, -YH - 2], [X1 + 2, YH + 2], [X0 - 10, YH + 2]]) + 'Z');
+    const glow = on ? clamp((fl - hitT) * 3, 0, 1) * (0.7 + 0.3 * Math.sin(fl * 6)) : 0;
+    els.iono.setAttribute('opacity', glow); els.iono.setAttribute('stroke-width', 4 + 6 * hit);
+    els.ionoHalo.setAttribute('opacity', glow * 0.7);
+    setD(els.ionoHalo, path(Array.from({ length: 31 }, (_, i) => { const a = Math.PI / 2 + i / 30 * Math.PI; return [1.7 * Math.cos(a), 1.7 * Math.sin(a)]; })));
     setD(els.iono, path(Array.from({ length: 31 }, (_, i) => { const a = Math.PI / 2 + i / 30 * Math.PI; return [1.22 * Math.cos(a), 1.22 * Math.sin(a)]; })));
+    // energetic protons: fast streaks, most deflected by the bow shock, some funnelled into the polar caps
+    if (on && fl > hitT + 0.4 && !protonsOut) { protonsOut = true; protons = Array.from({ length: 70 }, (_, i) => ({ x: spot[0] + Math.random() * 2, y: (Math.random() * 2 - 1) * 9, v: 26 + Math.random() * 14, pole: i % 3 === 0 ? (Math.random() < 0.5 ? 1 : -1) : 0, done: false })); }
+    if (fl < 0.1) protonsOut = false;
+    let pd = '';
+    if (on) for (const q of protons) {
+      if (q.done) continue;
+      q.x += dt * q.v;
+      let a, b;
+      if (q.pole && q.x > -s.r0 * 1.4) {
+        q.k = (q.k || 0) + dt * 0.9; const k = clamp(q.k, 0, 1);
+        const sx = -s.r0 * 1.4, sy = q.pole * Math.max(4, Math.abs(q.y));
+        const px = lerp(sx, 0.25, k), py = lerp(sy, q.pole * 1.1, k * k);
+        a = [px - 0.5, py + q.pole * 0.4]; b = [px, py]; if (k >= 1) q.done = true;
+      } else {
+        const dr = x => { const hb = halfAt(BS, x); return [x, Math.sign(q.y || 1) * (hb + Math.abs(q.y) * (YH - hb) / YH)]; };
+        a = dr(q.x - 1.4); b = dr(q.x); if (q.x > X1 + 2) q.done = true;
+      }
+      const qa = P(a[0], a[1]), qb = P(b[0], b[1]);
+      pd += 'M' + f1(qa[0]) + ' ' + f1(qa[1]) + 'L' + f1(qb[0]) + ' ' + f1(qb[1]);
+    }
+    els.protons.setAttribute('d', pd || 'M0 0');
 
     // CME: a bright bubble flies to Earth, then the storm state takes over
     if (cmeT >= 0) {
@@ -552,14 +645,14 @@ footer a{color:var(--soft)}
     const dayL = [1.5, 2.2, 3.1, 4.3, 5.8, 7.6, 9.6], nightL = [1.5, 2.2, 3.1, 4.3, 5.8, 7.6];
     let ci = 0;
     dayL.forEach(L => { const pts = dipole(L, -1, s); const minX = Math.min(...pts.map(p => p[0]));
-      setD(els.closed[ci++], minX > -s.r0 * 0.94 ? path(pts) : 'M0 0'); });
-    nightL.forEach(L => setD(els.closed[ci++], path(dipole(L, 1, s))));
+      setD(els.closed[ci++], minX > -s.r0 * 0.94 ? path(wobble(pts, L * 1.3, 0.6)) : 'M0 0'); });
+    nightL.forEach(L => setD(els.closed[ci++], path(wobble(dipole(L, 1, s), L * 0.9))));
     const nOpen = Math.round(lerp(4, 8, s.hot)), phiMin = lerp(72, 64, s.hot);
     els.open.forEach((e, i) => {
       const j = i % 8, north = i < 8;
-      setD(e, j < nOpen ? path(openLine(phiMin + (86 - phiMin) * (j + 0.5) / nOpen, north, s, MP)) : 'M0 0');
+      setD(e, j < nOpen ? path(wobble(openLine(phiMin + (86 - phiMin) * (j + 0.5) / nOpen, north, s, MP), j * 0.8 + (north ? 0 : 2.1), 1.0)) : 'M0 0');
     });
-    [-1, 1].forEach((sd, i) => { setD(els.beltsO[i], path(band(3.3, 5.6, sd, s)) + 'Z'); setD(els.beltsI[i], path(band(1.35, 2.0, sd, s, 0.6)) + 'Z'); });
+    [-1, 1].forEach((sd, i) => { setD(els.beltsO[i], path(wobble(band(3.3, 5.6, sd, s), 4, 0.5)) + 'Z'); setD(els.beltsI[i], path(band(1.35, 2.0, sd, s, 0.6)) + 'Z'); });
     [...els.beltsO, ...els.beltsI].forEach(e => e.setAttribute('opacity', s.belt));
     { const q = P(4.2, 3.3); els.labels[2].attr({ x: q[0], y: q[1] }); }
     const thick = lerp(0.9, 0.45, s.hot);
@@ -584,12 +677,33 @@ footer a{color:var(--soft)}
     // reconnection flashes during the storm
     xpulse += dt;
     const xo = s.hot > 0.6 ? (0.55 + 0.45 * Math.sin(xpulse * 3.2)) * s.hot : 0;
-    const X = (c, r) => path([[c[0] - r, c[1] - r], [c[0] + r, c[1] + r]]) + path([[c[0] - r, c[1] + r], [c[0] + r, c[1] - r]]);
     const xd = [-s.r0, 0], xt = [17, 0];
-    setD(els.xday, X(xd, 0.7)); setD(els.xtail, X(xt, 0.7));
-    els.xday.setAttribute('opacity', xo); els.xtail.setAttribute('opacity', xo);
-    setD(els.xglow[0], path(circ(xd, 1.3, 20)) + 'Z'); setD(els.xglow[1], path(circ(xt, 1.3, 20)) + 'Z');
-    els.xglow.forEach(e => e.setAttribute('opacity', xo * 0.6));
+    // pinch: field lines bend in toward the point from both sides (vertical axis = the direction they come from)
+    const pinch = (c, along) => {
+      let d = '';
+      [0.45].forEach(g => [-1, 1].forEach(sg => {
+        const pts = [];
+        for (let i = 0; i <= 16; i++) { const u = -1.8 + 3.6 * i / 16, v = sg * (g + 0.22 * u * u + 0.04 * Math.sin(xpulse * 5 + u));
+          pts.push(along === 'x' ? [c[0] + u, c[1] + v] : [c[0] + v, c[1] + u]); }
+        d += path(pts);
+      }));
+      return d;
+    };
+    setD(els.xday, pinch(xd, 'y')); setD(els.xtail, pinch(xt, 'x'));
+    els.xday.setAttribute('opacity', xo * 0.9); els.xtail.setAttribute('opacity', xo * 0.9);
+    const flick = 0.75 + 0.25 * Math.sin(xpulse * 11) * Math.sin(xpulse * 7.3);
+    setD(els.xglow[0], path(circ(xd, 2.2 * flick, 24)) + 'Z'); setD(els.xglow[1], path(circ(xt, 2.6 * flick, 24)) + 'Z');
+    els.xglow.forEach(e => e.setAttribute('opacity', clamp(xo * 1.3, 0, 1)));
+    // jets: short streaks flying away from each site (along the shield's edge on the day side, along the tail at night)
+    let jd = '';
+    for (let i = 0; i < 4; i++) {
+      const ph = (xpulse * 0.7 + i / 4) % 1, r = 0.9 + ph * 3.6, l = 0.35;
+      [-1, 1].forEach(sg => {
+        jd += path([[xd[0] + 0.05 * r * r, sg * r], [xd[0] + 0.05 * (r + l) * (r + l), sg * (r + l)]]);
+        jd += path([[xt[0] + sg * r, 0], [xt[0] + sg * (r + l), 0]]);
+      });
+    }
+    setD(els.jets, jd); els.jets.setAttribute('opacity', xo * 0.8);
 
     // solar wind particles: flow from the Sun and bend around the bow shock
     let d = '';
@@ -609,8 +723,12 @@ footer a{color:var(--soft)}
   /* ---------- modes ---------- */
   function setMode(m) {
     mode = m;
-    ['calm', 'flare', 'storm'].forEach((k, i) => $(['mCalm', 'mFlare', 'mCme'][i]).setAttribute('aria-pressed', String(k === m)));
-    flareT = m === 'flare' ? 0 : -1;
+    ['calm', 'flare', 'storm'].forEach((k, i) => { const b = $(['mCalm', 'mFlare', 'mCme'][i]), sel = k === m;
+      b.setAttribute('aria-checked', String(sel)); b.tabIndex = sel ? 0 : -1; if (sel) b.classList.remove('new');
+      b.querySelector('.go').textContent = sel ? 'Showing' : (b.classList.contains('new') ? 'Try it ›' : 'Show ›'); });
+    $('bReplay').hidden = m === 'calm';
+    $('bReplay').textContent = m === 'flare' ? '↻ Replay the flare' : '↻ Replay the CME';
+    flareT = m === 'flare' ? 0 : -1; protons = []; protonsOut = false;
     cmeT = m === 'storm' ? 0 : -1;
     target = m === 'storm' ? STATE.calm : STATE[m];        // the storm state starts when the CME arrives
     if (m === 'storm' && cur.hot > 0.5) { Object.assign(cur, STATE.calm, { windCol: STATE.calm.windCol.slice() }); }
@@ -619,6 +737,13 @@ footer a{color:var(--soft)}
   $('mCalm').addEventListener('click', () => setMode('calm'));
   $('mFlare').addEventListener('click', () => setMode('flare'));
   $('mCme').addEventListener('click', () => setMode('storm'));
+  $('bReplay').addEventListener('click', () => setMode(mode));
+  // arrow keys move between the cards, like any radio group
+  const ORDER = ['calm', 'flare', 'storm'], IDS = ['mCalm', 'mFlare', 'mCme'];
+  document.querySelector('.modes').addEventListener('keydown', e => {
+    const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (!d) return;
+    e.preventDefault(); const n = ORDER[(ORDER.indexOf(mode) + d + 3) % 3]; setMode(n); $(IDS[ORDER.indexOf(n)]).focus();
+  });
 
   /* ---------- hover ---------- */
   const stage = $('stage'), tip = $('tip');
@@ -644,7 +769,7 @@ footer a{color:var(--soft)}
     chart: { backgroundColor: 'transparent', animation: false, spacing: [0, 0, 0, 0],
       events: { load() { setup(this); const q = new URLSearchParams(location.search).get('mode'); if (new URLSearchParams(location.search).has('thumb')) document.body.classList.add('thumb'); setMode(['calm', 'flare', 'storm'].includes(q) ? q : 'calm');
         if (q === 'storm') { cmeT = 9; Object.assign(cur, STATE.storm, { windCol: STATE.storm.windCol.slice() }); target = STATE.storm; }
-        if (q === 'flare') flareT = 2.2;
+        if (q === 'flare') flareT = 2.0;
         requestAnimationFrame(tick); }, redraw() { if (R) resize(); } } },
     title: { text: null }, tooltip: { enabled: false }, legend: { enabled: false }, xAxis: { visible: false }, yAxis: { visible: false },
     credits: { enabled: false },
