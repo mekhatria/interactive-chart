@@ -21,6 +21,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'magnetic-shield', title: "Earth's Magnetic Shield vs. Solar Storms", cats: ['energy'], isNew: true,
+      tags: ['Diagram', 'Animated'], thumb: '/thumbs/magnetic-shield.jpg', href: '/energy/magnetic-shield/',
+      desc: 'How Earth\'s magnetic field shields us from the solar wind, and what a solar flare and a CME do to it: radio blackouts, squeezed shield, auroras and power grids.'
+    },
+    {
       id: 'iss', title: 'Anatomy of the International Space Station', cats: ['anatomy'], isNew: true,
       tags: ['3D', 'Exploded view'], thumb: '/thumbs/iss.jpg', href: '/anatomy/iss/',
       desc: 'A 3D International Space Station you can turn and take apart. Hover any module, solar wing or robotic arm to see what it does and when it was added.'
