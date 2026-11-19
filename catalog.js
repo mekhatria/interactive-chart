@@ -21,6 +21,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'iss', title: 'Anatomy of the International Space Station', cats: ['anatomy'], isNew: true,
+      tags: ['3D', 'Exploded view'], thumb: '/thumbs/iss.jpg', href: '/anatomy/iss/',
+      desc: 'A 3D International Space Station you can turn and take apart. Hover any module, solar wing or robotic arm to see what it does and when it was added.'
+    },
+    {
       id: 'great-explorers', title: 'The Journeys of 10 Great Explorers', cats: ['history'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/great-explorers.jpg', href: '/history/great-explorers/',
       desc: 'Every major journey of ten famous explorers, from Leif Erikson to Amundsen. Press play to watch the routes unfold across 900 years.'

@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anatomy of the International Space Station</title>
+<link rel="icon" type="image/svg+xml" href="https://mekhatria.github.io/interactive-chart/assets/logo-site.svg">
+<link rel="apple-touch-icon" href="https://mekhatria.github.io/interactive-chart/assets/apple-touch-icon.png">
+<link rel="canonical" href="https://mekhatria.github.io/interactive-chart/anatomy/iss/">
+<meta name="description" content="A 3D model of the International Space Station you can turn and take apart. Hover any part, from the Russian Zvezda module to Canadarm2 and the 109 m solar truss, to see what it does and when it was added.">
+<meta name="author" content="Mustapha Mekhatria">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Anatomy of the International Space Station">
+<meta property="og:description" content="A 3D model of the International Space Station you can turn and take apart. Hover any part, from the Russian Zvezda module to Canadarm2 and the 109 m solar truss, to see what it does and when it was added.">
+<meta property="og:url" content="https://mekhatria.github.io/interactive-chart/anatomy/iss/">
+<meta property="og:image" content="https://mekhatria.github.io/interactive-chart/thumbs/iss.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://mekhatria.github.io/interactive-chart/anatomy/iss/",
+      "url": "https://mekhatria.github.io/interactive-chart/anatomy/iss/",
+      "name": "Anatomy of the International Space Station",
+      "headline": "Anatomy of the International Space Station",
+      "description": "A 3D model of the International Space Station you can turn and take apart. Hover any part, from the Russian Zvezda module to Canadarm2 and the 109 m solar truss, to see what it does and when it was added.",
+      "inLanguage": "en",
+      "image": "https://mekhatria.github.io/interactive-chart/thumbs/iss.jpg",
+      "datePublished": "2026-11-19",
+      "dateModified": "2026-11-19",
+      "keywords": "International Space Station, ISS, ISS modules, space station anatomy, 3D model, interactive diagram, NASA, Roscosmos, ESA, JAXA, CSA",
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "International Space Station",
+          "sameAs": "https://en.wikipedia.org/wiki/International_Space_Station"
+        }
+      ],
+      "author": {
+        "@id": "https://mekhatria.github.io/interactive-chart/#author"
+      },
+      "isPartOf": {
+        "@type": "CollectionPage",
+        "@id": "https://mekhatria.github.io/interactive-chart/anatomy/",
+        "name": "Anatomy",
+        "url": "https://mekhatria.github.io/interactive-chart/anatomy/",
+        "isPartOf": {
+          "@id": "https://mekhatria.github.io/interactive-chart/#website"
+        }
+      },
+      "citation": [
+        {
+          "@type": "CreativeWork",
+          "name": "International Space Station Facts and Figures",
+          "publisher": "NASA",
+          "url": "https://www.nasa.gov/international-space-station/space-station-facts-and-figures/"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Assembly of the International Space Station",
+          "publisher": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Assembly_of_the_International_Space_Station"
+        }
+      ],
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://mekhatria.github.io/interactive-chart/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Anatomy",
+            "item": "https://mekhatria.github.io/interactive-chart/anatomy/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Anatomy of the International Space Station",
+            "item": "https://mekhatria.github.io/interactive-chart/anatomy/iss/"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mekhatria.github.io/interactive-chart/#author",
+      "name": "Mustapha Mekhatria",
+      "jobTitle": "Project Manager",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Highsoft AS",
+        "url": "https://www.highcharts.com"
+      },
+      "url": "https://www.linkedin.com/in/mustaphamekhatria/",
+      "image": "https://mekhatria.github.io/interactive-chart/assets/mustapha-mekhatria.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/mustaphamekhatria/",
+        "https://github.com/mekhatria"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mekhatria.github.io/interactive-chart/#website",
+      "name": "Interactive Charts by Mustapha Mekhatria",
+      "url": "https://mekhatria.github.io/interactive-chart/"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0d12;--card:#10151d;--line:#222b38;--line-hi:#364457;--ink:#eef2f7;--soft:#b9c2cf;--muted:#8592a4;--accent:#4a85ff}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:1320px;margin:0 auto;padding:18px 16px 16px}
+.pagehead{margin:6px 0 12px}
+.pagehead h1{margin:0;font-stretch:62%;font-weight:700;font-size:clamp(34px,5vw,56px);line-height:1;color:#fff}
+.pagehead .facts{margin:8px 0 0;font-size:14px;color:var(--muted)}.pagehead .facts span{font-size:12px}
+.pagehead .sub{margin:8px 0 0;font-size:17px;color:var(--soft);max-width:80ch}
+.toolbar{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;font-size:14px;color:var(--soft)}
+.toolbar .lbl{font-weight:600;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--card);padding:3px}
+.seg button,.btn{border:0;background:transparent;font:inherit;color:var(--soft);padding:7px 13px;border-radius:999px;cursor:pointer;font-weight:600}
+.seg button[aria-pressed="true"]{background:#2f6fef;color:#fff}
+.btn{border:1px solid var(--line);background:var(--card)}
+.btn[aria-pressed="true"]{border-color:#2f6fef;color:#fff}
+.btn:hover,.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed="true"]:hover{color:#fff}
+.parts::-webkit-scrollbar{width:8px}.parts::-webkit-scrollbar-thumb{background:#2b3a52;border-radius:8px}
+.hint{color:var(--muted);font-size:13px}
+.stage{position:relative;margin-top:10px;border:1px solid var(--line);border-radius:16px;
+  background:radial-gradient(1px 1px at 12% 18%,#fff8 50%,transparent),radial-gradient(1px 1px at 37% 72%,#fff6 50%,transparent),radial-gradient(1.4px 1.4px at 68% 22%,#fff9 50%,transparent),radial-gradient(1px 1px at 84% 64%,#fff6 50%,transparent),radial-gradient(1px 1px at 22% 48%,#fff5 50%,transparent),radial-gradient(1.2px 1.2px at 56% 88%,#fff7 50%,transparent),radial-gradient(1px 1px at 92% 12%,#fff6 50%,transparent),radial-gradient(1px 1px at 5% 82%,#fff5 50%,transparent),radial-gradient(ellipse 90% 40% at 50% 118%,rgba(76,141,246,.35) 0%,rgba(30,60,110,.15) 45%,transparent 70%),radial-gradient(ellipse 70% 80% at 50% 40%,#1a2130 0%,#0b0f17 60%,#05070b 100%);overflow:hidden;touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.stage.dragging{cursor:grabbing}
+.stage:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+#chart{height:calc(100vh - 400px);min-height:470px}
+@media (max-width:700px){#chart{height:520px;min-height:0}}
+.tip{position:absolute;left:0;top:0;pointer-events:none;max-width:300px;background:#141c28;border:1px solid var(--line-hi);
+  border-left:4px solid var(--accent);border-radius:10px;padding:10px 13px;box-shadow:0 10px 30px rgba(0,0,0,.5);
+  font-size:14px;line-height:1.45;color:var(--soft);opacity:0;transition:opacity .15s;z-index:5}
+.tip b{display:block;color:var(--ink);font-size:17px;margin-bottom:3px}
+.tip.on{opacity:1}
+.legend{display:flex;flex-wrap:wrap;gap:2px 4px;margin-top:10px;font-size:13px;color:var(--soft);cursor:default}
+.legend div{display:flex;align-items:center;gap:7px;padding:3px 7px;border-radius:7px;font-weight:600}
+.legend div:hover{background:#1a2436;color:#fff}
+.sw{width:14px;height:12px;border-radius:3px;flex:none}
+@media (max-width:700px){.legend{font-size:11px}.legend div{padding:1px 4px}}
+.parts{margin-top:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:4px 18px;
+  height:200px;overflow-y:auto;overscroll-behavior:contain;padding:0 12px 10px;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+@media (max-width:700px){.parts{height:260px}}
+.parts h2{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 4px;position:sticky;top:0;background:var(--card);padding:10px 10px 6px;z-index:1}
+.parts ul{list-style:none;margin:0;padding:0}
+.parts li{padding:7px 10px;border-radius:10px;cursor:default;font-size:14px;line-height:1.4;color:var(--soft)}
+.parts li b{color:var(--ink);font-size:15px}
+.parts li .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.parts li:hover,.parts li:focus,.parts li.on{background:#172131;box-shadow:inset 3px 0 0 var(--accent);outline:none}
+footer{margin-top:10px;font-size:13px;color:var(--muted);line-height:1.55;text-align:center}
+footer a{color:var(--soft)}
+</style>
+<style>.home-nav{position:sticky;top:12px;z-index:50;max-width:1320px;margin:0 auto 6px;font:500 14px/1.4 "Archivo",system-ui,sans-serif}.home-nav a{color:#fff;text-decoration:none;display:inline-flex;align-items:center;gap:8px;padding:9px 16px 9px 13px;border:0;border-radius:999px;font-weight:650;font-size:14.5px;letter-spacing:.01em;background:#2F6FEF;box-shadow:0 0 0 1px rgba(255,255,255,.18) inset,0 4px 18px rgba(47,111,239,.55);transition:background .15s,transform .15s,box-shadow .15s}.home-nav a:hover{background:#4A85FF;transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 6px 24px rgba(74,133,255,.7)}.home-nav a:focus-visible{outline:3px solid #fff;outline-offset:3px}</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="home-nav" aria-label="Site"><a href="https://mekhatria.github.io/interactive-chart/anatomy/"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"/></svg><span>All anatomy charts</span></a></nav>
+
+  <header class="pagehead">
+    <h1>Anatomy of the International Space Station</h1>
+    <p class="sub">The largest structure people have built in space, simplified. Drag to turn it, switch to Exploded to pull the main sections apart, and hover any part to see what it does and when it was added.</p>
+    <p class="facts">109 m end to end · about 420 tonnes · 8 main solar wings, 75–90 kW · crewed without a break since November 2000 · <span>NASA</span></p>
+  </header>
+
+  <div class="toolbar">
+    <span class="lbl">View</span>
+    <div class="seg" role="group" aria-label="View">
+      <button id="vAsm" aria-pressed="true">Assembled</button>
+      <button id="vExp" aria-pressed="false">Exploded</button>
+    </div>
+    <span class="lbl">Labels</span>
+    <div class="seg" role="group" aria-label="Label mode">
+      <button id="mHover" aria-pressed="true">On hover</button>
+      <button id="mAll" aria-pressed="false">Show all</button>
+    </div>
+    <button class="btn" id="bAuto" aria-pressed="true">⟳ Auto-rotate</button>
+    <button class="btn" id="bReset">Reset view</button>
+    <span class="hint">Drag to rotate · arrow keys work too</span>
+  </div>
+
+  <div class="legend" id="legend" aria-label="Colour key"></div>
+
+  <div class="stage" id="stage" tabindex="0" aria-label="3D model. Use arrow keys to rotate.">
+    <div id="chart"></div>
+    <div class="tip" id="tip" role="status"></div>
+  </div>
+
+  <section class="parts" id="parts" aria-label="Parts"></section>
+
+  <footer>A simplified 3D model of the International Space Station (sizes approximate, current layout), drawn with the <a href="https://www.highcharts.com">Highcharts</a> SVG renderer. Docked spacecraft are examples; they change over time.
+    Sources: <a href="https://www.nasa.gov/international-space-station/space-station-facts-and-figures/">NASA, Space Station Facts and Figures</a> · <a href="https://en.wikipedia.org/wiki/Assembly_of_the_International_Space_Station">Wikipedia, Assembly of the ISS</a>. Not affiliated with NASA or its partners.</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/highcharts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/highcharts@13.1.1/modules/accessibility.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---------------- Vector helpers ---------------- */
+  const sub = (a, b) => [a[0] - b[0], a[1] - b[1], a[2] - b[2]];
+  const addv = (a, b) => [a[0] + b[0], a[1] + b[1], a[2] + b[2]];
+  const mul = (a, k) => [a[0] * k, a[1] * k, a[2] * k];
+  const lerp = (a, b, t) => [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+  const dot = (a, b) => a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
+  const cross = (a, b) => [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
+  const nrm = a => { const l = Math.hypot(a[0], a[1], a[2]) || 1; return [a[0] / l, a[1] / l, a[2] / l]; };
+  const cen = p => { let x = 0, y = 0, z = 0; for (const q of p) { x += q[0]; y += q[1]; z += q[2]; } return [x / p.length, y / p.length, z / p.length]; };
+  const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1], a[2] - b[2]);
+  function newell(p) {
+    const n = [0, 0, 0];
+    for (let i = 0; i < p.length; i++) {
+      const a = p[i], b = p[(i + 1) % p.length];
+      n[0] += (a[1] - b[1]) * (a[2] + b[2]); n[1] += (a[2] - b[2]) * (a[0] + b[0]); n[2] += (a[0] - b[0]) * (a[1] + b[1]);
+    }
+    return nrm(n);
+  }
+  const hex2rgb = h => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  const rgb = c => `rgb(${c.map(v => Math.round(Math.max(0, Math.min(255, v)))).join(',')})`;
+
+  /* ---------------- Scene primitives ---------------- */
+  // engine axes: see the MODEL block below
+  const RS = -1;
+  const L1 = nrm([0.25, 0.9, -0.35]);   // key light (above, slightly in front)
+  const L2 = nrm([-0.55, 0.35, 0.75]);  // rim light (behind)
+  const L3 = nrm([0.3, -0.6, -0.4]);    // soft fill from below
+  const items = [], hits = [];
+  let curGrp = null;
+  // materials: spec = highlight strength, gloss = highlight tightness
+  const MAT = { poly: [0.22, 10], metal: [0.55, 22], matte: [0.12, 6], rubber: [0.05, 4], dark: [0.0, 1] };
+  function face(pts, color, part, o = {}) {
+    let n = newell(pts);
+    const c = cen(pts);
+    const out = o.out || (o.center ? sub(c, o.center) : null);
+    if (out && dot(n, out) < 0) n = mul(n, -1);
+    const it = { t: 'f', pts, part: part || null, n, two: !!o.two, col: hex2rgb(color), mat: MAT[o.mat || 'poly'], bias: o.bias || 0, grp: o.grp || curGrp, grad: !!o.grad, op: o.op || 0, fade: o.fade || null };
+    items.push(it); return it;
+  }
+  function line(pts, color, width, part, o = {}) {
+    for (let i = 0; i < pts.length - 1; i++) {
+      const a = pts[i], b = pts[i + 1], n = Math.max(1, Math.ceil(dist(a, b) / (o.seg || 0.5)));
+      for (let j = 0; j < n; j++) items.push({ t: 'l', pts: [lerp(a, b, j / n), lerp(a, b, (j + 1) / n)], part: part || null, col: hex2rgb(color),
+        width, bias: o.bias || 0, cullN: o.cullN || null, grp: o.grp || curGrp });
+    }
+    if (part && o.hit !== false) hits.push({ pts, part, grp: o.grp || curGrp });
+  }
+  function prism(a, b, rf, n, segs, color, part, o = {}) {
+    const ax = nrm(sub(b, a)), ref = Math.abs(ax[1]) < 0.9 ? [0, 1, 0] : [1, 0, 0];
+    const u = nrm(cross(ax, ref)), v = cross(ax, u), rings = [];
+    for (let j = 0; j <= segs; j++) {
+      const t = j / segs, c = lerp(a, b, t), r = rf(t), ring = [];
+      for (let i = 0; i < n; i++) { const ang = (i + 0.5) / n * Math.PI * 2 + (o.rot || 0); ring.push(addv(c, addv(mul(u, r * Math.cos(ang)), mul(v, r * Math.sin(ang))))); }
+      rings.push(ring);
+    }
+    for (let j = 0; j < segs; j++) {
+      const mid = lerp(a, b, (j + 0.5) / segs);
+      for (let i = 0; i < n; i++) { const i2 = (i + 1) % n, p = [rings[j][i], rings[j][i2], rings[j + 1][i2], rings[j + 1][i]]; face(p, color, part, Object.assign({}, o, { out: sub(cen(p), mid) })); }
+    }
+    if (o.caps !== false) {
+      if (rf(0) > 0.004) face(rings[0], o.capColor || color, part, Object.assign({}, o, { out: mul(ax, -1) }));
+      if (rf(1) > 0.004) face(rings[segs], o.capColor || color, part, Object.assign({}, o, { out: ax }));
+    }
+  }
+  const area2 = poly => poly.reduce((s, p, i) => { const q = poly[(i + 1) % poly.length]; return s + p[0] * q[1] - q[0] * p[1]; }, 0);
+  const ccw = poly => area2(poly) > 0 ? poly : poly.slice().reverse();
+  // round every corner of a polygon (r = radius, or an array of radii per corner)
+  function roundPoly(poly, r, steps = 4) {
+    const out = [];
+    for (let i = 0; i < poly.length; i++) {
+      const p = poly[i], a = poly[(i - 1 + poly.length) % poly.length], b = poly[(i + 1) % poly.length];
+      const rr = Array.isArray(r) ? r[i] : r;
+      const la = Math.hypot(a[0] - p[0], a[1] - p[1]), lb = Math.hypot(b[0] - p[0], b[1] - p[1]);
+      const d = Math.min(rr, la * 0.45, lb * 0.45);
+      if (d < 1e-3) { out.push(p); continue; }
+      const pa = [p[0] + (a[0] - p[0]) / la * d, p[1] + (a[1] - p[1]) / la * d], pb = [p[0] + (b[0] - p[0]) / lb * d, p[1] + (b[1] - p[1]) / lb * d];
+      for (let k = 0; k <= steps; k++) { const t = k / steps, u = 1 - t; out.push([u * u * pa[0] + 2 * u * t * p[0] + t * t * pb[0], u * u * pa[1] + 2 * u * t * p[1] + t * t * pb[1]]); }
+    }
+    return out;
+  }
+  // smooth curve through control points (Catmull-Rom), returns 2D points
+  function smooth(pts, per = 5, closed = true) {
+    const out = [], n = pts.length, P = i => pts[closed ? (i + n) % n : Math.max(0, Math.min(n - 1, i))];
+    for (let i = 0; i < (closed ? n : n - 1); i++) {
+      const p0 = P(i - 1), p1 = P(i), p2 = P(i + 1), p3 = P(i + 2);
+      for (let k = 0; k < per; k++) { const t = k / per, t2 = t * t, t3 = t2 * t;
+        out.push([0, 1].map(d => 0.5 * (2 * p1[d] + (-p0[d] + p2[d]) * t + (2 * p0[d] - 5 * p1[d] + 4 * p2[d] - p3[d]) * t2 + (-p0[d] + 3 * p1[d] - 3 * p2[d] + p3[d]) * t3))); }
+    }
+    if (!closed) out.push(pts[n - 1]);
+    return out;
+  }
+  // inset a polygon by d (true offset along the corner bisectors)
+  function inset(poly, d) {
+    const n = poly.length;
+    return poly.map((p, i) => {
+      const a = poly[(i - 1 + n) % n], b = poly[(i + 1) % n];
+      const e1 = nrm([p[0] - a[0], p[1] - a[1], 0]), e2 = nrm([b[0] - p[0], b[1] - p[1], 0]);
+      const n1 = [-e1[1], e1[0]], n2 = [-e2[1], e2[0]];
+      let m = [n1[0] + n2[0], n1[1] + n2[1]]; const ml = Math.hypot(m[0], m[1]) || 1; m = [m[0] / ml, m[1] / ml];
+      const k = d / Math.max(0.35, m[0] * n1[0] + m[1] * n1[1]);
+      return [p[0] + m[0] * k, p[1] + m[1] * k];
+    });
+  }
+  // side profile extruded across z with rounded edges (r) in S steps; o.zc shifts it sideways
+  function slab(poly, h, r, color, part, o = {}) {
+    poly = ccw(poly);
+    const zc = o.zc || 0, S = r > 0 ? (o.steps || 3) : 0, base = h - r;
+    const c = [poly.reduce((s, q) => s + q[0], 0) / poly.length, poly.reduce((s, q) => s + q[1], 0) / poly.length];
+    const center = [c[0], c[1], zc];
+    const ringsP = [], ringsN = [];
+    for (let k = 0; k <= S; k++) {
+      const th = S ? k / S * Math.PI / 2 : 0, ins = r * (1 - Math.cos(th)), z = base + r * Math.sin(th);
+      const pp = ins > 1e-4 ? inset(poly, ins) : poly;
+      ringsP.push(pp.map(([x, y]) => [x, y, zc + z])); ringsN.push(pp.map(([x, y]) => [x, y, zc - z]));
+    }
+    const fo = Object.assign({}, o, { center });
+    const xs = poly.map(q => q[0]), ys = poly.map(q => q[1]);
+    const big = (Math.max(...xs) - Math.min(...xs)) * (Math.max(...ys) - Math.min(...ys)) > 0.03 && !o.noGrad;
+    const fc = Object.assign({}, fo, { grad: big });
+    face(ringsP[S], o.capColor || color, part, fc); face(ringsN[S], o.capColor || color, part, fc);
+    for (let i = 0; i < poly.length; i++) {
+      const j = (i + 1) % poly.length;
+      face([ringsN[0][i], ringsN[0][j], ringsP[0][j], ringsP[0][i]], color, part, fo);
+      for (let k = 0; k < S; k++) {
+        face([ringsP[k][i], ringsP[k][j], ringsP[k + 1][j], ringsP[k + 1][i]], color, part, fo);
+        face([ringsN[k][i], ringsN[k][j], ringsN[k + 1][j], ringsN[k + 1][i]], color, part, fo);
+      }
+    }
+  }
+  function box(x0, x1, y0, y1, z0, z1, color, part, o = {}) {
+    const c = [(x0 + x1) / 2, (y0 + y1) / 2, (z0 + z1) / 2], P = (x, y, z) => [x, y, z];
+    [[P(x0, y0, z0), P(x1, y0, z0), P(x1, y0, z1), P(x0, y0, z1)], [P(x0, y1, z0), P(x1, y1, z0), P(x1, y1, z1), P(x0, y1, z1)],
+     [P(x0, y0, z0), P(x1, y0, z0), P(x1, y1, z0), P(x0, y1, z0)], [P(x0, y0, z1), P(x1, y0, z1), P(x1, y1, z1), P(x0, y1, z1)],
+     [P(x0, y0, z0), P(x0, y0, z1), P(x0, y1, z1), P(x0, y1, z0)], [P(x1, y0, z0), P(x1, y0, z1), P(x1, y1, z1), P(x1, y1, z0)]]
+      .forEach(p => face(p, color, part, Object.assign({}, o, { center: c })));
+  }
+  // Picatinny rail: base strip with raised cross ribs
+  function rail(x0, x1, y, w, color, part, o = {}) {
+    slab(roundPoly([[x0, y], [x1, y], [x1, y + 0.05], [x0, y + 0.05]], 0.01, 1), w, 0.012, color, part, Object.assign({ mat: 'metal', steps: 1 }, o));
+    for (let x = x0 + 0.035; x + 0.055 < x1; x += 0.1) slab([[x, y + 0.05], [x + 0.055, y + 0.05], [x + 0.05, y + 0.088], [x + 0.005, y + 0.088]], w * 0.92, 0, color, part, Object.assign({ mat: 'metal' }, o));
+  }
+  // a flat decal on a side face (slots, ports, panels, rivets): polygon at z, visible only from that side
+  function decal(poly, z, color, part, o = {}) {
+    const it = face(poly.map(([x, y]) => [x, y, z]), color, part, Object.assign({ out: [0, 0, Math.sign(z) || 1], bias: -0.04, mat: 'dark' }, o));
+    it.decal = true; it.layer = o.layer || 1;
+    return it;
+  }
+  // soft contact shadow (ambient occlusion) where parts meet: dir 'down' = dark at the top edge
+  function ao(x0, y0, x1, y1, z, dir, strength, part) {
+    const it = decal(rrect(x0, y0, x1, y1, 0.01), z, '#000000', part, { mat: 'dark', layer: 3 });
+    it.fade = [dir, strength]; it.ao = true; return it;
+  }
+  const rrect = (x0, y0, x1, y1, r) => roundPoly([[x0, y0], [x1, y0], [x1, y1], [x0, y1]], r, 3);
+  const circle = (cx, cy, r, n = 12) => Array.from({ length: n }, (_, i) => [cx + r * Math.cos(i / n * Math.PI * 2), cy + r * Math.sin(i / n * Math.PI * 2)]);
+  // a rectangular patch on the surface of a cylinder along x (slots on brakes and hiders)
+  function cylDecal(x0, x1, r, ang, halfW, color, part, o = {}) {
+    const ny = Math.cos(ang), nz = Math.sin(ang), ty = -nz, tz = ny, R = r + 0.003;
+    face([[x0, R * ny - ty * halfW, R * nz - tz * halfW], [x1, R * ny - ty * halfW, R * nz - tz * halfW], [x1, R * ny + ty * halfW, R * nz + tz * halfW], [x0, R * ny + ty * halfW, R * nz + tz * halfW]],
+      color, part, Object.assign({ out: [0, ny, nz], bias: -0.04, mat: 'dark' }, o));
+  }
+  // magazine outline along a curved spine
+  function curvedOutline(spine, wTop, wBot, n = 14) {
+    const P = [], back = [];
+    for (let i = 0; i <= n; i++) {
+      const t = i / n, c = spine(t), c2 = spine(Math.min(1, t + 0.01)), c1 = spine(Math.max(0, t - 0.01));
+      const d = nrm([c2[0] - c1[0], c2[1] - c1[1], 0]), nx = -d[1], ny = d[0], w = (wTop + (wBot - wTop) * t) / 2;
+      P.push([c[0] + nx * w, c[1] + ny * w]); back.unshift([c[0] - nx * w, c[1] - ny * w]);
+    }
+    return P.concat(back);
+  }
+
+  /* ================= MODEL =================
+     Units: 1 = 10 m.  x = starboard (+) / port (-), y = zenith (+, away from Earth), z = forward (+, direction of flight).
+     Sizes and positions follow NASA / Wikipedia figures, simplified. */
+  const PARTS = [
+    ['unity', 'Unity (Node 1)', 'us', 'The first US module, launched in 1998. A hub with six hatches that links the American side of the station to the Russian side.'],
+    ['destiny', 'Destiny lab', 'us', 'NASA\'s main science laboratory since 2001, with racks for experiments in biology, physics and materials. The long truss sits on top of it.'],
+    ['harmony', 'Harmony (Node 2)', 'us', 'A hub at the front of the station (2007). Europe\'s and Japan\'s labs attach to its sides, and crew capsules dock at its front and top.'],
+    ['tranquility', 'Tranquility (Node 3)', 'us', 'Holds the life-support machines that recycle water and make oxygen, plus a toilet and exercise equipment (2010).'],
+    ['cupola', 'Cupola', 'us', 'An Earth-facing observation dome with seven windows, built in Europe (2010). Crews take photos and watch the robotic arm from here.'],
+    ['quest', 'Quest airlock', 'us', 'The airlock that spacewalkers use to leave the American side in US spacesuits (2001).'],
+    ['leonardo', 'Leonardo storage module', 'us', 'A cargo carrier built in Italy that flew to the station several times, then stayed in 2011 as a storage room.'],
+    ['beam', 'BEAM', 'us', 'An inflatable test module (2016). It arrived folded and was blown up to full size in orbit; today it is used for storage.'],
+    ['ida', 'Docking adapters', 'us', 'Standard docking ports (IDA-2 from 2016, IDA-3 from 2019) where American crew and cargo capsules attach.'],
+    ['zarya', 'Zarya', 'ru', 'The very first piece, launched in November 1998. Built in Russia and paid for by the US, it gave early power and propulsion; today it is mostly storage.'],
+    ['zvezda', 'Zvezda service module', 'ru', 'The heart of the Russian side (2000): crew quarters, life support, and engines that help keep the station in orbit.'],
+    ['poisk', 'Poisk', 'ru', 'A small Russian docking and airlock module on top of Zvezda (2009). Soyuz and Progress ships dock here.'],
+    ['rassvet', 'Rassvet', 'ru', 'A Russian docking and storage module under Zarya (2010), often used by Soyuz and Progress ships.'],
+    ['nauka', 'Nauka lab', 'ru', 'Russia\'s science module, added under Zvezda in 2021. It also carries the European Robotic Arm.'],
+    ['prichal', 'Prichal', 'ru', 'A ball-shaped node with six docking ports at the end of Nauka. Added in November 2021, it is the newest module.'],
+    ['columbus', 'Columbus', 'intl', 'Europe\'s laboratory (ESA, 2008), with experiment racks inside and mounting platforms for experiments outside.'],
+    ['kibo', 'Kibō lab', 'intl', 'Japan\'s laboratory (JAXA, 2008), the largest single module on the station. It has its own small robotic arm.'],
+    ['kiboelm', 'Kibō storage section', 'intl', 'A small storage module that sits on top of the Kibō lab (2008).'],
+    ['kiboef', 'Kibō exposed platform', 'intl', 'An outdoor "porch" at the end of Kibō where experiments are exposed directly to space (2009).'],
+    ['arrays', 'Main solar arrays', 'power', 'Eight solar wings that span 109 m and give the station 75 to 90 kW of power. They turn to follow the Sun; newer roll-out panels (iROSA) were added on top from 2021.'],
+    ['rusarrays', 'Zvezda solar arrays', 'power', 'Two smaller solar wings on Zvezda that help power the Russian side.'],
+    ['truss', 'Integrated truss', 'truss', 'The 109 m backbone, assembled from 2000 to 2009. It holds the solar arrays and radiators and carries power, data and cooling lines.'],
+    ['sarj', 'Rotary joints', 'truss', 'Large joints in the truss that turn the outer solar arrays so they keep facing the Sun as the station circles the Earth.'],
+    ['radiators', 'Radiators', 'truss', 'White panels that release the station\'s waste heat into space. Ammonia pumped through the truss carries the heat to them.'],
+    ['canadarm', 'Canadarm2', 'robot', 'Canada\'s 17.6 m robotic arm (2001). It moves along the truss, catches cargo ships and holds astronauts during spacewalks.'],
+    ['dextre', 'Dextre', 'robot', 'Canada\'s two-armed robot (2008) for small, precise jobs outside, such as swapping batteries, so astronauts need fewer spacewalks.'],
+    ['dragon', 'Crew Dragon (example)', 'visit', 'A SpaceX crew capsule docked at the front. Visiting ships come and go, so which ones are docked changes over time.'],
+    ['soyuz', 'Soyuz (example)', 'visit', 'A Russian crew spacecraft, here docked under Rassvet. Soyuz has carried crews to the station since 2000.']
+  ];
+  const CATS = [
+    { id: 'us', name: 'US modules', color: '#5b95fa' },
+    { id: 'ru', name: 'Russian modules', color: '#ff6b5b' },
+    { id: 'intl', name: 'European & Japanese labs', color: '#2dd4bf' },
+    { id: 'power', name: 'Solar power', color: '#fbbf24' },
+    { id: 'truss', name: 'Truss & cooling', color: '#c084fc' },
+    { id: 'robot', name: 'Robotic arms', color: '#4ade80' },
+    { id: 'visit', name: 'Visiting spacecraft', color: '#f472b6' }
+  ];
+  const MOD = '#cdcbc2', MOD_R = '#c7cabf', RING = '#8f8d86', MET = '#7d838c', MET_D = '#565c66', ARR = '#7a5c26', ARR_D = '#4a3818',
+        ARR_R = '#22385a', RAD = '#c9cbcd', DARK = '#15181d', GOLD = '#a8843c';
+  const both = f => [-1, 1].forEach(f);
+  const N = 18;
+  // a pressurised module: cylinder from a to b with radius r, plus darker joint rings and end cones
+  function module(a, b, r, color, part, o = {}) {
+    prism(a, b, () => r, N, 1, color, part, { mat: 'poly' });
+    const ax = nrm(sub(b, a)), L = dist(a, b);
+    (o.rings || [0.08, 0.92]).forEach(t => { const c = lerp(a, b, t); prism(addv(c, mul(ax, -0.012)), addv(c, mul(ax, 0.012)), () => r + 0.008, N, 1, RING, part, { mat: 'metal' }); });
+    if (o.coneA) prism(addv(a, mul(ax, -o.coneA)), a, t => r * (0.55 + 0.45 * t), N, 2, color, part, { mat: 'poly' });
+    if (o.coneB) prism(b, addv(b, mul(ax, o.coneB)), t => r * (1 - 0.45 * t), N, 2, color, part, { mat: 'poly' });
+    return L;
+  }
+  function ball(c, r, color, part) { prism([c[0], c[1] - r, c[2]], [c[0], c[1] + r, c[2]], t => r * Math.sqrt(Math.max(0.02, 1 - Math.pow(2 * t - 1, 2))), N, 8, color, part, { mat: 'poly', caps: false }); }
+  // flat panel (two-sided) with corners p0..p3, plus a grid of cell lines
+  function panel(p0, p1, p2, p3, color, part, o = {}) {
+    face([p0, p1, p2, p3], color, part, { two: true, mat: o.mat || 'metal' });
+    const nu = o.nu || 0, nv = o.nv || 0, lc = o.line || ARR_D;
+    for (let i = 1; i < nu; i++) line([lerp(p0, p1, i / nu), lerp(p3, p2, i / nu)], lc, 0.8, part, { hit: false, seg: 0.6 });
+    for (let j = 1; j < nv; j++) line([lerp(p0, p3, j / nv), lerp(p1, p2, j / nv)], lc, 0.8, part, { hit: false, seg: 0.6 });
+  }
+
+  // ===== US core: Unity, Destiny, Harmony (stay in place) =====
+  curGrp = null;
+  module([0, 0, 0.0], [0, 0, 0.55], 0.215, MOD, 'unity');
+  module([0, 0, 0.55], [0, 0, 1.47], 0.215, MOD, 'destiny', { rings: [0.06, 0.5, 0.94] });
+  module([0, 0, 1.47], [0, 0, 2.19], 0.22, MOD, 'harmony');
+  prism([0, 0, 2.19], [0, 0, 2.3], t => 0.09 + 0.02 * t, 14, 1, MET, 'ida', { mat: 'metal' });            // IDA-2, forward
+  prism([0, 0.22, 1.85], [0, 0.33, 1.85], () => 0.1, 14, 1, MET, 'ida', { mat: 'metal' });             // IDA-3, zenith
+
+  // ===== Quest airlock (slides starboard) =====
+  curGrp = 'quest';
+  module([0.215, 0, 0.27], [0.5, 0, 0.27], 0.2, MOD, 'quest', { rings: [0.5] });
+  module([0.5, 0, 0.27], [0.77, 0, 0.27], 0.16, MOD, 'quest', { rings: [0.5], coneB: 0.04 });
+
+  // ===== Tranquility with Cupola, Leonardo, BEAM (slides to port and down) =====
+  curGrp = 'node3';
+  module([-0.215, 0, 0.27], [-0.885, 0, 0.27], 0.224, MOD, 'tranquility');
+  prism([-0.55, -0.224, 0.27], [-0.55, -0.31, 0.27], () => 0.15, 7, 1, MET, 'cupola', { mat: 'metal' });
+  prism([-0.55, -0.31, 0.27], [-0.55, -0.37, 0.27], t => 0.15 - 0.06 * t, 7, 1, MET_D, 'cupola', { mat: 'metal', capColor: '#2b4a66' });
+  module([-0.6, 0, 0.494], [-0.6, 0, 1.154], 0.228, MOD, 'leonardo', { coneB: 0.04 });
+  prism([-0.45, 0, 0.05], [-0.45, 0, -0.354], t => 0.16 * Math.sqrt(Math.max(0.15, 1 - Math.pow(1.6 * t - 0.6, 2) * 0.35)), N, 4, '#c9c4b4', 'beam', { mat: 'matte' });
+
+  // ===== Columbus (slides starboard) =====
+  curGrp = 'col';
+  module([0.22, 0, 1.85], [0.92, 0, 1.85], 0.225, MOD, 'columbus', { coneB: 0.05 });
+  box(0.45, 0.8, 0.225, 0.29, 1.78, 1.92, MET_D, 'columbus', { mat: 'metal' });
+
+  // ===== Kibo (slides to port) =====
+  curGrp = 'kibo';
+  module([-0.22, 0, 1.85], [-1.34, 0, 1.85], 0.22, MOD, 'kibo', { rings: [0.05, 0.5, 0.95] });
+  module([-0.75, 0.22, 1.85], [-0.75, 0.64, 1.85], 0.22, MOD, 'kiboelm', { rings: [0.5] });
+  box(-1.86, -1.34, -0.17, 0.05, 1.6, 2.1, MET, 'kiboef', { mat: 'metal' });
+  [[-1.75, 1.7], [-1.55, 1.7], [-1.75, 1.95], [-1.5, 1.98]].forEach(([x, z]) => box(x - 0.06, x + 0.06, 0.05, 0.14, z - 0.06, z + 0.06, GOLD, 'kiboef', { mat: 'poly' }));
+  line([[-1.34, 0.12, 1.98], [-1.5, 0.35, 2.0], [-1.7, 0.25, 2.05]], MET_D, 2.2, 'kibo', { seg: 0.2 });   // Kibo's small arm
+
+  // ===== Zarya, Rassvet and a docked Soyuz (slide aft) =====
+  curGrp = 'zr';
+  module([0, 0, -1.26], [0, 0, 0.0], 0.205, MOD_R, 'zarya', { rings: [0.06, 0.55, 0.94] });
+  module([0, -0.2, -0.45], [0, -0.8, -0.45], 0.117, MOD_R, 'rassvet', { rings: [0.5] });
+  ball([0, -0.92, -0.45], 0.11, '#9da28f', 'soyuz');
+  prism([0, -1.02, -0.45], [0, -1.24, -0.45], t => 0.07 + 0.04 * t, N, 2, '#7d8070', 'soyuz', { mat: 'poly' });
+  prism([0, -1.24, -0.45], [0, -1.5, -0.45], () => 0.11, N, 1, '#8a8e7c', 'soyuz', { mat: 'poly' });
+  both(s => panel([s * 0.11, -1.36, -0.53], [s * 0.62, -1.36, -0.53], [s * 0.62, -1.36, -0.37], [s * 0.11, -1.36, -0.37], ARR_R, 'soyuz', { nu: 5, nv: 2, line: '#13223a' }));
+
+  // ===== Zvezda, Poisk, Nauka, Prichal (slide further aft) =====
+  curGrp = 'rus';
+  ball([0, 0, -1.43], 0.17, MOD_R, 'zvezda');
+  prism([0, 0, -1.6], [0, 0, -1.85], t => 0.15 + 0.06 * t, N, 2, MOD_R, 'zvezda', { mat: 'poly' });
+  module([0, 0, -1.85], [0, 0, -2.4], 0.21, MOD_R, 'zvezda', { rings: [0.5] });
+  prism([0, 0, -2.4], [0, 0, -2.57], () => 0.11, N, 1, MOD_R, 'zvezda', { mat: 'poly' });
+  both(s => {
+    panel([s * 0.22, 0, -2.0], [s * 1.5, 0, -2.0], [s * 1.5, 0, -2.3], [s * 0.22, 0, -2.3], ARR_R, 'rusarrays', { nu: 8, nv: 3, line: '#13223a' });
+    line([[s * 0.21, 0, -2.15], [s * 1.5, 0, -2.15]], MET, 1.5, 'rusarrays', { hit: false });
+  });
+  module([0, 0.17, -1.43], [0, 0.57, -1.43], 0.127, MOD_R, 'poisk', { rings: [0.5] });
+  module([0, -0.17, -1.43], [0, -1.47, -1.43], 0.21, MOD_R, 'nauka', { rings: [0.05, 0.5, 0.95] });
+  line([[0.21, -0.5, -1.43], [0.6, -0.9, -1.5], [0.45, -1.3, -1.6]], MET_D, 2.2, 'nauka', { seg: 0.2 });   // European Robotic Arm, folded
+  ball([0, -1.635, -1.43], 0.165, MOD_R, 'prichal');
+
+  // ===== Crew Dragon at the front (slides forward) =====
+  curGrp = 'dragon';
+  prism([0, 0, 2.3], [0, 0, 2.66], t => 0.09 + 0.11 * Math.sqrt(t), N, 4, '#dfe2e6', 'dragon', { mat: 'poly' });
+  prism([0, 0, 2.66], [0, 0, 3.0], () => 0.2, N, 1, '#d4d7db', 'dragon', { mat: 'poly' });
+  both(s => panel([s * 0.2, 0, 2.7], [s * 0.2, 0, 2.95], [s * 0.2, s * 0.0001 + 0.1, 2.95], [s * 0.2, 0.1, 2.7], '#1f2d44', 'dragon', { mat: 'poly' }));
+
+  // ===== Truss, joints, radiators, solar arrays, robotics (lift up) =====
+  curGrp = 'truss';
+  const TY0 = 0.37, TY1 = 0.83, TZ0 = 0.77, TZ1 = 1.23, TX = 5.45;
+  box(-0.4, 0.4, 0.215, TY0, 0.85, 1.15, MET_D, 'truss', { mat: 'metal' });                            // S0 mount on Destiny
+  [[-TX, -2.2], [-2.1, 2.1], [2.2, TX]].forEach(([x0, x1]) => box(x0, x1, TY0, TY1, TZ0, TZ1, MET, 'truss', { mat: 'metal' }));
+  // lattice: diagonal struts on the four long faces
+  for (let x = -TX; x < TX - 0.01; x += 0.46) {
+    const x2 = Math.min(TX, x + 0.46);
+    [[TY0 - 0.004, 'y', TZ0, TZ1], [TY1 + 0.004, 'y', TZ0, TZ1]].forEach(([y, , z0, z1]) => line([[x, y, z0], [x2, y, z1]], MET_D, 1, 'truss', { hit: false, seg: 0.6 }));
+    [TZ0 - 0.004, TZ1 + 0.004].forEach(z => line([[x, TY0, z], [x2, TY1, z]], MET_D, 1, 'truss', { hit: false, seg: 0.6 }));
+    line([[x2, TY0, TZ0 - 0.004], [x2, TY1, TZ0 - 0.004]], MET_D, 1, 'truss', { hit: false });
+  }
+  both(s => prism([s * 2.1, 0.6, 1.0], [s * 2.2, 0.6, 1.0], () => 0.3, 22, 1, '#9aa1ab', 'sarj', { mat: 'metal' }));
+  // main radiators on S1 and P1: three panels per side, reaching aft
+  curGrp = 'rad';
+  both(s => [0, 1, 2].forEach(i => {
+    const x0 = s * (0.8 + i * 0.31), x1 = s * (0.8 + i * 0.31 + 0.29);
+    panel([x0, 0.6, 0.75], [x1, 0.6, 0.75], [x1, 0.6 - 0.02 * i, -1.55], [x0, 0.6 - 0.02 * i, -1.55], RAD, 'radiators', { mat: 'poly', nv: 6, line: '#9ea1a4' });
+  }));
+  // eight main solar wings: at P4/S4 and P6/S6, one wing reaching forward and one aft at each
+  both(s => [2.9, 4.85].forEach(X => [-1, 1].forEach(dir => {
+    curGrp = dir > 0 ? 'arrF' : 'arrA';
+    const xc = s * X + dir * 0.6, z0 = dir > 0 ? TZ1 + 0.12 : TZ0 - 0.12, z1 = z0 + dir * 3.4;
+    [[-0.56, -0.04], [0.04, 0.56]].forEach(([a, b]) => panel([xc + a, 0.6, z0], [xc + b, 0.6, z0], [xc + b, 0.6, z1], [xc + a, 0.6, z1], ARR, 'arrays', { nu: 4, nv: 16 }));
+    line([[xc, 0.6, (TZ0 + TZ1) / 2], [xc, 0.6, z1]], '#c9ccd2', 1.6, 'arrays', { hit: false });
+    box(xc - 0.1, xc + 0.1, 0.52, 0.68, dir > 0 ? TZ1 : z0, dir > 0 ? z0 : TZ0, MET_D, 'arrays', { mat: 'metal' });
+    // small radiator for each power module, standing up
+    curGrp = 'radUp';
+    if (dir > 0) panel([s * X - 0.12, TY1, 1.0], [s * X + 0.12, TY1, 1.0], [s * X + 0.12, TY1 + 0.75, 1.0], [s * X - 0.12, TY1 + 0.75, 1.0], RAD, 'radiators', { mat: 'poly', nv: 4, line: '#9ea1a4' });
+  })));
+  // Canadarm2 on its mobile base, and Dextre beside it
+  curGrp = 'robot';
+  box(0.75, 1.15, TY1, TY1 + 0.08, 0.82, 1.18, '#d8d8d2', 'canadarm', { mat: 'poly' });
+  { const A = [0.95, TY1 + 0.08, 1.0], S = [0.95, TY1 + 0.2, 1.0], E = [1.55, TY1 + 1.05, 1.45], Wr = [2.35, TY1 + 0.55, 1.95];
+    prism(A, S, () => 0.05, 12, 1, '#e4e4de', 'canadarm', { mat: 'poly' });
+    prism(S, E, () => 0.035, 12, 1, '#ecebe6', 'canadarm', { mat: 'poly' });
+    prism(E, Wr, () => 0.035, 12, 1, '#ecebe6', 'canadarm', { mat: 'poly' });
+    ball(E, 0.055, '#d0cfc8', 'canadarm'); ball(S, 0.055, '#d0cfc8', 'canadarm');
+    prism(Wr, addv(Wr, [0.12, -0.08, 0.1]), () => 0.05, 12, 1, '#d0cfc8', 'canadarm', { mat: 'poly' }); }
+  prism([0.45, TY1, 1.0], [0.45, TY1 + 0.32, 1.0], () => 0.055, 12, 1, '#dcdcd5', 'dextre', { mat: 'poly' });
+  box(0.3, 0.6, TY1 + 0.26, TY1 + 0.33, 0.95, 1.05, '#dcdcd5', 'dextre', { mat: 'poly' });
+  both(s => line([[0.45 + s * 0.15, TY1 + 0.3, 1.0], [0.45 + s * 0.3, TY1 + 0.45, 1.12], [0.45 + s * 0.35, TY1 + 0.3, 1.25]], '#cfcfc8', 3, 'dextre', { seg: 0.2 }));
+  curGrp = null;
+
+  const OFFSET = { quest: [0.55, 0, 0], node3: [-0.55, -0.5, 0], col: [0.75, 0, 0], kibo: [-0.85, 0, 0], zr: [0, 0, -0.5], rus: [0, 0, -1.05], dragon: [0, 0, 0.6],
+    truss: [0, 0.9, 0], arrF: [0, 1.25, 0.55], arrA: [0, 1.25, -0.55], rad: [0, 0.75, -0.45], radUp: [0, 1.55, 0], robot: [0, 1.75, 0.25] };
+  const ANCHOR = {
+    unity: [[0, 0.215, 0.27]], destiny: [[0.215, 0, 1.0]], harmony: [[0.15, 0.15, 2.05]], tranquility: [[-0.8, 0.22, 0.27], 'node3'], cupola: [[-0.55, -0.37, 0.27], 'node3'],
+    quest: [[0.65, 0.17, 0.27], 'quest'], leonardo: [[-0.6, 0.228, 0.85], 'node3'], beam: [[-0.45, 0.15, -0.2], 'node3'], ida: [[0, 0.33, 1.85]],
+    zarya: [[0.205, 0, -0.6], 'zr'], zvezda: [[0.21, 0.05, -2.1], 'rus'], poisk: [[0, 0.57, -1.43], 'rus'], rassvet: [[0.117, -0.6, -0.45], 'zr'],
+    nauka: [[0.21, -1.0, -1.43], 'rus'], prichal: [[0, -1.8, -1.43], 'rus'], columbus: [[0.8, 0.2, 1.85], 'col'], kibo: [[-1.1, 0.2, 1.85], 'kibo'],
+    kiboelm: [[-0.75, 0.64, 1.85], 'kibo'], kiboef: [[-1.6, 0.14, 1.85], 'kibo'], arrays: [[4.25, 0.6, 3.2], 'arrF'], rusarrays: [[1.3, 0, -2.15], 'rus'],
+    truss: [[-1.2, TY1, 1.0], 'truss'], sarj: [[-2.15, 0.9, 1.0], 'truss'], radiators: [[-1.25, 0.6, -0.9], 'rad'], canadarm: [[1.55, TY1 + 1.05, 1.45], 'robot'],
+    dextre: [[0.45, TY1 + 0.33, 1.0], 'robot'], dragon: [[0, 0.2, 2.85], 'dragon'], soyuz: [[0.6, -1.36, -0.45], 'zr']
+  };
+  const CENTER = [0.0, 0.35, 0.2], GROUND = -20, XR = [-0.01, 0.01];
+  const VIEW0 = { yaw: -2.4, pitch: 0.4 };
+  const MODEL_W = 12.7, MODEL_H = 6.35;   // assembled view fits the box; exploded keeps its earlier size (see render)
+
+  /* ========================================= */
+  {
+    const pip = (pt, poly) => { let c = false; for (let i = 0, j = poly.length - 1; i < poly.length; j = i++) { const a = poly[i], b = poly[j];
+      if ((a[1] > pt[1]) !== (b[1] > pt[1]) && pt[0] < (b[0] - a[0]) * (pt[1] - a[1]) / (b[1] - a[1]) + a[0]) c = !c; } return c; };
+    const sides = items.filter(f => f.t === 'f' && !f.decal && Math.abs(f.n[2]) > 0.999);
+    items.forEach(d => {
+      if (!d.decal) return;
+      const c = cen(d.pts); let best = null, bd = 1e9;
+      sides.forEach(f => {
+        if (f.grp !== d.grp || Math.sign(f.n[2]) !== Math.sign(d.n[2])) return;
+        const dz = Math.abs(f.pts[0][2] - d.pts[0][2]);
+        if (dz > 0.02 || dz >= bd || !pip([c[0], c[1]], f.pts.map(q => [q[0], q[1]]))) return;
+        bd = dz; best = f;
+      });
+      d.host = best;
+    });
+  }
+
+  const PART = {};
+  PARTS.forEach(([id, name, cat, desc]) => { PART[id] = { id, name, cat, desc }; });
+  const CAT = {};
+  CATS.forEach(c => { c.parts = PARTS.filter(p => p[2] === c.id).map(p => p[0]); CAT[c.id] = c; });
+  const COL = id => CAT[PART[id].cat].color;
+
+  /* ---------------- View & projection ---------------- */
+  let explode = 0, explodeTo = 0;
+  const ease = t => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+  const tf = (p, g) => { if (!g || !explode) return p; const o = OFFSET[g], k = ease(explode); return [p[0] + o[0] * k, p[1] + o[1] * k, p[2] + o[2] * k]; };
+  let yaw = VIEW0.yaw, pitch = VIEW0.pitch;
+  let W = 1000, H = 600, F = 1000, F0 = 1000, CX = 500, CY = 300, CY0 = 300, cyw, syw, cpt, spt;
+  const DCAM = 40;
+  function proj(p) {
+    const x = p[0] - CENTER[0], y = p[1] - CENTER[1], z = p[2] - CENTER[2];
+    const X = x * cyw - z * syw, Z1 = x * syw + z * cyw, Y2 = y * cpt + Z1 * spt, Z2 = -y * spt + Z1 * cpt, d = Z2 + DCAM;
+    return [CX + F * X / d, CY - F * Y2 / d, Z2, X, Y2];
+  }
+  const rotN = n => { const X = n[0] * cyw - n[2] * syw, Z1 = n[0] * syw + n[2] * cyw; return [X, n[1] * cpt + Z1 * spt, -n[1] * spt + Z1 * cpt]; };
+
+  /* ---------------- Drawing ---------------- */
+  let chart, gShadow, shadowEl, gModel, gHits, gMarks, gLabels;
+  let mode = 'hover', hover = null, hl = null, auto = true, paused = false, dirty = true, dragging = null;
+  const labels = {}, BGC = [22, 27, 35], f1 = v => Math.round(v * 10) / 10;
+  let gradN = 0;
+
+  function setup(c) {
+    chart = c;
+    const R = chart.renderer;
+    gShadow = R.g('shadow').add();
+    shadowEl = R.path().attr({ d: 'M0 0', fill: 'rgba(0,0,0,0)' }).add(gShadow).element;
+    shadowEl.style.filter = 'blur(14px)';
+    gModel = R.g('model').add(); gHits = R.g('hits').add(); gLabels = R.g('labels').add(); gMarks = R.g('marks').add();
+    items.forEach(it => {
+      const el = R.path().attr({ d: 'M0 0' }).add(gModel).element;
+      if (it.t === 'f') { el.setAttribute('stroke-width', '0.7'); el.setAttribute('stroke-linejoin', 'round'); }
+      else { el.setAttribute('fill', 'none'); el.setAttribute('stroke-width', it.width); el.setAttribute('stroke-linecap', 'round'); }
+      if (it.part) el.setAttribute('data-part', it.part); else el.style.pointerEvents = 'none';
+      it.el = el; it.shown = true; it.fill = '';
+      if (it.op) { el.setAttribute('fill-opacity', it.op); el.setAttribute('stroke-opacity', 0); }
+      if (it.fade) {
+        const NS = 'http://www.w3.org/2000/svg', gd = document.createElementNS(NS, 'linearGradient'), id = 'g' + (gradN++), [dir, a] = it.fade;
+        gd.setAttribute('id', id); gd.setAttribute('x1', 0); gd.setAttribute('x2', 0); gd.setAttribute('y1', dir === 'down' ? 0 : 1); gd.setAttribute('y2', dir === 'down' ? 1 : 0);
+        [[0, a], [1, 0]].forEach(([off, o]) => { const st = document.createElementNS(NS, 'stop'); st.setAttribute('offset', off); st.setAttribute('stop-color', '#000'); st.setAttribute('stop-opacity', o); gd.appendChild(st); });
+        R.defs.element.appendChild(gd); el.setAttribute('fill', `url(#${id})`); el.setAttribute('stroke', 'none'); el.style.pointerEvents = 'none';
+      }
+      if (it.grad) {
+        const NS = 'http://www.w3.org/2000/svg', gd = document.createElementNS(NS, 'linearGradient'), id = 'g' + (gradN++);
+        gd.setAttribute('id', id); gd.setAttribute('gradientUnits', 'userSpaceOnUse');
+        it.stops = [0, 0.45, 1].map(off => { const st = document.createElementNS(NS, 'stop'); st.setAttribute('offset', off); gd.appendChild(st); return st; });
+        R.defs.element.appendChild(gd); it.gd = gd; el.setAttribute('fill', `url(#${id})`); el.setAttribute('stroke-width', '0.9');
+      }
+    });
+    hits.forEach(h => {
+      const el = R.path().attr({ d: 'M0 0' }).add(gHits).element;
+      el.setAttribute('fill', 'none'); el.setAttribute('stroke', 'rgba(0,0,0,0)'); el.setAttribute('stroke-width', '12');
+      el.setAttribute('stroke-linecap', 'round'); el.setAttribute('data-part', h.part); el.style.pointerEvents = 'stroke'; h.el = el;
+    });
+    PARTS.forEach(([id, name]) => {
+      const lead = R.path().attr({ d: 'M0 0', stroke: '#6d7b92', 'stroke-width': 1.1, fill: 'none' }).add(gLabels);
+      const text = R.text(name, 0, 0).css({ fontSize: '14px', fontWeight: '700', color: '#eef2f7', fontFamily: 'Archivo, system-ui, sans-serif' })
+        .attr({ align: 'center', stroke: '#11151c', 'stroke-width': 4, 'stroke-linejoin': 'round', 'paint-order': 'stroke' }).add(gLabels);
+      text.element.setAttribute('data-part', id);
+      const dot = R.circle(0, 0, 4.5).attr({ fill: COL(id), stroke: '#0c0f14', 'stroke-width': 1.8 }).add(gMarks);
+      dot.element.setAttribute('data-part', id); dot.element.style.cursor = 'pointer';
+      labels[id] = { lead, text, dot };
+    });
+    resize();
+  }
+  // lighting: ambient + key + rim + fill, plus a view-dependent highlight that moves as the model turns
+  function lit(it, nv) {
+    let n = it.n;
+    if (it.two && nv[2] > 0) { n = mul(n, -1); nv = mul(nv, -1); }
+    const d1 = Math.max(0, dot(n, L1)), d2 = Math.max(0, dot(n, L2)), d3 = Math.max(0, dot(n, L3));
+    const k = 0.2 + 0.78 * d1 + 0.42 * d2 * d2 + 0.12 * d3;
+    const l1v = rotN(L1), hx = l1v[0], hy = l1v[1], hz = l1v[2] - 1, hl2 = Math.hypot(hx, hy, hz) || 1;
+    const sp = it.mat[0] * Math.pow(Math.max(0, (nv[0] * hx + nv[1] * hy + nv[2] * hz) / hl2), it.mat[1]) * 255;
+    const rim = 0.35 * Math.pow(Math.max(0, 1 - Math.abs(nv[2])), 3) * 255 * (it.mat[0] > 0.1 ? 1 : 0.4);   // bright edges against the backdrop
+    return it.col.map(v => v * k + sp + rim * 0.5);
+  }
+  function finalColor(it, c) {
+    const on = hl && hl.has(it.part), dim = hl && !on;
+    if (dim) return c.map((v, i) => v + (BGC[i] - v) * 0.78);
+    if (on) { const k = hex2rgb(COL(it.part)), lum = (c[0] + c[1] + c[2]) / 3 / 128; return k.map(v => v * Math.min(1.25, Math.max(0.55, lum))); }
+    return c;
+  }
+  function setHighlight(set) { hl = set; dirty = true; }
+  function resize() {
+    W = chart.chartWidth; H = chart.chartHeight;
+    const upx = Math.min((H - 120) / (MODEL_H * 0.86), (W - 50) / (MODEL_W * 0.93));
+    F0 = upx * DCAM; F = F0; CX = W / 2; CY0 = H / 2 - 6; CY = CY0;
+    Object.values(labels).forEach(l => l.text.css({ fontSize: W < 600 ? '11px' : '14px' }));
+    dirty = true;
+  }
+  function render() {
+    cyw = Math.cos(yaw); syw = Math.sin(yaw); cpt = Math.cos(pitch); spt = Math.sin(pitch);
+    F = F0 * (1 - 0.073 * ease(explode)); CY = CY0 + H * 0.06 * ease(explode);          // zoom out a little while exploded so lifted parts clear the labels
+    // soft shadow on an imaginary floor under the model
+    const fl = [[XR[0], GROUND, -0.35], [XR[1], GROUND, -0.35], [XR[1], GROUND, 0.35], [XR[0], GROUND, 0.35]].map(proj);
+    shadowEl.setAttribute('d', 'M' + fl.map(q => f1(q[0]) + ' ' + f1(q[1])).join('L') + 'Z');
+    const vis = [];
+    for (const it of items) {
+      const pts = it.grp && explode ? it.pts.map(p => tf(p, it.grp)) : it.pts;
+      const sp = pts.map(proj);
+      let show = true, nv = null;
+      if (it.t === 'f') nv = rotN(it.n);
+      const cn = it.t === 'f' ? (it.two ? null : nv) : (it.cullN ? rotN(it.cullN) : null);
+      if (cn) { const q = sp[0]; show = cn[0] * q[3] + cn[1] * q[4] + cn[2] * (q[2] + DCAM) < 0; }
+      if (show && it.host && !it.host.vis) show = false;
+      it.vis = show;
+      if (!show) { if (it.shown) { it.el.style.display = 'none'; it.shown = false; } continue; }
+      let dsum = 0, d = '';
+      for (let i = 0; i < sp.length; i++) { const q = sp[i]; dsum += q[2]; d += (i ? 'L' : 'M') + f1(q[0]) + ' ' + f1(q[1]); }
+      if (it.t === 'f') d += 'Z';
+      it.depth = it.host ? it.host.depth - 0.001 * it.layer : dsum / sp.length + it.bias;
+      it.el.setAttribute('d', d);
+      if (it.fade) {
+        it.el.style.opacity = hl ? 0.3 : 1;
+        if (!it.shown) { it.el.style.display = ''; it.shown = true; }
+        vis.push(it);
+        continue;
+      }
+      if (it.grad) {
+        const base = finalColor(it, lit(it, nv));
+        let ti = 0, bi = 0; pts.forEach((p, i) => { if (p[1] > pts[ti][1]) ti = i; if (p[1] < pts[bi][1]) bi = i; });
+        const a = sp[ti], b = sp[bi];
+        it.gd.setAttribute('x1', f1(a[0])); it.gd.setAttribute('y1', f1(a[1])); it.gd.setAttribute('x2', f1(b[0])); it.gd.setAttribute('y2', f1(b[1]));
+        const key = base.map(Math.round).join();
+        if (key !== it.fill) {
+          it.fill = key;
+          it.stops[0].setAttribute('stop-color', rgb(base.map(v => v * 1.22 + 14)));
+          it.stops[1].setAttribute('stop-color', rgb(base));
+          it.stops[2].setAttribute('stop-color', rgb(base.map(v => v * 0.62)));
+          it.el.setAttribute('stroke', rgb(base.map(v => v * 0.42)));
+        }
+        if (!it.shown) { it.el.style.display = ''; it.shown = true; }
+        vis.push(it);
+        continue;
+      }
+      const col = rgb(finalColor(it, it.t === 'f' ? lit(it, nv) : it.col));
+      if (col !== it.fill) {
+        it.fill = col;
+        if (it.t === 'f') { it.el.setAttribute('fill', col); it.el.setAttribute('stroke', col); }
+        else { it.el.setAttribute('stroke', col); it.el.setAttribute('stroke-width', hl && hl.has(it.part) ? it.width + 1.2 : it.width); }
+      }
+      if (!it.shown) { it.el.style.display = ''; it.shown = true; }
+      vis.push(it);
+    }
+    vis.sort((a, b) => b.depth - a.depth);
+    const g = gModel.element;
+    for (const it of vis) g.appendChild(it.el);
+    for (const h of hits) h.el.setAttribute('d', h.pts.map((p, i) => { const q = proj(tf(p, h.grp)); return (i ? 'L' : 'M') + f1(q[0]) + ' ' + f1(q[1]); }).join(''));
+    layoutLabels();
+  }
+  const anchorPos = id => { const [p, g] = ANCHOR[id]; return proj(tf(p, g)); };
+  // labels in rows above and below the model, sorted left to right, with leader lines
+  function layoutLabels() {
+    const A = {};
+    PARTS.forEach(([id]) => { A[id] = anchorPos(id); });
+    PARTS.forEach(([id]) => {
+      const l = labels[id], q = A[id], on = hl && hl.has(id);
+      l.dot.attr({ cx: q[0], cy: q[1], r: on ? 6.5 : (mode === 'all' ? 3.6 : 3.8), opacity: hl && !on ? 0.2 : (mode === 'all' || on ? 1 : 0.75), stroke: on ? '#fff' : '#0c0f14' });
+    });
+    if (mode !== 'all') { PARTS.forEach(([id]) => { labels[id].text.hide(); labels[id].lead.hide(); }); return; }
+    const midY = PARTS.reduce((s, [id]) => s + A[id][1], 0) / PARTS.length;
+    const small = W < 600, cw = small ? 6 : 7.4, pad = 12;
+    const rows = { top: [small ? 18 : 26, small ? 36 : 50, small ? 54 : 74], bot: [H - (small ? 14 : 20), H - (small ? 32 : 44), H - (small ? 50 : 68)] };
+    ['top', 'bot'].forEach(side => {
+      const ids = PARTS.map(p => p[0]).filter(id => (A[id][1] < midY) === (side === 'top')).sort((a, b) => A[a][0] - A[b][0]);
+      const ends = rows[side].map(() => -1e9);
+      ids.forEach(id => {
+        const w = PART[id].name.length * cw + pad, l = labels[id];
+        let x = Math.max(w / 2 + 6, Math.min(W - w / 2 - 6, A[id][0])), tier = ends.findIndex(e => x - w / 2 >= e);
+        if (tier < 0) { tier = ends.indexOf(Math.min(...ends)); x = Math.min(W - w / 2 - 6, ends[tier] + w / 2); }
+        ends[tier] = x + w / 2;
+        const y = rows[side][tier], on = hl && hl.has(id), dim = hl && !on;
+        l.text.attr({ x, y: y + 5, opacity: dim ? 0.3 : 1 }).css({ color: on ? COL(id) : '#eef2f7' }).show();
+        const ly = side === 'top' ? y + 8 : y - 12;
+        l.lead.attr({ d: `M${f1(x)} ${f1(ly)}L${f1(A[id][0])} ${f1(A[id][1])}`, stroke: on ? COL(id) : '#5d6b82', 'stroke-width': on ? 2 : 1.1, opacity: dim ? 0.25 : 1 }).show();
+      });
+    });
+  }
+
+  /* ---------------- Interaction ---------------- */
+  const $ = id => document.getElementById(id);
+  const stage = $('stage'), tip = $('tip'), listItems = {};
+  function setHover(id, pos) {
+    if (id !== hover) { hover = id; setHighlight(id ? new Set([id]) : null); Object.entries(listItems).forEach(([k, li]) => li.classList.toggle('on', k === id)); }
+    if (!id) { tip.classList.remove('on'); return; }
+    const p = PART[id];
+    tip.innerHTML = `<b>${p.name}</b>${p.desc}`; tip.classList.add('on');
+    let x, y; if (pos) [x, y] = pos; else { const q = anchorPos(id); x = q[0]; y = q[1]; }
+    const tw = tip.offsetWidth, th = tip.offsetHeight, sw = stage.clientWidth, shh = stage.clientHeight;
+    let tx = x + 18, ty = y - th - 12;
+    if (tx + tw > sw - 8) tx = x - tw - 18; if (tx < 8) tx = 8; if (ty < 8) ty = y + 18; if (ty + th > shh - 8) ty = shh - th - 8;
+    tip.style.transform = `translate(${Math.round(tx)}px,${Math.round(ty)}px)`;
+  }
+  const localPos = e => { const r = stage.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+  stage.addEventListener('pointerenter', () => { paused = true; });
+  stage.addEventListener('pointerleave', () => { paused = false; if (!dragging) setHover(null); });
+  stage.addEventListener('pointerdown', e => { if (e.button !== 0) return; dragging = { x: e.clientX, y: e.clientY, yaw, pitch, moved: false }; });
+  window.addEventListener('pointermove', e => {
+    if (dragging) {
+      const dx = e.clientX - dragging.x, dy = e.clientY - dragging.y;
+      if (!dragging.moved && Math.hypot(dx, dy) > 3) { dragging.moved = true; stage.classList.add('dragging'); setAuto(false); setHover(null); }
+      if (dragging.moved) { yaw = dragging.yaw + dx * 0.008; pitch = Math.max(-1.0, Math.min(1.2, dragging.pitch + dy * 0.006)); dirty = true; return; }
+    }
+    if (!stage.contains(e.target)) return;
+    const id = e.target.getAttribute && e.target.getAttribute('data-part');
+    setHover(id || null, localPos(e));
+  });
+  window.addEventListener('pointerup', () => { if (dragging) { dragging = null; stage.classList.remove('dragging'); } });
+  stage.addEventListener('keydown', e => {
+    const k = { ArrowLeft: [-0.12, 0], ArrowRight: [0.12, 0], ArrowUp: [0, -0.08], ArrowDown: [0, 0.08] }[e.key];
+    if (!k) return; e.preventDefault(); setAuto(false);
+    yaw += k[0]; pitch = Math.max(-1.0, Math.min(1.2, pitch + k[1])); dirty = true;
+  });
+  function setMode(m) { mode = m; $('mHover').setAttribute('aria-pressed', String(m === 'hover')); $('mAll').setAttribute('aria-pressed', String(m === 'all')); dirty = true; }
+  function setAuto(on) { auto = on; $('bAuto').setAttribute('aria-pressed', String(on)); }
+  function setExplode(on) { explodeTo = on ? 1 : 0; $('vExp').setAttribute('aria-pressed', String(on)); $('vAsm').setAttribute('aria-pressed', String(!on)); }
+  $('mHover').addEventListener('click', () => setMode('hover'));
+  $('mAll').addEventListener('click', () => setMode('all'));
+  $('vAsm').addEventListener('click', () => setExplode(false));
+  $('vExp').addEventListener('click', () => setExplode(true));
+  $('bAuto').addEventListener('click', () => setAuto(!auto));
+  $('bReset').addEventListener('click', () => { yaw = VIEW0.yaw; pitch = VIEW0.pitch; dirty = true; });
+  {
+    const host = $('legend');
+    CATS.forEach(c => {
+      const row = document.createElement('div');
+      row.innerHTML = `<span class="sw" style="background:${c.color}"></span>${c.name}`;
+      row.addEventListener('pointerenter', () => { hover = null; tip.classList.remove('on'); setHighlight(new Set(c.parts)); });
+      row.addEventListener('pointerleave', () => setHighlight(null));
+      host.appendChild(row);
+    });
+    host.addEventListener('pointerdown', e => e.stopPropagation());
+  }
+  {
+    const host = $('parts');
+    CATS.forEach(c => {
+      const col = document.createElement('div');
+      col.innerHTML = `<h2>${c.name}</h2>`;
+      const ul = document.createElement('ul');
+      c.parts.forEach(id => {
+        const li = document.createElement('li'); li.tabIndex = 0;
+        li.innerHTML = `<span class="dot" style="background:${c.color}"></span><b>${PART[id].name}</b><br>${PART[id].desc}`;
+        const on = () => setHover(id);
+        li.addEventListener('mouseenter', on); li.addEventListener('focus', on);
+        li.addEventListener('mouseleave', () => setHover(null)); li.addEventListener('blur', () => setHover(null));
+        listItems[id] = li; ul.appendChild(li);
+      });
+      col.appendChild(ul); host.appendChild(col);
+    });
+  }
+
+  /* ---------------- Loop ---------------- */
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) setAuto(false);
+  let last = performance.now();
+  function tick(t) {
+    const dt = Math.min(0.05, (t - last) / 1000); last = t;
+    if (auto && !paused && !dragging) { yaw += dt * 0.2; dirty = true; }
+    if (explode !== explodeTo) { explode = explodeTo > explode ? Math.min(1, explode + dt * 1.4) : Math.max(0, explode - dt * 1.4); dirty = true; }
+    if (dirty && chart) { dirty = false; render(); }
+    requestAnimationFrame(tick);
+  }
+  Highcharts.chart('chart', {
+    chart: { backgroundColor: 'transparent', animation: false, spacing: [0, 0, 0, 0],
+      events: { load() { setup(this); requestAnimationFrame(tick); }, redraw() { if (chart) resize(); } } },
+    title: { text: null }, tooltip: { enabled: false }, legend: { enabled: false }, xAxis: { visible: false }, yAxis: { visible: false },
+    credits: { enabled: true, text: 'Highcharts.com', href: 'https://www.highcharts.com', position: { y: -8 }, style: { color: '#6d7b92' } },
+    accessibility: { description: 'A rotating 3D model of the International Space Station with 28 labelled parts, grouped by US modules, Russian modules, European and Japanese labs, solar power, truss and cooling, robotic arms and visiting spacecraft, and an exploded view of its main sections. The parts and their descriptions are listed below the model.' },
+    series: []
+  });
+})();
+</script>
+</body>
+</html>
