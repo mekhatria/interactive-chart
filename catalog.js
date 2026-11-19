@@ -23,7 +23,7 @@ window.CATALOG = {
     {
       id: 'oil-gas-flows', title: 'How Oil and Gas Move Around the World', cats: ['energy'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/oil-gas-flows.jpg', href: '/energy/oil-gas-flows/',
-      desc: 'Where the world\'s oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca and Suez, and the big pipelines across land.'
+      desc: 'Where the world\'s oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca and Suez, and the big oil and gas pipelines.'
     },
     {
       id: 'magnetic-shield', title: "Earth's Magnetic Shield vs. Solar Storms", cats: ['energy'], isNew: true,

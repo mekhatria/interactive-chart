@@ -6,11 +6,11 @@
 <link rel="apple-touch-icon" href="https://mekhatria.github.io/interactive-chart/assets/apple-touch-icon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link rel="canonical" href="https://mekhatria.github.io/interactive-chart/energy/oil-gas-flows/">
-<meta name="description" content="Animated world map of how oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca, Suez and the other chokepoints, and the big oil and gas pipelines across land. Data: US EIA, 2025.">
+<meta name="description" content="Animated world map of how oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca, Suez and the other chokepoints, and the big oil and gas pipelines. Data: US EIA, 2025.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Interactive Charts">
 <meta property="og:title" content="How Oil and Gas Move Around the World">
-<meta property="og:description" content="Animated world map of how oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca, Suez and the other chokepoints, and the big oil and gas pipelines across land. Data: US EIA, 2025.">
+<meta property="og:description" content="Animated world map of how oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca, Suez and the other chokepoints, and the big oil and gas pipelines. Data: US EIA, 2025.">
 <meta property="og:url" content="https://mekhatria.github.io/interactive-chart/energy/oil-gas-flows/">
 <meta property="og:image" content="https://mekhatria.github.io/interactive-chart/thumbs/oil-gas-flows.jpg">
 <meta property="og:image:width" content="800">
@@ -27,7 +27,7 @@
       "url": "https://mekhatria.github.io/interactive-chart/energy/oil-gas-flows/",
       "name": "How Oil and Gas Move Around the World",
       "headline": "How Oil and Gas Move Around the World",
-      "description": "Animated world map of how oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca, Suez and the other chokepoints, and the big oil and gas pipelines across land. Data: US EIA, 2025.",
+      "description": "Animated world map of how oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca, Suez and the other chokepoints, and the big oil and gas pipelines. Data: US EIA, 2025.",
       "inLanguage": "en",
       "image": "https://mekhatria.github.io/interactive-chart/thumbs/oil-gas-flows.jpg",
       "datePublished": "2026-11-19",
@@ -278,7 +278,7 @@ button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px}
 @media (max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 14px;box-sizing:border-box}
 .stat .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .stat .v{font-stretch:70%;font-weight:650;font-size:26px;line-height:1.15;color:#fff;font-variant-numeric:tabular-nums}
 .stat .v small{font-size:15px;color:var(--muted);font-weight:500;margin-left:3px}
@@ -305,7 +305,7 @@ button:focus-visible{outline:2px solid #fff;outline-offset:2px}
 .switch input:checked+.sl{background:#F2B630}
 .switch input:checked+.sl::after{transform:translateX(14px)}
 .switch input:focus-visible+.sl{outline:2px solid #fff;outline-offset:2px}
-#map{width:100%;aspect-ratio:16/9;min-height:300px;border-radius:12px;overflow:hidden;background:#0A1220;border:1px solid var(--line)}
+#map{width:100%;aspect-ratio:16/9;min-height:300px;border-radius:12px;overflow:hidden;background:#071526;border:1px solid var(--line)}
 @media (max-width:600px){#map{aspect-ratio:auto;height:320px}}
 .legend{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 0 0 4px;font-size:13px;color:var(--soft)}
 .legend span{display:inline-flex;align-items:center;gap:7px}
@@ -349,7 +349,7 @@ footer a{color:var(--soft)}
           <div class="modes" role="radiogroup" aria-label="Oil view" data-com="oil">
             <button role="radio" aria-checked="true" tabindex="0" data-com="oil" data-m="all" style="--c:#5B95FA"><span class="rb"></span><span class="ic">🌍</span><span class="t">All</span></button>
             <button role="radio" aria-checked="false" tabindex="-1" class="new" data-com="oil" data-m="sea" style="--c:#4C8DF6"><span class="rb"></span><span class="ic">🚢</span><span class="t">By sea</span></button>
-            <button role="radio" aria-checked="false" tabindex="-1" class="new" data-com="oil" data-m="land" style="--c:#D9701C"><span class="rb"></span><span class="ic">🛢️</span><span class="t">By land</span></button>
+            <button role="radio" aria-checked="false" tabindex="-1" class="new" data-com="oil" data-m="land" style="--c:#D9701C"><span class="rb"></span><span class="ic">🛢️</span><span class="t">Pipelines</span></button>
           </div>
         </div>
         <div class="box" data-com="gas" style="--bc:#5FD3F0">
@@ -357,7 +357,7 @@ footer a{color:var(--soft)}
           <div class="modes" role="radiogroup" aria-label="Natural gas view" data-com="gas">
             <button role="radio" aria-checked="false" tabindex="-1" class="new" data-com="gas" data-m="all" style="--c:#5B95FA"><span class="rb"></span><span class="ic">🌍</span><span class="t">All</span></button>
             <button role="radio" aria-checked="false" tabindex="-1" class="new" data-com="gas" data-m="sea" style="--c:#4C8DF6"><span class="rb"></span><span class="ic">🚢</span><span class="t">By sea (LNG)</span></button>
-            <button role="radio" aria-checked="false" tabindex="-1" class="new" data-com="gas" data-m="land" style="--c:#D9701C"><span class="rb"></span><span class="ic">🔥</span><span class="t">By land</span></button>
+            <button role="radio" aria-checked="false" tabindex="-1" class="new" data-com="gas" data-m="land" style="--c:#D9701C"><span class="rb"></span><span class="ic">🔥</span><span class="t">Pipelines</span></button>
           </div>
         </div>
       </div>
@@ -375,7 +375,7 @@ footer a{color:var(--soft)}
         <div id="map" role="img" aria-label="World map of the main oil tanker routes, chokepoints and pipelines"></div>
         <div class="legend" aria-hidden="true">
           <span><i class="ln sea"></i>Tanker route (by sea)</span>
-          <span><i class="ln pipe"></i>Pipeline (by land)</span>
+          <span><i class="ln pipe"></i>Pipeline</span>
           <span><i class="bub"></i>Chokepoint, sized by flow (switch on in the box above)</span>
           <span><i class="ln dead"></i>Out of service</span>
           <span style="color:var(--muted)">Moving dashes show the direction of flow · route widths are indicative</span>
@@ -467,7 +467,7 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
   /* ---------- views ---------- */
   const OIL_VIEW = {
     all: { title: 'The big picture', stats: [['Oil moved by sea', '79.8', 'mb/d', 'million barrels a day, 1H 2025'], ['Busiest chokepoint', 'Malacca', '', '23.2 million barrels a day'], ['Hormuz', '≈20%', '', 'of the world\'s oil use passes here'], ['Big detour', '9.1', 'mb/d', 'around the Cape of Good Hope']],
-      story: `<p>Oil is produced in a few places and used everywhere, so it travels far. About <b>80 million barrels a day</b> go by tanker; pipelines carry more across land.</p>
+      story: `<p>Oil is produced in a few places and used everywhere, so it travels far. About <b>80 million barrels a day</b> go by tanker; pipelines carry more, over land and under the sea.</p>
         <p>Most sea routes funnel through a few narrow <b>chokepoints</b>. The busiest are the <b>Strait of Malacca</b> (23.2) and the <b>Strait of Hormuz</b> (20.9 million barrels a day).</p>
         <p>The heaviest flow on Earth runs from the <b>Persian Gulf to Asia</b>: China, India, Japan and South Korea take three-quarters of Hormuz crude.</p>
         <p>Many tankers now take the long way round Africa: <b>9.1 million barrels a day</b> pass the Cape of Good Hope.</p>` },
@@ -476,8 +476,8 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
         <p><b>Hormuz</b> is the only way out of the Persian Gulf. <b>Malacca</b> links the Indian Ocean to East Asia. <b>Bab el-Mandeb</b> and <b>Suez</b> connect the Gulf to Europe.</p>
         <p>The <b>Danish</b> and <b>Turkish straits</b> are the only exits from the Baltic and Black Seas, which is why Russian and Kazakh oil passes there.</p>
         <p>The bar chart shows how much oil passes each one. Switch on <b>Show chokepoints</b> in the Oil box and hover a bubble to see where the oil comes from and goes.</p>` },
-    land: { title: 'By land: the pipelines', stats: [['Longest shown', 'ESPO', '', '4,857 km across Siberia'], ['Biggest capacity', 'East–West', '', 'up to 7 mb/d across Saudi Arabia'], ['Druzhba', '≈4,000 km', '', 'Russia to Central Europe'], ['Pipelines shown', '10', '', 'capacities, not current flows']],
-      story: `<p>On land, oil flows through <b>pipelines</b>, the cheapest way to move it over long distances.</p>
+    land: { title: 'Oil pipelines', stats: [['Longest shown', 'ESPO', '', '4,857 km across Siberia'], ['Biggest capacity', 'East–West', '', 'up to 7 mb/d across Saudi Arabia'], ['Druzhba', '≈4,000 km', '', 'Russia to Central Europe'], ['Pipelines shown', '10', '', 'capacities, not current flows']],
+      story: `<p><b>Pipelines</b> are the cheapest way to move oil over long distances. Oil also travels by train, truck and river barge, but in much smaller amounts, so this map shows the pipelines only.</p>
         <p>Russia sends oil west through <b>Druzhba</b> and east through <b>ESPO</b> to the Pacific and China. Kazakhstan's oil reaches the Black Sea through the <b>CPC</b>, and Azerbaijan's reaches the Mediterranean through <b>BTC</b>.</p>
         <p>Some pipelines exist to <b>avoid chokepoints</b>: <b>East–West</b> across Saudi Arabia, the UAE line to Fujairah, <b>SUMED</b> beside Suez and <b>Trans-Panama</b>.</p>
         <p>Numbers are each pipeline's <b>capacity</b>, the most it can carry; real flows are often lower.</p>` }
@@ -537,8 +537,8 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
         <p><b>Hormuz</b> and <b>Malacca</b> carry most of it. The <b>Red Sea</b> route is empty and <b>Suez</b> only serves Egypt and Jordan, so ships to Europe go round the <b>Cape of Good Hope</b>.</p>
         <p>The <b>Panama Canal</b> used to carry US LNG to Asia; low water in 2023 sent tankers the long way round.</p>
         <p>Figures are in <b>billion cubic feet a day</b> (Bcf/d) of gas. Switch on <b>Show chokepoints</b> in the Natural gas box to see them on the map.</p>` },
-    land: { title: 'Natural gas by land: pipelines', stats: [['Out of service', 'Nord Stream', '', '55 bcm a year, damaged 2022'], ['Russia to China', '38', 'bcm/yr', 'Power of Siberia, since 2019'], ['Algeria to Italy', '33.5', 'bcm/yr', 'Transmed'], ['Pipelines shown', '9', '', 'capacities, not current flows']],
-      story: `<p>Most gas used in Europe and Asia still arrives by <b>pipeline</b>.</p>
+    land: { title: 'Natural gas pipelines', stats: [['Out of service', 'Nord Stream', '', '55 bcm a year, damaged 2022'], ['Russia to China', '38', 'bcm/yr', 'Power of Siberia, since 2019'], ['Algeria to Italy', '33.5', 'bcm/yr', 'Transmed'], ['Pipelines shown', '9', '', 'capacities, not current flows']],
+      story: `<p>Most gas used in Europe and Asia still arrives by <b>pipeline</b>, some of them laid on the seabed, like Nord Stream, TurkStream, Medgaz and Langeled.</p>
         <p>Europe draws on <b>Norway</b> (Langeled), <b>Algeria</b> (Transmed to Italy, Medgaz to Spain, and LNG from Arzew), <b>Azerbaijan</b> (the Southern Gas Corridor) and <b>Russia</b> (TurkStream).</p>
         <p><b>Nord Stream</b> brought Russian gas straight to Germany until 2022: deliveries stopped in August, and explosions in September damaged three of its four lines.</p>
         <p>Russia now sends gas east through <b>Power of Siberia</b>, and China also imports from Central Asia. Numbers are <b>capacities</b> in billion cubic metres a year.</p>` }
@@ -554,7 +554,7 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
 
   /* ---------- map ---------- */
   const land = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/land-50m.json').then(r => r.json());
-  const series = [{ type: 'map', name: 'Land', mapData: land, allAreas: true, nullColor: '#1B2636', borderColor: '#2A3A52', borderWidth: 0.5, enableMouseTracking: false }];
+  const series = [{ type: 'map', name: 'Land', mapData: land, allAreas: true, nullColor: '#323B48', borderColor: '#56647A', borderWidth: 0.6, enableMouseTracking: false }];
   Object.entries(DS).forEach(([c, d]) => {
     const maxW = Math.max(...d.routes.map(r => r.w)), laneW = w => 1.2 + 5.5 * w / maxW;
     const maxC = Math.max(...d.pipes.map(p => p.cap)), pipeW = v => 1.5 + 3.2 * Math.sqrt(Math.min(v, maxC) / maxC);
@@ -573,13 +573,13 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
       data: d.choke.map(k => ({ id: k.id, lon: k.lon, lat: k.lat, z: Math.max(k.v, 0.05), name: k.name, c: k })),
       color: 'rgba(242,182,48,0.32)', marker: { lineColor: '#F2B630', lineWidth: 1.6 }, states: { inactive: { opacity: 1 }, hover: { brightness: 0.2 } },
       dataLabels: { enabled: true, allowOverlap: true, crop: false, overflow: 'allow', y: -2,
-        style: { color: '#fff', textOutline: '3px #0A1220', fontWeight: '650', fontSize: '11px' },
+        style: { color: '#fff', textOutline: '3px #071526', fontWeight: '650', fontSize: '11px' },
         formatter() { const k = this.point.options.c; return W < 640 ? null : `${k.name.replace('Strait of ', '').replace(' + SUMED', '')}\n${k.lt ? '< ' : ''}${fmt(k.v)}`; } }
     });
   });
   let W = 1000;
   const chart = Highcharts.mapChart('map', {
-    chart: { backgroundColor: '#0A1220', animation: false, spacing: [4, 4, 4, 4], style: { fontFamily: 'Archivo, system-ui, sans-serif' },
+    chart: { backgroundColor: '#071526', animation: false, spacing: [4, 4, 4, 4], style: { fontFamily: 'Archivo, system-ui, sans-serif' },
       events: { load() { W = this.chartWidth; }, redraw() { W = this.chartWidth; } } },
     title: { text: null }, credits: { enabled: false }, legend: { enabled: false },
     mapView: { projection: { name: 'Miller' }, fitToGeometry: { type: 'MultiPoint', coordinates: [[-115, 62], [152, 62], [-115, -38], [152, -38]] } },
@@ -655,6 +655,21 @@ const GAS_ROUTES = [{"id": "lng-qatar-china", "name": "Qatar \u2192 China (LNG)"
     chokeOn[cb.dataset.com] = cb.checked;
     if (com !== cb.dataset.com) apply(cb.dataset.com, 'all'); else apply(com, mode);
   }));
+  // keep the four stat boxes the same height whatever is selected: measure every view once, use the tallest
+  function lockStats() {
+    const boxes = [...document.querySelectorAll('.stat')];
+    boxes.forEach(b => { b.style.minHeight = ''; });
+    let h = 0;
+    Object.values(DS).forEach(d => Object.values(d.view).forEach(V => {
+      V.stats.forEach(([k, v, u, n], i) => { $('k' + (i + 1)).textContent = k; $('v' + (i + 1)).innerHTML = v + (u ? `<small>${u}</small>` : ''); $('n' + (i + 1)).textContent = n; });
+      boxes.forEach(b => { h = Math.max(h, b.offsetHeight); });
+    }));
+    boxes.forEach(b => { b.style.minHeight = h + 'px'; });
+  }
+  let rsT;
+  window.addEventListener('resize', () => { clearTimeout(rsT); rsT = setTimeout(() => { lockStats(); apply(com, mode); }, 150); });
+  lockStats();
+  if (document.fonts) document.fonts.ready.then(() => { lockStats(); apply(com, mode); });
   const q = new URLSearchParams(location.search);
   if (q.has('thumb')) { document.body.classList.add('thumb'); chart.reflow(); }
   const qc = DS[q.get('com')] ? q.get('com') : 'oil';
