@@ -25,6 +25,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'china-high-speed-rail', title: "How China Built Its Railways", cats: ['transport'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/china-high-speed-rail.jpg', href: '/transport/china-high-speed-rail/',
+      desc: 'China\'s railways from the 1890s: the great historic lines in blue, then the high-speed network in red from 2003, extending year by year.'
+    },
+    {
       id: 'metro-growth', title: 'How Six Great Metros Grew', cats: ['transport'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/metro-growth.jpg', href: '/transport/metro-growth/',
       desc: 'Watch six metros grow year by year since 1863, drawn at the same scale: London, Paris, Moscow, Beijing, Tunis and Los Angeles.'
