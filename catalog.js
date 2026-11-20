@@ -16,13 +16,17 @@ window.CATALOG = {
     {
       id: 'history', name: 'History', title: 'History', accent: '#3FBFAD', page: '/history/',
       blurb: 'The past, mapped. Follow famous journeys and events across the world, year by year.'
+    },
+    {
+      id: 'transport', name: 'Transport', title: 'Transport', accent: '#C77DFF', page: '/transport/',
+      blurb: 'How people and goods move: metros, railways and the networks that shape cities.'
     }
   ],
 
   charts: [
     {
-      id: 'metro-growth', title: 'How Six Great Metros Grew', cats: ['history'], isNew: true,
-      tags: ['Map', 'Animated'], thumb: '/thumbs/metro-growth.jpg', href: '/history/metro-growth/',
+      id: 'metro-growth', title: 'How Six Great Metros Grew', cats: ['transport'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/metro-growth.jpg', href: '/transport/metro-growth/',
       desc: 'Watch six metros grow year by year since 1863, drawn at the same scale: London, Paris, Moscow, Beijing, Tunis and Los Angeles.'
     },
     {
