@@ -21,6 +21,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'metro-growth', title: 'How Six Great Metros Grew', cats: ['history'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/metro-growth.jpg', href: '/history/metro-growth/',
+      desc: 'Watch six metros grow year by year since 1863, drawn at the same scale: London, Paris, Moscow, Beijing, Tunis and Los Angeles.'
+    },
+    {
       id: 'oil-gas-flows', title: 'How Oil and Gas Move Around the World', cats: ['energy'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/oil-gas-flows.jpg', href: '/energy/oil-gas-flows/',
       desc: 'Where the world\'s oil and natural gas travel: tanker and LNG routes through Hormuz, Malacca and Suez, and the big oil and gas pipelines.'
