@@ -25,6 +25,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'usa-railways', title: 'How America Built Its Railways', cats: ['transport'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/usa-railways.jpg', href: '/transport/usa-railways/',
+      desc: 'Watch US railroads spread west from 1830 to 1911, about 340,000 km of track, then the first high-speed lines: Acela and Brightline.'
+    },
+    {
       id: 'china-high-speed-rail', title: "How China Built Its Railways", cats: ['transport'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/china-high-speed-rail.jpg', href: '/transport/china-high-speed-rail/',
       desc: 'China\'s railways from the 1890s: the great historic lines in blue, then the high-speed network in red from 2003, extending year by year.'
