@@ -25,7 +25,7 @@ window.CATALOG = {
 
   charts: [
     {
-      id: 'usa-railways', title: 'Timeline of America's Railways, 1830–2026', cats: ['transport'], isNew: true,
+      id: 'usa-railways', title: "Timeline of America's Railways, 1830–2026", cats: ['transport'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/usa-railways.jpg', href: '/transport/usa-railways/',
       desc: 'Watch US railroads spread west from 1830 to 1911, about 340,000 km of track, then the first high-speed lines: Acela and Brightline.'
     },
