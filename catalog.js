@@ -20,10 +20,19 @@ window.CATALOG = {
     {
       id: 'transport', name: 'Transport', title: 'Transport', accent: '#C77DFF', page: '/transport/',
       blurb: 'How people and goods move: metros, railways and the networks that shape cities.'
+    },
+    {
+      id: 'nature', name: 'Nature', title: 'Nature', accent: '#7BC86C', page: '/nature/',
+      blurb: 'Wildfires and the forces that shape the land, mapped from official data.'
     }
   ],
 
   charts: [
+    {
+      id: 'us-wildfires', title: 'Timeline of US Wildfires, 1984–2024', cats: ['nature'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/us-wildfires.jpg', href: '/nature/us-wildfires/',
+      desc: 'Every large US wildfire since 1984, Alaska included: burning peaks that grow with acres burned, plus a heatmap of where the land keeps burning.'
+    },
     {
       id: 'usa-railways', title: "Timeline of America's Railways, 1830–2026", cats: ['transport'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/usa-railways.jpg', href: '/transport/usa-railways/',
