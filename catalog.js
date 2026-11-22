@@ -19,7 +19,7 @@ window.CATALOG = {
     },
     {
       id: 'transport', name: 'Transport', title: 'Transport', accent: '#C77DFF', page: '/transport/',
-      blurb: 'How people and goods move: metros, railways and the networks that shape cities.'
+      blurb: 'How people, goods and data move: metros, railways and the networks that shape cities.'
     },
     {
       id: 'nature', name: 'Nature', title: 'Nature', accent: '#7BC86C', page: '/nature/',
@@ -28,6 +28,11 @@ window.CATALOG = {
   ],
 
   charts: [
+    {
+      id: 'africa-fibre-backbone', title: "Africa's Fibre Backbone", cats: ['transport'], isNew: true,
+      tags: ['Map', 'Interactive'], thumb: '/thumbs/africa-fibre-backbone.jpg', href: '/transport/africa-fibre-backbone/',
+      desc: 'About 286,000 km of mapped fibre-optic routes in 40 African countries, from 76 operators. Click a country to zoom in on its network.'
+    },
     {
       id: 'us-wildfires', title: 'Timeline of US Wildfires, 1984–2024', cats: ['nature'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/us-wildfires.jpg', href: '/nature/us-wildfires/',
