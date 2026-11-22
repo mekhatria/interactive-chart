@@ -23,11 +23,16 @@ window.CATALOG = {
     },
     {
       id: 'nature', name: 'Nature', title: 'Nature', accent: '#7BC86C', page: '/nature/',
-      blurb: 'Wildfires and the forces that shape the land, mapped from official data.'
+      blurb: 'Wildfires, wildlife and the forces that shape the land, mapped from real data.'
     }
   ],
 
   charts: [
+    {
+      id: 'shorebird-migration', title: 'Australia to the Arctic: A Year of Shorebird Migration', cats: ['nature'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/shorebird-migration.jpg', href: '/nature/shorebird-migration/',
+      desc: '30 tracked shorebirds fly from southern Australia through East Asia to Arctic Siberia and back, drawn as trails of light over one year.'
+    },
     {
       id: 'africa-fibre-backbone', title: "Africa's Fibre Backbone", cats: ['transport'], isNew: true,
       tags: ['Map', 'Interactive'], thumb: '/thumbs/africa-fibre-backbone.jpg', href: '/transport/africa-fibre-backbone/',
