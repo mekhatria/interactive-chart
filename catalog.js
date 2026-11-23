@@ -29,6 +29,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'mars-rovers', title: 'Driving on Mars: Curiosity and Perseverance, 2012–2026', cats: ['history'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/mars-rovers.jpg', href: '/history/mars-rovers/',
+      desc: 'Every drive of NASA\'s Curiosity and Perseverance rovers, from landing day to today, as trails of light on orbital images of Mars, with the height each has climbed.'
+    },
+    {
       id: 'shorebird-migration', title: 'Australia to the Arctic: A Year of Shorebird Migration', cats: ['nature'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/shorebird-migration.jpg', href: '/nature/shorebird-migration/',
       desc: '30 tracked shorebirds fly from southern Australia through East Asia to Arctic Siberia and back, drawn as trails of light over one year.'
