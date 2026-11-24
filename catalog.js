@@ -29,6 +29,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'us-airfields', title: "America's New Airfields and Helipads, 1981–2026", cats: ['transport'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/us-airfields.jpg', href: '/transport/us-airfields/',
+      desc: 'All 18,082 US airports, heliports and seaplane bases in the FAA register, lit up in the month each was added: 11,307 since 1981, more than four in ten of them heliports.'
+    },
+    {
       id: 'dakar-rally', title: 'Every Dakar Rally Route, 1979–2026', cats: ['history'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/dakar-rally.jpg', href: '/history/dakar-rally/',
       desc: 'All 47 Dakar Rally routes as trails of light, stop by stop: across the Sahara from Paris, to South America after 2008, and through Saudi Arabia since 2020.'
