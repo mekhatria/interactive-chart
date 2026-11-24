@@ -29,6 +29,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'dakar-rally', title: 'Every Dakar Rally Route, 1979–2026', cats: ['history'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/dakar-rally.jpg', href: '/history/dakar-rally/',
+      desc: 'All 47 Dakar Rally routes as trails of light, stop by stop: across the Sahara from Paris, to South America after 2008, and through Saudi Arabia since 2020.'
+    },
+    {
       id: 'mars-rovers', title: 'Driving on Mars: Curiosity and Perseverance, 2012–2026', cats: ['history'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/mars-rovers.jpg', href: '/history/mars-rovers/',
       desc: 'Every drive of NASA\'s Curiosity and Perseverance rovers, from landing day to today, as trails of light on orbital images of Mars, with the height each has climbed.'
