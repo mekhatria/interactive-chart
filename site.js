@@ -69,7 +69,7 @@
 
   function collectionTiles(el, exclude) {
     el.innerHTML = C.categories.filter(c => c.id !== exclude).map(c => {
-      const list = inCat(c.id), b = built(list), thumbs = b.filter(ch => ch.thumb).slice(0, 3);
+      const list = inCat(c.id), b = built(list), thumbs = b.filter(ch => ch.thumb && !ch.noTile).slice(0, 3);   // noTile: keep a chart's picture off its collection tile
       const pics = [0, 1, 2].map(i => thumbs[i] ? `<img src="${abs(thumbs[i].thumb)}" alt="" loading="lazy">` : `<div class="ph">${i === 0 ? 'Coming soon' : ''}</div>`).join('');
       const n = b.length, soon = list.length - n;
       const meta = [`${n} chart${n === 1 ? '' : 's'}`, soon && `${soon} coming soon`].filter(Boolean).join(' · ');

@@ -94,7 +94,7 @@ window.CATALOG = {
       desc: 'Every major journey of ten famous explorers, from Leif Erikson to Amundsen. Press play to watch the routes unfold across 900 years.'
     },
     {
-      id: 'sailboat', title: 'Anatomy of a Sailboat', cats: ['anatomy'], isNew: true,
+      id: 'sailboat', title: 'Anatomy of a Sailboat', cats: ['anatomy'], isNew: true, noTile: true,   // white picture: kept off the home-page Anatomy tile
       tags: ['3D', 'Interactive'], thumb: '/thumbs/sailboat.jpg', href: '/anatomy/sailboat/',
       desc: 'A 3D sailboat you can turn. Hover a part, or switch on every label, to see what each one does.'
     },
