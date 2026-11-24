@@ -29,6 +29,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'wifi-house', title: 'How Wi-Fi Fills a House: Wave Physics vs. the Planning Model', cats: ['transport'], isNew: true,
+      tags: ['Heatmap', 'Interactive'], thumb: '/thumbs/wifi-house.jpg', href: '/transport/wifi-house/',
+      desc: "A Wi-Fi router in a three-room house, computed from Maxwell's equations and with the standard planning model, both using wall data from ITU-R P.2040. Move the router and compare."
+    },
+    {
       id: 'us-airfields', title: "America's New Airfields and Helipads, 1981–2026", cats: ['transport'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/us-airfields.jpg', href: '/transport/us-airfields/',
       desc: 'All 18,082 US airports, heliports and seaplane bases in the FAA register, lit up in the month each was added: 11,307 since 1981, more than four in ten of them heliports.'
