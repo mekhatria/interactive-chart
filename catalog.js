@@ -29,8 +29,8 @@ window.CATALOG = {
 
   charts: [
     {
-      id: 'wifi-house', title: 'How Wi-Fi Fills a House: Wave Physics vs. the Planning Model', cats: ['transport', 'energy'], isNew: true, noTile: ['energy'],   // listed in Energy, picture kept off the Energy tile
-      tags: ['Heatmap', 'Interactive'], thumb: '/thumbs/wifi-house.jpg', href: '/transport/wifi-house/',
+      id: 'wifi-house', title: 'How Wi-Fi Fills a House: Wave Physics vs. the Planning Model', cats: ['energy'], isNew: true, noTile: ['energy'],   // picture kept off the home-page Energy tile
+      tags: ['Heatmap', 'Interactive'], thumb: '/thumbs/wifi-house.jpg', href: '/energy/wifi-house/',
       desc: "A Wi-Fi router in a three-room house, computed from Maxwell's equations and with the standard planning model, both using wall data from ITU-R P.2040. Move the router and compare."
     },
     {
