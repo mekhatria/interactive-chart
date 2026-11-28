@@ -29,6 +29,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'china-dams', title: "China's Big Reservoirs, Year by Year", cats: ['energy'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/china-dams.jpg', href: '/energy/china-dams/',
+      desc: "3,087 of China's large reservoirs appearing in the year they were completed, sized by storage: from the 1950s irrigation boom to the Three Gorges and Baihetan."
+    },
+    {
       id: 'us-dams', title: 'Every Dam in America, Year by Year', cats: ['energy'], isNew: true,
       tags: ['Map', 'Animated'], thumb: '/thumbs/us-dams.jpg', href: '/energy/us-dams/',
       desc: 'All 73,573 dated dams in the US National Inventory of Dams, lit up as they were finished, with the biggest reservoirs sized by storage and the 1950s–70s building boom.'
