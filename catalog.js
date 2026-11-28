@@ -29,6 +29,11 @@ window.CATALOG = {
 
   charts: [
     {
+      id: 'us-dams', title: 'Every Dam in America, Year by Year', cats: ['energy'], isNew: true,
+      tags: ['Map', 'Animated'], thumb: '/thumbs/us-dams.jpg', href: '/energy/us-dams/',
+      desc: 'All 73,573 dated dams in the US National Inventory of Dams, lit up as they were finished, with the biggest reservoirs sized by storage and the 1950s–70s building boom.'
+    },
+    {
       id: 'wifi-house', title: 'How Wi-Fi Fills a House: Wave Physics vs. the Planning Model', cats: ['energy'], isNew: true, noTile: ['energy'],   // picture kept off the home-page Energy tile
       tags: ['Heatmap', 'Interactive'], thumb: '/thumbs/wifi-house.jpg', href: '/energy/wifi-house/',
       desc: "A Wi-Fi router in a three-room house, computed from Maxwell's equations and with the standard planning model, both using wall data from ITU-R P.2040. Move the router and compare."
